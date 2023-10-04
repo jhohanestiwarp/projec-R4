@@ -1,0 +1,118 @@
+footer{
+    margin-top: 30px;
+    background-color: var(--color-fondo-footer);
+    padding: 60px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 99;
+    &::before{
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        top: 10px;
+        left: 0;
+        background-color: var(--color-barra-footer);
+    }
+    .fuente-footer{
+        color: var(--color-fuente-footer);
+    }
+    a{
+        color: var(--color-blanco);
+        &:hover{
+            color: var(--color-blanco);
+            opacity: .7;
+        }
+    }
+}
+.content-footer{
+    align-items: stretch;
+    margin-bottom: 35px;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+.lista-contacto{
+    li{
+        &:first-child{
+            @include rem(22);
+        }
+    }
+}
+.columna-contacto{
+    position: relative;
+    padding: 0 0 0 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    flex: 1;
+    .follow-facebook{
+        display: flex;
+        align-items: center;
+        span{
+            padding-right: 30px;
+        }
+    }
+    .icono-facebook{
+        width: 35px;
+        height: 35px;
+        background-color: var(--color-fondo);
+        display: flex;
+        position: relative;
+        margin: 0 15px 0 0;
+        &::before{
+            color: var(--color-primario);
+            position: relative;
+            top: 6px;
+            font-size: 37px;
+        }
+    }
+    .titulo{
+        padding: 5px 0;
+    }
+    li{
+        padding: 5px 0;
+        border-bottom: 1px solid var(--color-blanco);
+    }
+    &::after{
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translate(0, -50%);
+        width: 1px;
+        height: 143px;
+        background-color: var(--color-blanco);
+
+    }
+    &:last-child{
+        
+        &::after{
+            display: none;
+        }
+    }
+    &:first-child{
+        padding: 0;
+    }
+}
+
+.follow-facebook{
+    padding: 10px 0 20px;
+}
+.iconos-footer{
+    display: flex;
+    img{
+        width: 100%;
+        max-width: 129px;
+    }
+    
+    .iconos-tiendas{
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        &:first-child{
+            margin-right: 20px;
+        }
+    }
+   
+}
+

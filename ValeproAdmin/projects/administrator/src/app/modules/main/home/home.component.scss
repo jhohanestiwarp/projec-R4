@@ -1,0 +1,83 @@
+/* Estilo para el contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+}
+
+/* Estilo para los cuadros */
+.box {
+  text-align: center;
+  padding: 1px;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 0;
+}
+
+/* Estilo para el primer cuadro */
+.containerline {
+  background-color: var(--ngx-valepro-color-secondary);
+  height: 1%;
+  font-weight: normal;
+}
+
+/* Estilo para el segundo cuadro */
+.containersyn {
+  background-image: var(--imagen-background-login);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 294px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ngx-valepro-color-primary);
+  height: 70%;
+  color: white;
+  font-weight: bold;
+  font-size: 74px;
+}
+
+/* Estilo para el tercer cuadro */
+.containerwelcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  height: 30%;
+  color: rgb(14, 13, 13);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Estilo para el encabezado en el tercer cuadro */
+.containerwelcome .header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo para la lista en el tercer cuadro */
+.containerwelcome ul {
+  width: 100%;
+  padding: 0 2rem;
+}
+
+/* Estilo para el texto h2 en el tercer cuadro */
+.containerwelcome h2 {
+  font-size: 36px;
+  margin-top: 3rem;
+  /* Nuevos estilos para centrar verticalmente el texto */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}

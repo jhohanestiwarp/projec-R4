@@ -1,0 +1,212 @@
+.icono{
+    &-carro-delivery{
+        @include aligned-font-icon(left, 0, '\e943' ,16px);
+    }
+    &-caneca{
+        @include aligned-font-icon(left, 0, '\e944' ,16px);
+    }
+    &-check{
+        @include aligned-font-icon(left, 0, '\e942' ,16px);
+    }
+    &-tecnologia{
+        @include aligned-font-icon(left, 0, '\e900' ,16px);
+    }
+    &-negocio{
+        @include aligned-font-icon(left, 0,"\e901",16px);  
+    }
+    &-categoria{
+        @include aligned-font-icon(left, 0,"\e902",16px);  
+    }
+    &-regalos{
+        @include aligned-font-icon(left, 0,"\e902",16px);  
+    }
+    &-paseo{
+        @include aligned-font-icon(left, 0,"\e903",16px);  
+    }
+    &-infantil{
+        @include aligned-font-icon(left, 0,"\e904",16px);  
+    }
+    &-hogar{
+        @include aligned-font-icon(left, 0,"\e905",16px);  
+    }
+    &-deportes{
+        @include aligned-font-icon(left, 0,"\e906",16px);  
+    }
+    &-motos{
+        @include aligned-font-icon(left, 0,"\e907",16px);  
+    }
+    &-salud{
+        @include aligned-font-icon(left, 0,"\e908",16px);  
+    }
+    &-herramienta{
+        @include aligned-font-icon(left, 0,"\e909",16px);  
+    }
+    &-el-ella{
+        @include aligned-font-icon(left, 0,"\e90a",16px);  
+    }
+    &-contacto{
+        @include aligned-font-icon(left, 0,"\e90b",16px);  
+    }
+    &-contactenos{
+        @include aligned-font-icon(left, 0,"\e94f",16px);  
+    }
+    &-salir{
+        @include aligned-font-icon(left, 0,"\e90c",16px);  
+    }
+    &-mensajes{
+        @include aligned-font-icon(left, 0,"\e90d",16px);  
+    }
+    &-clave{
+        @include aligned-font-icon(left, 0,"\e90e",16px);  
+    }
+    &-alertas{
+        @include aligned-font-icon(left, 0,"\e90f",16px);  
+    }
+    &-bolsa{
+        @include aligned-font-icon(left, 0,"\e910",16px);  
+    }
+    &-calculadora{
+        @include aligned-font-icon(left, 0,"\e911",16px);  
+    }
+    &-pedido{
+        @include aligned-font-icon(left, 0,"\e912",16px);  
+    }
+    &-agregar-directo{
+        @include aligned-font-icon(left, 0,"\e93f",16px);  
+    }
+    &-misiones{
+        @include aligned-font-icon(left, 0,"\e913",16px);  
+    }
+    &-usuario-cat{
+        @include aligned-font-icon(left, 0,"\e914",16px);  
+    }
+    &-usuario{
+        @include aligned-font-icon(left, 0,"\e920",16px);  
+    }
+    &-flecha{
+        @include aligned-font-icon(left, 0,"\e915",16px);  
+    }
+    &-telefono{
+        @include aligned-font-icon(left, 0,"\e916",16px);  
+    }
+    &-mas{
+        @include aligned-font-icon(left, 0,"\e917",16px);  
+    }
+    &-buscar{
+        @include aligned-font-icon(left, 0,"\e918",16px);  
+    }
+    &-informacion{
+        @include aligned-font-icon(left, 0,"\e919",16px);  
+    }
+    &-google{
+        @include aligned-font-icon(left, 0,"\e91a",16px);  
+    }
+    &-facebook{
+        @include aligned-font-icon(left, 0,"\e91b",16px);  
+    }
+    &-carro{
+        @include aligned-font-icon(left, 0,"\e91c",16px);  
+    }
+    &-cerrar{
+        @include aligned-font-icon(left, 0,"\e940",16px);  
+    }
+    &-campana{
+        @include aligned-font-icon(left, 0,"\e91e",16px);  
+    }
+    &-carrito{
+        @include aligned-font-icon(left, 0,"\e91f",16px);  
+    }
+    &-menu{
+        @include aligned-font-icon(left, 0,"\e941",16px);  
+    }
+    &-navidad{
+        @include aligned-font-icon(left, 0,"\e921",16px);  
+    }
+    &-confeccion{
+        @include aligned-font-icon(left, 0,"\e922",16px);  
+    }
+    &-auto{
+        @include aligned-font-icon(left, 0,"\e923",16px);  
+    }
+    &-mouse{
+        @include aligned-font-icon(left, 0,"\e924",16px);  
+    }
+    &-lapiz{
+        @include aligned-font-icon(left, 0,"\e927",16px);  
+    }
+    &-pantalla{
+        @include aligned-font-icon(left, 0,"\e925",16px);  
+    }
+    &-estrella{
+        @include aligned-font-icon(left, 0,"\e926",16px);  
+    }
+    &-basket{
+        @include aligned-font-icon(left, 0,"\e928",16px);  
+    }
+    &-tarjeta{
+        @include aligned-font-icon(left, 0,"\e929",16px);  
+    }
+    &-halloween{
+        @include aligned-font-icon(left, 0,"\e91d",16px);  
+    }
+    &-activate{
+        @include aligned-font-icon(left, 0,"\e92b",16px);  
+    }
+    &-asistencia{
+        @include aligned-font-icon(left, 0,"\e92c",16px);  
+    }
+    &-puntos{
+        @include aligned-font-icon(left, 0,"\e948",16px);  
+    }
+    &-cambiar-contra{
+        @include aligned-font-icon(left, 0,"\e946",20px);  
+    }
+    &-pedidos{
+        @include aligned-font-icon(left, 0,"\e947",16px);  
+    }
+    &-flecha-tabla{
+        @include aligned-font-icon(right, 0,"\e949",16px);  
+    }
+    &-ojo-abierto{
+        @include aligned-font-icon(right, 0,"\e94b",24px);  
+    }
+    &-ojo-cerrado{
+        @include aligned-font-icon(right, 0,"\e94a",24px);  
+    }
+    &-calendar{
+        @include aligned-font-icon(left, 0,"\e94c",16px);  
+    }
+    &-filter{
+        @include aligned-font-icon(left, 0,"\e94d",18px);  
+    }
+    &-servicios{
+        @include aligned-font-icon(left, 0,"\e94e",18px);  
+    }
+    &-agregar{
+        @include aligned-font-icon(left, 0,"\e950",18px);  
+    }
+    &-rotar{
+        @include aligned-font-icon(left, 0,"\e952",18px);  
+    }
+    &-mission-survey{
+        @include aligned-font-icon(left, 0,"\e954",18px);  
+    }
+    &-stop{
+        @include aligned-font-icon(left, 0,"\e957",18px);  
+    }
+    &-play{
+        @include aligned-font-icon(left, 0,"\e956",18px);  
+    }
+    &-rec{
+        @include aligned-font-icon(left, 0,"\e955",18px);  
+    }
+    &-embajador{
+        @include aligned-font-icon(left, 0,"\e958",18px);  
+    }
+}
+.mission-camara{
+    @include aligned-font-icon(left, 0,"\e953",16px);  
+}
+.mission-available{
+    @include aligned-font-icon(left, 0,"\e951",16px);  
+}

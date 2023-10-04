@@ -1,0 +1,13 @@
+@keyframes primario {
+    from {
+        background: var(--color-blanco);
+        }
+    to {
+        background: var(--color-primario);
+        color: var(--color-blanco);
+        }
+}
+ @keyframes cambiarColor {   
+     0%   { background-color: #ffffef;}   
+     100% { background-color: #fff;}  
+  } 

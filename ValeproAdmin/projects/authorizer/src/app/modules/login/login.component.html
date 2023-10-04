@@ -1,0 +1,35 @@
+<div class="grid">
+  <div class="fr1 login_col-img--mobile">
+    <div class="login_img"> </div>
+  </div>
+
+  <div class="fr2">
+
+    <div class="row login_row_form">
+
+      <div class="col-12 login_col_form">
+        <form *ngIf="loginForm" [formGroup]="loginForm">
+          <mat-label class="login_label">Iniciar sesión</mat-label>
+          <mat-form-field class="login_mat-form" appearance="fill">
+            <mat-label>Número de identificación</mat-label>
+            <input matInput type="text" autocomplete="off" placeholder="Número de identificación" formControlName="Id">
+          </mat-form-field>
+          <mat-form-field class="login_mat-form" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="Pass">
+            <mat-icon matSuffix (click)="hide = !hide" [ngClass]="hide ? 'icono-ojo-cerrado' : 'icono-ojo-abierto'"
+              class="login_icon"></mat-icon>
+          </mat-form-field>
+          <a class="login_a" (click)="navigate()">Recuperar contraseña</a>
+          <div class="col-12 login_button">
+            <button class="login_btn" type="submit" (click)="login()">Ingresar</button>
+          </div>
+        </form>
+      </div>
+
+
+
+    </div>
+
+  </div>
+</div>

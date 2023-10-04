@@ -1,0 +1,32 @@
+<div class="container ">
+  <div class="row align-items-start">
+    <div class="col">
+      <div class="title">
+        <span>Gestión de secciones</span>
+      </div>
+      <div class="fomr">
+        <mat-form-field>
+          <mat-label>Sección</mat-label>
+          <mat-select [(ngModel)]="opcionSeleccionada">
+            <mat-option value="banner">Banner principal</mat-option>
+            <mat-option value="news">Noticias</mat-option>
+            <mat-option value="widgets">Widgets</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div *ngIf="opcionSeleccionada === 'banner'">
+        <app-banner></app-banner>
+      </div>
+
+      <div *ngIf="opcionSeleccionada === 'news'">
+        <app-news></app-news>
+      </div>
+
+      <div *ngIf="opcionSeleccionada === 'widgets'">
+        <app-widgets></app-widgets>
+      </div>
+
+    </div>
+  </div>
+</div>

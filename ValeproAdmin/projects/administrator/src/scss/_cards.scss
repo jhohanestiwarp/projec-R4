@@ -1,0 +1,108 @@
+.imagen-catalogo{
+    position: relative;   
+    background-color: var(--color-blanco);
+}
+.etiqueta-nuevo{
+    background-color: var(--color-boton-auth);
+}
+.etiqueta-oferta{
+    background-color: var(--color-cuaternario);
+}
+.valor-oferta{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.texto-antes{
+    @include rem(9);
+    bottom: 10px;
+    right: 0;
+}
+.texto-ahora{
+    @include rem(12);
+    bottom: 16px;
+    right: -2px;
+}
+.texto-antes,
+.texto-ahora{
+    position: absolute;
+    background: var(--color-cuaternario);
+    padding: 1px 3px;
+    border-radius: 20px;
+    
+}
+.etiqueta-nuevo,
+.etiqueta-oferta{
+    position: absolute;
+    top:10px;
+    z-index: 2;
+    right: 0;
+    padding: 3px 15px 3px 15px;
+}
+.content-info{
+    background-color: var(--color-primario);
+ 
+}
+.texto-articulo,
+.precio,
+.precio-descuento{
+    position: relative;
+    z-index: 2;
+}
+.precio-descuento{
+    &::before{
+        content: "";
+        background: var(--color-blanco);
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+}
+.texto-articulo{
+    max-width: 290px;
+    width: 100%;
+    padding-right: 15px;
+}                                            
+.card-articulo{
+    position: relative;
+    cursor: pointer;
+    .descripcion-articulo{
+        display: none;
+    }
+    .content-info{
+        padding: 25px 15px 15px 15px;
+    }
+    &.card-articulo-destacado{
+        
+        .content-info{
+            display: flex;
+            align-items: center;
+            padding: 15px;
+        }
+        img{
+          
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+        }
+    }
+    img{
+     
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .texto-articulo,
+    .precio,
+    .precio-descuento{
+        position: relative;
+        z-index: 0;
+    }
+}

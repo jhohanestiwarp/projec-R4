@@ -1,0 +1,92 @@
+//mixin de fuentes
+@mixin font-family($font-family, $line-height, $color) {
+	font-weight: normal;
+	color: $color;
+	line-height: $line-height;
+	font-family: $font-family;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+//mixin para tamaño de fuentes
+@mixin	rem($size) {
+	font-size: $size+px;
+	font-size: calulateRem($size);
+}
+
+//trae las fuentes usadas para el proyecto
+$src:"../assets/fonts/font-valepass/";
+@mixin fontFace($family,$ruta,$weight: normal,$style: normal) {
+  @font-face {
+  font-family: $family;
+  src: url('#{$src}/#{$ruta}.eot'); // IE9 compat
+  src: url('#{$src}/#{$ruta}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+  url('#{$src}/#{$ruta}.woff') format('woff'), // standards
+  url('#{$src}/#{$ruta}.ttf') format('truetype'); // Safari, Android, iOS
+  
+  font-style: $style;
+  font-weight: $weight;
+  }
+}
+
+//mixin hace el llamado de la fuentes de iconos
+@mixin font-icon() {
+	display: inline-block;
+	font-family: $font-iconos;
+	speak: none;
+	text-decoration: inherit;
+}
+
+//mixin que ubica los iconos :before o :after
+@mixin aligned-font-icon( $alignment: left, $align-margin: 10px, $content:"\f118", $size:40px) {
+	@if $alignment == left {
+		&:before {
+			content: $content;
+			font-size: $size;
+			margin-right: $align-margin;
+			@include font-icon();
+		}
+	} @else if $alignment == right {
+		&:after {
+			content: $content;
+			font-size: $size;
+			margin-left: $align-margin;
+			@include font-icon();
+		}
+	} @else {
+		&:before {
+			content: $content;
+			font-size: $size;
+			margin-right: $align-margin;
+			@include font-icon();
+		}
+	}
+}
+
+//ocultar titulares, descripcion
+@mixin hide-text{
+	overflow:hidden;
+	text-indent:-9000px;
+	display:block;
+	height: 0;
+	margin: 0;
+	padding: 0;
+  }
+
+  //mixin para mascara degrade que esta sobre la imagen de apertura
+@mixin gradient($direccion,$from-color, $to-color, $value) {
+    background-color: mix($from-color, $to-color); /* Fallback */
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from-color), to($to-color));
+    background-image: -webkit-linear-gradient($direccion, $from-color, $to-color); 
+    background-image:    -moz-linear-gradient($direccion, $from-color, $to-color);
+    background-image:     -ms-linear-gradient($direccion, $from-color, $to-color);
+    background-image:      -o-linear-gradient($direccion, $from-color, $to-color);
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='$from-color', EndColorStr='$to-color'), progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+") ";
+    $IEValue: $value*100;
+    opacity: $value;
+    filter: alpha(opacity=$IEValue);
+}
+

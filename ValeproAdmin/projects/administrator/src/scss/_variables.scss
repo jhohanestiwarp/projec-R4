@@ -1,0 +1,23 @@
+//colores
+
+$primary: #1b0c3f;
+$secondary: #c567f2;
+$terciary: #f5f5f500;
+$alert: #db4040;
+$succes: #40db62;
+$back: #F7F7F7;
+$white: #fff;
+$black: #000;
+$gray: #2c2a29;
+
+:root {
+  --color-primario: #{$primary};
+  --color-secundario: #{$secondary};
+  --color-terciario: #{$terciary};
+  --color-fondo: #{$back};
+  --color-rojo: #{$alert};
+  --color-verde: #{$succes};
+  --color-blanco: #{$white};
+  --color-negro: #{$black};
+  --color-gris: #{$gray};
+}

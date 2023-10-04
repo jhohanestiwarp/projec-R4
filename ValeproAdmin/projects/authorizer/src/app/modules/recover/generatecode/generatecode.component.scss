@@ -1,0 +1,279 @@
+//mobile
+
+.imagen-back {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .imagen-generate {
+    width: 50%;
+  }
+}
+
+.Autoraizer__formulario__conten {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.Autoraizer__formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.Autoraizer__formulario-generate-code__generate__inputCode {
+  .text-titulo {
+    text-align: center;
+    width: 100%;
+  }
+
+  .Autoraizer__formulario-generate-code__generate__input {
+    .generate_mat-form {
+      width: 100%;
+    }
+  }
+}
+
+
+.Autoraizer__formulario-generate-password {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .Autoraizer__formulario-generate-password__TextPassword {
+    .Autoraizer__formulario-generate-password__Title {
+      span {
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  .Autoraizer__formulario-generate-password__InputPassword {
+    width: 100%;
+
+    .Autoraizer__formulario-generate-code__generate__codeInput {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .login_icon {
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-around !important;
+        }
+      }
+    }
+  }
+
+
+}
+
+::ng-deep code-input input {
+  height: 54px !important;
+  width: 54px !important;
+  border: none !important;
+  border-bottom: 1px solid var(--color-primario) !important;
+  border-radius: 0px !important;
+  background: #F4F4F4 !important;
+}
+
+
+
+
+
+.Autoraizer__formulario-generate-code__generate_btn {
+  margin: 0 auto;
+
+  .generate_btn {
+    border-radius: 50px;
+    border: none;
+    background-color: var(--color-secundario);
+    min-height: 50px;
+    font-family: "bold";
+    font-size: 16px;
+    color: #1A0C3F;
+    width: 100%;
+    margin: 2rem 0rem;
+  }
+}
+
+
+
+.captcha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.container-fluid {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above {
+  color: #1A0C3F66 !important;
+  font-family: "bold";
+}
+
+::ng-deep mat-label {
+  COLOR: #1A0C3F66 !important;
+}
+
+input#mat-input-0 {
+  COLOR: #1A0C3F66 !important;
+}
+
+
+
+
+.generate_col-img--mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 203px;
+
+  .imagen-generate {
+    background: var(--imagen-background-login);
+    width: 50%;
+    height: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.fr1 {
+  background-color: var(--ngx-valepro-color-primary);
+  color: white;
+  padding: 20px;
+  height: 100%;
+}
+
+.fr2 {
+  background-color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+}
+
+
+.Autoraizer__formulario-generate-code {
+  width: 100%;
+}
+
+
+
+//tablet
+@media screen and (min-width: 40em) and (max-width: 63.9em) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .fr2 {
+    padding: 0px;
+  }
+
+
+  .Autoraizer__formulario {
+    justify-content: center;
+
+  }
+
+
+  .Autoraizer__formulario-generate-code__generate__disclaimer {
+    margin: 0 auto;
+
+    span {
+      color: var(--ngx-valepro-color-tertiary);
+    }
+
+  }
+
+
+  .Autoraizer__formulario-generate-code__generate__inputCode {
+    margin: 0 auto;
+
+    .Autoraizer__formulario-generate-code__generate__input {
+      width: 100%;
+    }
+  }
+}
+
+
+
+//web
+@media screen and (min-width: 64em) {
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+
+  }
+
+  .fr2 {
+    padding: 0px;
+  }
+
+
+  .Autoraizer__formulario {
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .Autoraizer__formulario-generate-code__generate__inputCode {
+    margin: 0 auto;
+
+    .Autoraizer__formulario-generate-code__generate__input {
+      width: 100%;
+    }
+  }
+
+
+  .Autoraizer__formulario-generate-code__generate__disclaimer {
+    margin: 0 auto;
+
+    span {
+      color: var(--ngx-valepro-color-tertiary);
+    }
+  }
+}

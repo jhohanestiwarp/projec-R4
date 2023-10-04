@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="box containerline"></div>
+  <div class="box containersyn"></div>
+  <div class="box containerwelcome">
+    <div class="bold-32">{{ bienvenidoText }}</div>
+    <hr />
+    <ul *ngIf="isMobile">
+      <li *ngFor="let item of menuNav">
+        <!-- Renderiza los elementos del menú aquí -->
+        <span class="header" (click)="toggleSubMenu(item)">
+          <span class="bold-14">{{ item.name }}</span>
+          <mat-icon *ngIf="item.subMenu" class="expand-icon">{{ item.subMenuVisible ? 'arrow_drop_up' : 'arrow_forward'
+            }}</mat-icon>
+        </span>
+        <ul *ngIf="item.subMenuVisible" class="header">
+          <li *ngFor="let subItem of item.subMenu">
+            <a mat-list-item [routerLink]="subItem.route">
+              <span class="bold-14">{{ subItem.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

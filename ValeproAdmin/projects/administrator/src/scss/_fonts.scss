@@ -1,0 +1,1461 @@
+// // @font-face {
+// // 	font-family: 'icons-valepass';
+// // 	src: url('../assets/fonts/font-valepass/font-valepass.eot') format('embedded-opentype'),
+// // 	url('../assets/fonts/font-valepass/font-valepass.woff') format('woff'),
+// // 	url('../assets/fonts/font-valepass/font-valepass.ttf') format('truetype'),
+// // 	url('../assets/fonts/font-valepass/font-valepass.svg') format('svg');
+// // 	font-style: normal;
+// // };
+
+//includes de mixins
+//font regular
+@include fontFace("regular", "CIBFontSans-Regular");
+//font regular 2
+@include fontFace("regular2", "Calibri");
+//font bold
+@include fontFace("bold", "CIBFontSans-Bold");
+//font italic
+@include fontFace("italic", "CIBFontSans-Italic");
+//font light
+@include fontFace("light", "CIBFontSans-Light");
+//font icons
+@include fontFace("icons", "iconos-valefiel");
+//font book
+@include fontFace("book", "CIBFontSans-Book");
+
+//variables
+$font-regular: "regular";
+$font-light: "light";
+$font-bold: "bold";
+$font-italic: "italic";
+$font-iconos: "icons";
+$font-book: "book";
+
+$fte-titulo: $font-bold;
+$fte-parrafo: $font-regular;
+$fte-parrafo-light: $font-light;
+$fte-parrafo-italic: $font-italic;
+$fte-parrafo-book: $font-book;
+
+//Fuentes bold
+.bold-51 {
+  @include rem(51);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-40 {
+  @include rem(40);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-36 {
+  @include rem(36);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-35 {
+  @include rem(35);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  @media (max-width: 600px) {
+    @include rem(20);
+  }
+}
+
+.bold-32 {
+  @include rem(32);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-31 {
+  @include rem(31);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-30 {
+  @include rem(30);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-28 {
+  @include rem(28);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-27 {
+  @include rem(27);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-26 {
+  @include rem(26);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-25 {
+  @include rem(25);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-24 {
+  @include rem(24);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-23 {
+  @include rem(23);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-22 {
+  @include rem(22);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-21 {
+  @include rem(21);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-20 {
+  @include rem(20);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-18 {
+  @include rem(18);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.menos {
+    color: var(--color-rojo);
+  }
+
+  &.mas,
+  &.suma {
+    color: var(--color-verde);
+  }
+}
+
+.bold-16 {
+  @include rem(16);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-17 {
+  @include rem(17);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-15 {
+  @include rem(14);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-14 {
+  @include rem(14);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-13 {
+  @include rem(13);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.bold-11 {
+  @include rem(11);
+  @include font-family($fte-titulo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+//Fuentes light
+.light-27 {
+  @include rem(27);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-20 {
+  @include rem(20);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-21 {
+  @include rem(21);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-16 {
+  @include rem(16);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-14 {
+  @include rem(14);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-18 {
+  @include rem(18);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.light-12 {
+  @include rem(12);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: var(--color-gris);
+  }
+}
+
+.light-10 {
+  @include rem(10);
+  @include font-family($fte-parrafo-light, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: var(--color-gris);
+  }
+}
+
+//Fuentes regular
+.regular-40 {
+  @include rem(40);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-32 {
+  @include rem(32);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-25 {
+  @include rem(25);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #acacac;
+  }
+
+  @media (max-width: 600px) {
+    @include rem(20);
+  }
+}
+
+.regular-24 {
+  @include rem(24);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-23 {
+  @include rem(23);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+
+.regular-22 {
+  @include rem(22);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-20 {
+  @include rem(20);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #acacac;
+  }
+}
+
+.regular-18 {
+  @include rem(18);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #acacac;
+  }
+}
+
+.regular-17 {
+  @include rem(17);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-16 {
+  @include rem(16);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #acacac;
+  }
+}
+
+.regular-15 {
+  @include rem(15);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #ACACAC;
+  }
+}
+
+.regular-14 {
+  @include rem(14);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #acacac;
+  }
+}
+
+.regular-13 {
+  @include rem(13);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-12 {
+  @include rem(12);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: var(--color-gris);
+  }
+}
+
+.regular-11 {
+  @include rem(11);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-10 {
+  @include rem(10);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.regular-8 {
+  @include rem(10);
+  @include font-family($fte-parrafo, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+//Fuentes italic
+.italic-18 {
+  @include rem(18);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-16 {
+  @include rem(16);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-15 {
+  @include rem(15);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-14 {
+  @include rem(14);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-13 {
+  @include rem(13);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-12 {
+  @include rem(12);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-11 {
+  @include rem(11);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.italic-10 {
+  @include rem(10);
+  @include font-family($fte-parrafo-italic, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+//Fuentes book
+.book-25 {
+  @include rem(25);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  @media (max-width: 1000px) {
+    @include rem(18);
+  }
+}
+
+.book-23 {
+  @include rem(23);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  @media (max-width: 1000px) {
+    @include rem(18);
+  }
+}
+
+.book-22 {
+  @include rem(22);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.book-21 {
+  @include rem(21);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.book-20 {
+  @include rem(20);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+}
+
+.book-18 {
+  @include rem(18);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: var(--color-gris);
+  }
+}
+
+.book-15 {
+  @include rem(15);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #ACACAC;
+  }
+}
+
+.book-16 {
+  @include rem(16);
+  @include font-family($fte-parrafo-book, 1.2, $black);
+
+  &.primario {
+    color: var(--color-primario);
+  }
+
+  &.secundario {
+    color: var(--color-secundario);
+  }
+
+  &.blanco {
+    color: var(--color-blanco);
+  }
+
+  &.negro {
+    color: var(--color-negro);
+  }
+
+  &.gris {
+    color: #ACACAC;
+  }
+}

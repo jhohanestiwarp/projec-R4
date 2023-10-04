@@ -1,0 +1,223 @@
+@font-face {
+  font-family: "bold";
+  src: url("/../assets/fonts/font-valepass/EuclidCircularB-Bold.woff");
+}
+
+@font-face {
+  font-family: "regular";
+  src: url("/../assets/fonts/font-valepass/EuclidCircularB-Regular.woff");
+}
+
+.login_col-img--desktop {
+  display: none;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+.login_col-img--mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // background-color: #0277bd;
+  min-height: 203px;
+
+
+  .login_img {
+    background: var(--imagen-background-login);
+    width: 50%;
+    height: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.login_col-input {
+  background-color: #FAFAFA;
+  height: 80vh;
+}
+
+mat-form-field.mat-mdc-form-field.login_mat-form {
+  min-width: 280px;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-floating-label--float-above {
+  color: var(--ngx-valepro-color-tertiary);
+  font-family: "bold";
+}
+
+::ng-deep mat-label {
+  COLOR: #1A0C3F66 !important;
+}
+
+input#mat-input-0 {
+  COLOR: #1A0C3F66 !important;
+}
+
+input#mat-input-1 {
+  COLOR: #1A0C3F66 !important;
+}
+
+.login_mat-form,
+.login_label,
+.login_a,
+.login_button {
+  display: flex;
+  justify-content: center;
+}
+
+.login_col_form {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--ngx-valepro-color-tertiary);
+}
+
+.login_label {
+  font-family: "bold";
+  font-size: 32px;
+  margin-bottom: 32px;
+  color: var(--ngx-valepro-color-tertiary) !important;
+}
+
+.login_mat_label {
+  font-family: "bold";
+  font-size: 14px;
+  color: var(--ngx-valepro-color-primary)
+}
+
+::ng-deep .mdc-text-field--no-label:not(.mdc-text-field--textarea) {
+  font-family: "regular";
+  font-size: 16px;
+  color: var(--ngx-valepro-color-primary);
+  border: 1px solid #1A0C3F66;
+  border-radius: 16px;
+  width: 280px;
+}
+
+.login_a {
+  font-family: "regular";
+  font-size: 16px;
+  color: #1A0C3F;
+  text-decoration: underline;
+}
+
+.login_btn {
+  border-radius: 50px;
+  border: none;
+  background-color: var(--color-secundario);
+  min-width: 260px;
+  min-height: 44px;
+  font-family: "bold";
+  font-size: 16px;
+  color: var(--ngx-valepro-color-tertiary);
+  margin: 2rem 0rem;
+}
+
+.login_icon {
+  font-size: 16px;
+  color: var(--ngx-valepro-color-tertiary);
+}
+
+::ng-deep .mat-mdc-text-field-wrapper {
+  min-height: 44px;
+  margin-top: 8px;
+}
+
+::ng-deep .mat-mdc-form-field-flex {
+  align-items: center !important;
+  min-height: 44px;
+}
+
+mat-icon.mat-icon {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled {
+  background: #F4F4F4;
+}
+
+
+
+
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+}
+
+.fr1 {
+  background-color: var(--ngx-valepro-color-primary);
+  color: white;
+  padding: 20px;
+  height: 100%;
+}
+
+.fr2 {
+  background-color: white;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 64em) {
+  .login_col_form {
+    padding-top: 80px;
+  }
+
+  .login_col-img--mobile {
+    min-height: 433px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+
+  }
+}
+
+@media screen and (min-width: 40em) and (max-width: 63.9em) {
+  .login_col-img--mobile {
+    height: 100vh;
+  }
+
+  .login_row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .login_col-img--desktop {
+    height: 100%;
+  }
+
+  .login_col-input {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

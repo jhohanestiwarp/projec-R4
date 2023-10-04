@@ -1,0 +1,116 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .dashboard-toolbar {
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+}
+
+::ng-deep .dashboard-toolbar.mat-primary {
+  justify-content: space-between;
+  background-color: var(--ngx-valepro-color-tertiary);
+}
+
+h1.app-name {
+  margin-left: 8px;
+  margin-top: 15px;
+  color: white;
+}
+
+.sidenav-container {
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+ul li {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.profile-card {
+  text-align: center;
+  padding: 0 20px 20px 20px;
+  background-color: #ffffff;
+  margin: 10px;
+}
+
+.header {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 11px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.icono {
+  margin-right: 10px;
+}
+
+div ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 1rem;
+}
+
+.name {
+  margin-bottom: 1px;
+}
+
+.expand-icon {
+  margin-left: 8px;
+  vertical-align: middle;
+  font-size: 13px;
+}
+
+h3 {
+  margin-right: 3px;
+}
+
+.custom-icon {
+  font-size: 24px;
+  color: var(--ngx-valepro-color-secondary);
+  margin-right: 10px;
+}
+
+.app-logo {
+  width: 112px;
+  height: 84px;
+  background-image: var(--imagen-background-login);
+  background-size: contain;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+  background-color: #f0f0f0;
+  margin: 10px;
+}
+
+/* Aplicar un flujo de bloque a los elementos del submenú */
+.header ul.header li {
+  display: block;
+}
+
+.header ul.header li {
+  margin-bottom: 10px;
+}
