@@ -1,0 +1,24 @@
+<input
+  #fileInput
+  class="hide"
+  (change)="onFileSelect($event)"
+  [multiple]="multiple"
+  type="file"
+/>
+
+<div class="content-file">
+  <div *ngIf="!filename; else hideInput">
+    <label mat-ripple class="upload-label" (click)="fileInput.click()">
+      <p>{{ fileTitle }}</p>
+      <mat-icon fontSet="material-icons-outlined">file_upload</mat-icon>
+    </label>
+  </div>
+  <ng-template #hideInput>
+    <div class="upload-label">
+      <p class="filename">
+        {{ filename }}
+      </p>
+      <mat-icon (click)="onRemove()"> remove_circle_outline </mat-icon>
+    </div>
+  </ng-template>
+</div>
