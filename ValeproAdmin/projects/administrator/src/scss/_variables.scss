@@ -9,6 +9,7 @@ $back: #F7F7F7;
 $white: #fff;
 $black: #000;
 $gray: #2c2a29;
+$light-gray: #1a0c3f66;
 
 :root {
   --color-primario: #{$primary};
@@ -20,4 +21,5 @@ $gray: #2c2a29;
   --color-blanco: #{$white};
   --color-negro: #{$black};
   --color-gris: #{$gray};
+  --color-gris-claro: #{$light-gray};
 }
