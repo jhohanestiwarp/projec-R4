@@ -7,13 +7,9 @@ import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
-    components.ButtonComponent,
-    components.FileInputComponent,
     components.SidenavComponent,
   ],
   exports: [
-    components.ButtonComponent,
-    components.FileInputComponent,
     components.SidenavComponent,
     CommonModule,
     FormsModule,
