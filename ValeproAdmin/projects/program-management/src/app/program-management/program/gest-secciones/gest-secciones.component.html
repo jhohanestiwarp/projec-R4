@@ -5,8 +5,8 @@
     <mat-form-field>
       <mat-label>{{ COMPONENT_CONTENT.form.section }}</mat-label>
       <mat-select formControlName="section">
-        <mat-option *ngFor="let section of sections" [value]="section">
-          {{ section | titlecase }}
+        <mat-option *ngFor="let section of sections" [value]="section.value">
+          {{ section.label | titlecase }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="managementForm.get('section')?.hasError('required')">
@@ -18,7 +18,7 @@
       {{ COMPONENT_CONTENT.subtitle_resource_form }}
     </h2>
     <!-- title -->
-    <mat-form-field>
+    <mat-form-field *ngIf="managementForm.value.section !== POP_UP_OPTION">
       <mat-label>{{ COMPONENT_CONTENT.form.title }}</mat-label>
       <input matInput formControlName="title" />
       <mat-error *ngIf="managementForm.get('title')?.hasError('maxlength')">
@@ -32,24 +32,31 @@
     <!-- segment -->
     <mat-form-field>
       <mat-label>{{ COMPONENT_CONTENT.form.segment }}</mat-label>
-      <input
-        matInput
-        formControlName="segment"
-        (click)="toggleSegmentOptions()"
-      />
+      <mat-select multiple formControlName="segment">
+        <mat-option *ngFor="let segment of segments" [value]="segment">
+          {{ segment | titlecase }}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf="managementForm.get('segment')?.hasError('required')">
         {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.segment) }}
       </mat-error>
     </mat-form-field>
 
-    <!-- segment options with checkboxes -->
-    <div *ngIf="showSegmentOptions">
-      <div *ngFor="let option of segmentOptions">
-        <mat-checkbox formControlName="segmentCheckbox">{{
-          option
-        }}</mat-checkbox>
-      </div>
-    </div>
+    <!-- opening mode -->
+    <mat-form-field *ngIf="managementForm.value.section === WIDGET_OPTION">
+      <mat-label>{{ COMPONENT_CONTENT.form.opening }}</mat-label>
+      <mat-select formControlName="segment">
+        <mat-option
+          *ngFor="let option of openingOptions"
+          [value]="option.value"
+        >
+          {{ option.label | titlecase }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="managementForm.get('opening')?.hasError('required')">
+        {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.opening) }}
+      </mat-error>
+    </mat-form-field>
 
     <div class="form__group">
       <!-- surveillance start date -->
@@ -105,7 +112,7 @@
     </p>
 
     <!-- url -->
-    <mat-form-field>
+    <mat-form-field *ngIf="managementForm.value.section !== POP_UP_OPTION">
       <mat-label>{{ COMPONENT_CONTENT.form.url }}</mat-label>
       <input matInput formControlName="url" />
     </mat-form-field>

@@ -7,7 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./gest-secciones.component.scss'],
 })
 export class GestSeccionesComponent {
-  showSegmentOptions = false;
+  readonly POP_UP_OPTION = 'pop-ups';
+  readonly WIDGET_OPTION = 'widgets';
   readonly COMPONENT_CONTENT = {
     title: 'Gestión de secciones',
     subtitle_resource_form: 'Configuración de recursos',
@@ -20,6 +21,7 @@ export class GestSeccionesComponent {
     form: {
       endDate: 'Vigencia - Fecha fin',
       files: 'Selecciona una imagen',
+      opening: 'Modo de apertura',
       segment: 'Segmento',
       section: 'Sección',
       startDate: 'Vigencia - Fecha de inicio',
@@ -29,18 +31,23 @@ export class GestSeccionesComponent {
   };
 
   // selectors
+  openingOptions = [
+    { label: 'Abrir desde la misma pestaña', value: 1 },
+    { label: 'Abrir desde una nueva pestaña', value: 2 },
+  ];
   segments = [];
   sections = [
-    'Banner principal',
-    'noticias',
-    'widgets',
-    'pop-ups de bienvenida',
+    { label: 'banner principal', value: 'banner' },
+    { label: 'noticias', value: 'noticias' },
+    { label: 'widgets', value: this.WIDGET_OPTION },
+    { label: 'pop-ups de bienvenida', value: this.POP_UP_OPTION },
   ];
 
   // form
   managementForm = this.fb.nonNullable.group({
     endDate: ['', Validators.required],
     files: [[]],
+    opening: [this.openingOptions[0].value],
     segment: ['', Validators.required],
     section: ['', Validators.required],
     startDate: ['', Validators.required],
@@ -49,13 +56,10 @@ export class GestSeccionesComponent {
     segmentCheckbox: this.fb.control(false), // Inicializa segmentCheckbox como un FormControl
   });
 
-  toggleSegmentOptions() {
-    this.showSegmentOptions = !this.showSegmentOptions;
-  }
-
-  segmentOptions = ['Opción 1', 'Opción 2', 'Opción 3'];
-
   constructor(private fb: FormBuilder) {}
+
+  // pop-up -> sin título y sin url
+  // widget -> apertura
 
   getFiles(fileList: FileList): void {
     const { files } = this.managementForm.value;
