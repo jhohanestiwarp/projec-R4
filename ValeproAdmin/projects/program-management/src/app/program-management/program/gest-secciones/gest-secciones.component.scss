@@ -96,4 +96,31 @@
   .main-title {
     text-align: left;
   }
+
+
+  .example-list {
+    width: 100%; /* ajusta el ancho según tus necesidades */
+    border: 1px solid #ccc;
+    margin-top: 20px; /* o ajusta según tus necesidades */
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .example-list th,
+  .example-list td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .example-list th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .example-list .cdk-drag-placeholder {
+    opacity: 0.5;
+    border: 2px dashed #ccc;
+    background-color: #f9f9f9;
+  }
 }

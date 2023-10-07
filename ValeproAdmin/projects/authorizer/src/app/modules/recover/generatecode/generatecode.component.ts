@@ -7,6 +7,7 @@ import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service'
 import { RecoverRepository } from '../../../core/repositories/recover.repository';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../../core/models/generateCodeRequest.model';
 import { ResponseBase } from '../../../core/models/responseBase.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -31,6 +32,8 @@ export class GeneratecodeComponent implements OnInit {
     private dialogService: DialogService,
     private recoverRepository: RecoverRepository,
     private formBuilder: FormBuilder,
+    private toastService: ToastrService
+
   ) {
     this.GenerateForm = this.formBuilder.group({
       Id: ['', [Validators.required]],
@@ -70,10 +73,17 @@ export class GeneratecodeComponent implements OnInit {
         this.senPopUp(res.data.Phone, res.data.Email);
         sessionStorage.setItem('username', data.UserName);
         this.router.navigate(['/recover']);
-
       },
       error: (error) => {
-        console.error(error);
+        this.toastService.error(error.error.Data[0].ErrorMessage, undefined, {
+          timeOut: 9000,
+          progressBar: true,
+          disableTimeOut: 'extendedTimeOut',
+          progressAnimation: 'increasing',
+          tapToDismiss: false,
+          positionClass: 'toast-top-center',
+          closeButton: true,
+        });
         //pop up de error
       },
     });

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-gest-secciones',
@@ -35,6 +37,11 @@ export class GestSeccionesComponent {
     { label: 'Abrir desde la misma pestaña', value: 1 },
     { label: 'Abrir desde una nueva pestaña', value: 2 },
   ];
+
+  openingSelects = [
+    { label: 'option1', value: 1 },
+    { label: 'option2', value: 2 },
+  ];
   segments = [];
   sections = [
     { label: 'banner principal', value: 'banner' },
@@ -69,5 +76,29 @@ export class GestSeccionesComponent {
       ...this.managementForm.value,
       files: data as never,
     });
+  }
+
+
+  tableData: { position: number, url: string }[] = [
+  ];
+
+  drop(event: any): void {
+    moveItemInArray(this.tableData, event.previousIndex, event.currentIndex);
+  }
+
+  onDelete(position: number): void {
+    const isConfirmed = window.confirm('¿Estás seguro de que quieres eliminar este registro?');
+
+    if (isConfirmed) {
+      this.tableData = this.tableData.filter((item) => item.position !== position);
+    }
+  }
+
+  onSubmit(): void {
+    if (this.managementForm.valid) {
+      const { section, title, url, files } = this.managementForm.value;
+      this.tableData.push({ position: this.tableData.length + 1, url: url || 'N/A' });
+      this.managementForm.reset();
+    }
   }
 }

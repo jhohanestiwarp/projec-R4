@@ -7,6 +7,7 @@ import { RecoverRepository } from '../../../core/repositories/recover.repository
 import { ResponseBase } from '../../../core/models/responseBase.model';
 import { ValidateCodeRequestModel, ValidateCodeResponseModel } from '../../../core/models/validateCode.model';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../../core/models/generateCodeRequest.model';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -30,10 +31,12 @@ export class RecoverPasswordComponent implements OnInit {
   btnColor: string = '';
   codeCompleteControl: string = '';
   username: string = '';
+  showResend: boolean = false;
   constructor(
     private router: Router,
     private dialogService: DialogService,
-    private recoverRepository: RecoverRepository
+    private recoverRepository: RecoverRepository,
+    private toastService: ToastrService
   ) {
     this.recoverForm = new FormGroup({
       Pass: new FormControl('', [Validators.required]),
@@ -43,7 +46,7 @@ export class RecoverPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.countDown();
     this.username = sessionStorage.getItem('username')!;
-    
+
   }
 
   get codeComplete(): AbstractControl | null {
@@ -82,6 +85,7 @@ export class RecoverPasswordComponent implements OnInit {
       this.date = new Date(this.date.getTime() - 1000);
       if (this.minutes === '0' && this.seconds === '00') {
         clearInterval(interval);
+        this.showResend = true;
         this.date = new Date('2020-01-01 00:05');
       }
       if (this.router.url !== '/recover') {
@@ -91,7 +95,7 @@ export class RecoverPasswordComponent implements OnInit {
   }
 
   confirmPassword() {
-    let data: ValidateCodeRequestModel ={
+    let data: ValidateCodeRequestModel = {
       userName: this.username,
       programId: 0,
       newPassword: this.recoverForm.get('Pass')?.value,
@@ -109,14 +113,23 @@ export class RecoverPasswordComponent implements OnInit {
 
       },
       error: (error) => {
-        console.log(error);
+        this.toastService.error(error.error.Data[0].ErrorMessage, undefined, {
+          timeOut: 9000,
+          progressBar: true,
+          disableTimeOut: 'extendedTimeOut',
+          progressAnimation: 'increasing',
+          tapToDismiss: false,
+          positionClass: 'toast-top-center',
+          closeButton: true,
+        });
         //pop up de error
       },
     });
 
   }
-  resendCode(){
-    let data: GenerateCodeRequestModel ={
+  resendCode() {
+
+    let data: GenerateCodeRequestModel = {
       UserName: this.username,
       ProgramId: 0
     }
@@ -125,13 +138,15 @@ export class RecoverPasswordComponent implements OnInit {
         let params: DialogParams = {
           success: false,
           title: 'El código de verificación fue enviado',
-          confirmText: 'a tu número de celular:' + 'o al correo electrónico: *****vp@gmail.com'
+          confirmText: 'a tu número de celular: ' + res.data.Phone + ' o al correo electrónico: ' + res.data.Email
         };
+        this.showResend = false;
         this.dialogService.openConfirmDialog(params);
+        this.countDown();
       },
       error: (error) => {
         console.error(error);
-        //pop up de error
+
       },
     });
   }

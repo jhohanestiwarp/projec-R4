@@ -1,6 +1,6 @@
-import { Component, OnInit, Injectable, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { LoginRequestModel } from '../../core/models/loginRequest.model';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { loadLogin, selectResponseLogin, selectResponseLoginLoading } from 'projects/store-lib/src/public-api';
@@ -10,7 +10,7 @@ import { LoginResponseModel } from '../../core/models/loginResponse.model';
 import { Router } from '@angular/router';
 import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.model';
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private dialogService: DialogService,
     private formBuilder: FormBuilder,
+    private toastService: ToastrService
     // private toastrService: ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
@@ -50,6 +51,18 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    if(!this.loginForm.get('Id')?.value || !this.loginForm.get('Pass')?.value){
+      this.toastService.error('La información ingresada no es válida.', undefined, {
+        timeOut: 9000,
+        progressBar: true,
+        disableTimeOut: 'extendedTimeOut',
+        progressAnimation: 'increasing',
+        tapToDismiss: false,
+        positionClass: 'toast-top-center',
+        closeButton: true,
+      });
+      return;
+    }
     let data: LoginRequestModel = {
       UserName: this.loginForm.get('Id')?.value,
       Password: this.loginForm.get('Pass')?.value,
@@ -79,7 +92,6 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/update']);
             },
             error:(err)=> {
-              console.error(err)
             }
           });
         } else {
@@ -87,9 +99,15 @@ export class LoginComponent implements OnInit {
         }
       },
       error: (error) => {
-        console.log(error);
-        console.log(error.error.Data[0].ErrorMessage);
-        //pop up de error
+        this.toastService.error(error.error.Data[0].ErrorMessage, undefined, {
+          timeOut: 9000,
+          progressBar: true,
+          disableTimeOut: 'extendedTimeOut',
+          progressAnimation: 'increasing',
+          tapToDismiss: false,
+          positionClass: 'toast-top-center',
+          closeButton: true,
+        });
       },
     });
 

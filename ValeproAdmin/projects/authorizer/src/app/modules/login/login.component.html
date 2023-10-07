@@ -16,7 +16,7 @@
           </mat-form-field>
           <mat-form-field class="login_mat-form" appearance="fill">
             <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="Pass">
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="Pass" placeholder="Contraseña">
             <mat-icon matSuffix (click)="hide = !hide" [ngClass]="hide ? 'icono-ojo-cerrado' : 'icono-ojo-abierto'"
               class="login_icon"></mat-icon>
           </mat-form-field>

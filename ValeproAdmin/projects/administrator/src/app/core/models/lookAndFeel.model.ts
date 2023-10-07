@@ -1,7 +1,7 @@
 export class LookAndFeelModel {
 
   constructor(
-    public ProgramId: string,
+    public ProgramId: number,
     public ImageBackgroundLogin: string,
     public PrimaryColor: string,
     public SecondaryColor: string,
