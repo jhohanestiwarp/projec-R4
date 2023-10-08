@@ -11,6 +11,10 @@ const childRoutes: Routes = [
     path: 'programs',
     loadChildren: () => import('Program/ProgramManagementModule').then((m) => m.ProgramManagementModule)
   },
+  {
+    path: 'systems',
+    loadChildren: () => import('System/SystemManagementModule').then((m) => m.SystemManagementModule)
+  },
   { path:'**', redirectTo: '/main', pathMatch: 'full' }
 ]
 
