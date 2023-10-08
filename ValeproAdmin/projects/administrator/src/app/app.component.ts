@@ -15,10 +15,6 @@ export class AppComponent {
   title = 'Valepro Administrador';
 
   constructor(private lookAndFeelRepository: LookAndFeelRepository) {
-    this.loadStyles();
-  }
-
-  loadStyles() {
     this.lookAndFeelRepository.getLookAndFeel(41).subscribe({
       next: (lookAndFeel: LookAndFeelModel) => {
         applyTheme(lookAndFeel);

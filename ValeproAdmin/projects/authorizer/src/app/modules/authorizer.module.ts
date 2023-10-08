@@ -17,10 +17,10 @@ import { LoginRepositoryImpl } from '../infraestructure/repositories/login.repos
 import { RecoverRepository } from '../core/repositories/recover.repository';
 import { RecoverRepositoryImpl } from '../infraestructure/repositories/recover.repository.impl';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
-import { StoreModule } from '@ngrx/store';
+import { FEATURE_REDUCERS, StoreModule } from '@ngrx/store';
+import { ROOT_REDUCERS } from 'projects/store-lib/src/lib/store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { loginReducer } from 'projects/store-lib/src/public-api';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 
 @NgModule({
@@ -46,8 +46,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     CommonModule,
     HttpClientModule,
     StoreModule.forFeature('feature', loginReducer),
-    StoreDevtoolsModule.instrument({ name: 'TEST' }),
-    ToastrModule.forRoot()
+    StoreDevtoolsModule.instrument({ name: 'TEST' })
+
   ],
   exports: [
     MatFormFieldModule,
@@ -69,7 +69,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
       useValue: {}
     },
     DialogService,
-    ToastrService
+
   ]
 })
 export class AuthorizerModule { }

@@ -5,8 +5,8 @@
   <div class="fr2">
     <div class="row Autoraizer__formulario-generate-code">
 
-      <div class="Autoraizer__formulario-generate-code__generate__inputCode col-12">
-        <span class="bold-32 text-titulo mb-3">Recuperar<br>contraseña</span>
+      <div class="Autoraizer__formulario-generate-code__generate__inputCode col-12  col-md-5">
+        <span class="bold-32 text-titulo">Recuperar<br>contraseña</span>
 
         <div class="Autoraizer__formulario-generate-code__generate__input mb-3">
           <form [formGroup]="GenerateForm">
@@ -20,7 +20,7 @@
         <div class="Autoraizer__formulario-generate-code__generate__recapcha mb-3">
 
           <div class="captcha">
-            <re-captcha id="g-recaptcha" (resolved)="resolved($event)" siteKey={{this.keyCaptcha}}></re-captcha>
+            <re-captcha (resolved)="resolved($event)" siteKey={{this.keyCaptcha}}></re-captcha>
             <div *ngIf="submitted && (captcha == '' || this.captcha == null)">
               <div class="error-login error-captcha">Confirmacion de re-Captcha es requerida</div>
             </div>

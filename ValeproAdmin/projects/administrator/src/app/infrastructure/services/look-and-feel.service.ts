@@ -4,12 +4,12 @@ import { LookAndFeelDTO } from '../dto/lookAndFeel.dto';
 import { Observable, map } from 'rxjs';
 import { LookAndFeelModel } from '../../core/models/lookAndFeel.model';
 import { LookAndFeelMapper } from '../../core/mappers/lookAndFeel.mapper';
-import { LookAndFeelRepository } from '../../core/repositories/lookAndFeel.repository';
 @Injectable({
   providedIn: 'root'
 })
-export class LookAndFeelService implements LookAndFeelRepository{
+export class LookAndFeelService {
 
+  api = 'http://localhost:3001'
   constructor(private http: HttpClient) { }
 
 

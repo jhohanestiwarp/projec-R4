@@ -37,8 +37,8 @@ export default {
       name: 'Gestión de programas',
       icon: '',
       subMenu: [
-        { name: 'Información general', route: '/main/programs' },
-        { name: 'Secciones', route: '/main/programs/program-sections' },
+        { name: 'Información general', route: '/program-management/#' },
+        { name: 'Secciones', route: '/program-management/sections' },
       ],
       subMenuVisible: false,
     },

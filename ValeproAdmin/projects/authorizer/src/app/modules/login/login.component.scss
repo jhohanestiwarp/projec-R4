@@ -145,6 +145,18 @@ mat-icon.mat-icon {
 }
 
 
+
+
+
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -168,15 +180,7 @@ mat-icon.mat-icon {
   justify-content: center;
 }
 
-
-::ng-deep .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
-  margin-left: 1px;
-  margin-right: 0px;
-  content: "" !important;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-
+@media screen and (min-width: 64em) {
   .login_col_form {
     padding-top: 80px;
   }
@@ -186,14 +190,12 @@ mat-icon.mat-icon {
   }
 
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 
   }
 }
 
-@media screen and (min-width: 1024px) {
-
-
+@media screen and (min-width: 40em) and (max-width: 63.9em) {
   .login_col-img--mobile {
     height: 100vh;
   }

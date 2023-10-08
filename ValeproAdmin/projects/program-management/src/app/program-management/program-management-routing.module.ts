@@ -3,11 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProgramComponent } from './program/program.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ProgramComponent,
-    loadChildren: () => import('./program/child-routes-program.module').then((m) => m.ChildRoutesProgramModule )
-  },
+  { path: 'program', component: ProgramComponent },
 ];
 
 @NgModule({
