@@ -98,7 +98,6 @@
                   "type": "anyComponentStyle",
                   "maximumWarning": "5mb",
 									"maximumError": "5mb"
-
                 }
               ],
               "fileReplacements": [
@@ -148,7 +147,7 @@
 							"browserTarget": "Administrator:build:production",
 							"extraWebpackConfig": "projects/administrator/webpack.prod.config.js"
 						},
-            "stage": {
+						"stage": {
 							"browserTarget": "Administrator:build:stage",
 							"extraWebpackConfig": "projects/administrator/webpack.stage.config.js"
 						},
@@ -444,7 +443,7 @@
 					},
 					"configurations": {
 						"production": {
-              "outputPath": "dist/program/production",
+							"outputPath": "dist/program/production",
 							"budgets": [
 								{
 									"type": "initial",
@@ -460,7 +459,7 @@
 							"outputHashing": "all",
 							"extraWebpackConfig": "projects/program-management/webpack.prod.config.js"
 						},
-            "stage": {
+						"stage": {
 							"outputPath": "dist/program/stage",
 							"budgets": [
 								{
@@ -522,7 +521,7 @@
 							"browserTarget": "Program-management:build:production",
 							"extraWebpackConfig": "projects/program-management/webpack.prod.config.js"
 						},
-            "stage": {
+						"stage": {
 							"browserTarget": "Program-management:build:stage",
 							"extraWebpackConfig": "projects/program-management/webpack.prod.config.js"
 						},
@@ -536,7 +535,7 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port":4202,
+						"port": 4202,
 						"publicHost": "http://localhost:4202",
 						"extraWebpackConfig": "projects/program-management/webpack.config.js"
 					}
@@ -601,7 +600,114 @@
           }
         }
       }
-    }
+		},
+		"system-management": {
+			"projectType": "application",
+			"schematics": {
+				"@schematics/angular:component": {
+					"style": "scss"
+				}
+			},
+			"root": "projects/system-management",
+			"sourceRoot": "projects/system-management/src",
+			"prefix": "app",
+			"architect": {
+				"build": {
+					"builder": "ngx-build-plus:browser",
+					"options": {
+						"outputPath": "dist/system-management",
+						"index": "projects/system-management/src/index.html",
+						"main": "projects/system-management/src/main.ts",
+						"polyfills": [
+							"zone.js"
+						],
+						"tsConfig": "projects/system-management/tsconfig.app.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/system-management/src/favicon.ico",
+							"projects/system-management/src/assets"
+						],
+						"styles": [
+							"projects/system-management/src/styles.scss"
+						],
+						"scripts": [],
+						"extraWebpackConfig": "projects/system-management/webpack.config.js",
+						"commonChunk": false
+					},
+					"configurations": {
+						"production": {
+							"budgets": [
+								{
+									"type": "initial",
+									"maximumWarning": "500kb",
+									"maximumError": "1mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "2kb",
+									"maximumError": "4kb"
+								}
+							],
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/system-management/webpack.prod.config.js"
+						},
+						"development": {
+							"buildOptimizer": false,
+							"optimization": false,
+							"vendorChunk": true,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
+					},
+					"defaultConfiguration": "production"
+				},
+				"serve": {
+					"builder": "ngx-build-plus:dev-server",
+					"configurations": {
+						"production": {
+							"browserTarget": "system-management:build:production",
+							"extraWebpackConfig": "projects/system-management/webpack.prod.config.js"
+						},
+						"development": {
+							"browserTarget": "system-management:build:development"
+						}
+					},
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4204,
+						"publicHost": "http://localhost:4204",
+						"extraWebpackConfig": "projects/system-management/webpack.config.js"
+					}
+				},
+				"extract-i18n": {
+					"builder": "ngx-build-plus:extract-i18n",
+					"options": {
+						"browserTarget": "system-management:build",
+						"extraWebpackConfig": "projects/system-management/webpack.config.js"
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"polyfills": [
+							"zone.js",
+							"zone.js/testing"
+						],
+						"tsConfig": "projects/system-management/tsconfig.spec.json",
+						"inlineStyleLanguage": "scss",
+						"assets": [
+							"projects/system-management/src/favicon.ico",
+							"projects/system-management/src/assets"
+						],
+						"styles": [
+							"projects/system-management/src/styles.scss"
+						],
+						"scripts": []
+					}
+				}
+			}
+		}
 	},
 	"cli": {
 		"analytics": false
