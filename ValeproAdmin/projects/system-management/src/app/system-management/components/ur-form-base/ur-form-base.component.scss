@@ -1,0 +1,17 @@
+.btn-group,
+.btn-single {
+  align-items: center;
+  display: flex;
+}
+
+.btn-group {
+  justify-content: space-between;
+}
+
+.btn-single {
+  justify-content: flex-end;
+}
+
+.common-row {
+  padding: 4px;
+}
