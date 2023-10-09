@@ -3,7 +3,8 @@
 }
 
 .btn-group,
-.btn-single {
+.btn-single,
+.center-row {
   align-items: center;
   display: flex;
 }
@@ -34,6 +35,18 @@
   padding: 4px;
 }
 
+.center-row {
+  justify-content: center;
+}
+
+.main-header {
+  width: 60%;
+}
+
 .mb-2 {
   margin-bottom: 1em;
+}
+
+table {
+  background-color: transparent;
 }

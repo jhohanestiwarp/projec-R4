@@ -1,7 +1,7 @@
 <table mat-table class="mb-2" [dataSource]="dataSource">
   <!--  -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef class="common-row bold">
+    <th mat-header-cell *matHeaderCellDef class="main-header common-row bold">
       {{ displayedHeaders[0] }}
     </th>
     <td mat-cell class="common-row" *matCellDef="let row">{{ row.name }}</td>
