@@ -1,4 +1,8 @@
 ::ng-deep {
+  .mat-stepper-horizontal {
+    background-color: transparent !important;
+  }
+
   .mat-step-header .mat-step-icon-selected {
     background-color: var(--color-secundario);
   }
@@ -18,4 +22,10 @@
   font-size: 32px;
   font-weight: bold;
   padding: 32px 16px;
+}
+
+@media (min-width: 1366px) {
+  .container {
+    min-height: 732px;
+  }
 }
