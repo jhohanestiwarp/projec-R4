@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from '../app.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', redirectTo: 'user-registration', pathMatch: 'full' },
+  { path: 'user-registration', component: UserRegistrationComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SystemManagementRoutingModule { }
+export class SystemManagementRoutingModule {}
