@@ -11,9 +11,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BannerComponent } from './program/gest-secciones/banner/banner.component';
-import { NewsComponent } from './program/gest-secciones/news/news.component';
-import { WidgetsComponent } from './program/gest-secciones/widgets/widgets.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
@@ -26,14 +23,11 @@ import { ProgramSectionsRepositoryImpl } from '../infrastructure/repositories/pr
 
 @NgModule({
   declarations: [
-    BannerComponent,
     ButtonComponent,
     FileInputComponent,
     ProgramComponent,
     InfoGeneralComponent,
     GestSeccionesComponent,
-    WidgetsComponent,
-    NewsComponent,
     ModalComponent,
     DeleteSvgComponent,
     CloseSvgComponent,
