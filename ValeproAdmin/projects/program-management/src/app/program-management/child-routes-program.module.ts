@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { InfoGeneralComponent } from './info-general/info-general.component';
-import { GestSeccionesComponent } from './gest-secciones/gest-secciones.component';
+import { InfoGeneralComponent } from './program/info-general/info-general.component';
+import { GestSeccionesComponent } from './program/gest-secciones/gest-secciones.component';
 
 const childRoutes: Routes = [
   {

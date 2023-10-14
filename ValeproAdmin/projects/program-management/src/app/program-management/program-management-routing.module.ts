@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: '',
     component: ProgramComponent,
-    loadChildren: () => import('./program/child-routes-program.module').then((m) => m.ChildRoutesProgramModule )
+    loadChildren: () => import('./child-routes-program.module').then((m) => m.ChildRoutesProgramModule )
   },
 ];
 
