@@ -28,6 +28,7 @@
   .text-titulo {
     text-align: center;
     width: 100%;
+    color: var(--color-primario);
   }
 
   .Autoraizer__formulario-generate-code__generate__input {
@@ -111,17 +112,7 @@
 
 
 
-.captcha {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
-  div {
-    width: 100%;
-    margin: 0 auto;
-  }
-}
 
 .container-fluid {
   width: 100%;
@@ -165,14 +156,6 @@ input#mat-input-0 {
 }
 
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -200,14 +183,52 @@ html {
 
 .Autoraizer__formulario-generate-code {
   width: 100%;
+  max-width: 270px;
 }
 
 
+.Autoraizer__formulario-generate-code__generate__recapcha {
+  .captcha {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    div {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    #g-recaptcha {
+      transform: scale(1);
+      transform-origin: 0 0;
+    }
+
+  }
+}
+
+::ng-deep .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  margin-left: 1px;
+  margin-right: 0px;
+  content: "" !important;
+}
+
+.error-recover {
+  color: var(--color-rojo);
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
 
 //tablet
-@media screen and (min-width: 40em) and (max-width: 63.9em) {
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .Autoraizer__formulario-generate-code {
+    max-width: 350px;
+  }
+
   .grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .fr2 {
@@ -243,7 +264,11 @@ html {
 
 
 //web
-@media screen and (min-width: 64em) {
+@media screen and (min-width: 1024px) {
+
+  .Autoraizer__formulario-generate-code {
+    max-width: 350px;
+  }
 
   .grid {
     grid-template-columns: 1fr 1fr;

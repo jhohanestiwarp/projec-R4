@@ -1,0 +1,156 @@
+.container.system__edit-roles-content {
+    padding-top: 32px;
+}
+.system_edit-role{
+    padding-bottom: 22px;
+}
+.system__edit-roles-menu-row-title{
+    border-bottom: 1px solid #C3C3C3;
+    p{
+        padding-left: 0;
+        height: 48px;
+    }
+}
+span.bold-32 {
+    padding-left: 3%;
+    padding-bottom: 32px;
+    color: var(--ngx-valepro-color-tertiary);
+}
+.system__edit-roles_block-1{
+    border-bottom: 1px solid #C3C3C3;
+    
+}
+.system__edit-roles-menu-row_border-none{
+    padding-left: 3%;
+    span{
+        padding-bottom: 0 !important;
+        height: 23px;
+        padding-bottom: 32px;
+        color: var(--ngx-valepro-color-tertiary);
+    }
+}
+p {
+    display: flex;
+    align-items: center;
+    height: 57px;
+    padding-left: 5%;
+    color: var(--ngx-valepro-color-tertiary);
+}
+.image{
+    display: flex;
+    align-items: center;
+}
+.system__edit-roles_block{
+    border-bottom: 1px solid #C3C3C3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+    p{
+        min-width: 50px;
+        justify-content: center;
+    }
+    mat-checkbox{
+        height: 57px;
+        display: flex;
+        align-items: center;
+        bottom: 4px;
+        justify-content: center;
+        min-width: 50px;
+    }
+}
+.system_edit-roles_colum{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.system__edit-roles-menu-col-2 {
+    overflow-x: scroll;
+}
+.system__edit-roles-menu-row{
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+}
+.system__edit-content__button {
+    height: 44px;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    border: var(--ngx-valepro-color-secondary) 2px solid;
+    
+}
+button.bold-16.system__edit-button {
+    color: var(--ngx-valepro-color-tertiary);
+}
+.container.system_edit-container__button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 16px;
+}
+.system__edit-content__button-volver{
+    width: 104px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img-arrow{
+        padding-right: 4px;
+    }
+    button.bold-16.system__edit-button{
+        color: var(--ngx-valepro-color-secondary) !important;
+    }
+}
+.system__edit-content__button.guardar{
+    
+  background-color: var(--ngx-valepro-color-secondary);
+    
+}
+.system__edit-container_buttons{
+    padding-top: 32px;
+    flex-direction: column-reverse;
+
+}
+
+//Tablet
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .system__edit-roles-menu-row {
+        grid-template-columns: 13fr 1fr;
+    }
+    .system__edit-roles-menu-col-2 {
+        overflow-x: none;
+    }
+    .system__edit-roles-menu-row_border-none{
+        padding-left: 1.5%;
+    }
+    span.bold-32 {
+        padding-left: 1%;
+    }
+    .system__edit-container_buttons{
+        padding-top: 32px;
+        flex-direction: row;
+    }
+}
+
+//Web
+
+@media screen and (min-width: 1024px){
+    .container.system__edit-roles-content{
+        padding: 32px 11% 0;
+    }
+    .system__edit-roles-menu-row_border-none{
+        padding-left: 0;
+    }
+    span.bold-32 {
+        padding-left: 0;
+    }
+    .system__edit-container_buttons{
+        padding-top: 32px;
+        flex-direction: row;
+    }
+    .container.system_edit-container__button.col-md-2.col-lg-2 {
+        width: 200px !important;
+    }
+    .container.system_edit-container__button.col-md-5.col-lg-2 {
+        width: 300px !important;
+    }
+}

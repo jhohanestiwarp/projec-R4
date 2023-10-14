@@ -3,11 +3,18 @@
 }
 
 .main-title {
-  color: var(--color-primario);
+  color: var(--ngx-valepro-color-tertiary);
   font-size: 32px;
   font-weight: bold;
+  font-family: bold;
   padding: 16px 0;
   text-align: center;
+}
+
+.url-warning {
+  color: red;
+  font-size: 14px;
+  margin-top: 8px;
 }
 
 .form {
@@ -37,7 +44,7 @@
 
   &__subtitle {
     font-size: 14px;
-    font-weight: bold;
+    font-family: bold;
   }
 
   &__text {
@@ -88,6 +95,9 @@
     flex-direction: column;
     align-items: center;
   }
+  .self-center {
+    align-self: center;
+  }
 
   .form {
     width: 732px;
@@ -97,13 +107,23 @@
     text-align: left;
   }
 
-
   .example-list {
     width: 100%; /* ajusta el ancho según tus necesidades */
     border: 1px solid #ccc;
     margin-top: 20px; /* o ajusta según tus necesidades */
     border-radius: 4px;
     overflow: hidden;
+
+    tfoot {
+      display: table-caption;
+      padding: 0.8rem;
+
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
   }
 
   .example-list th,
@@ -123,4 +143,38 @@
     border: 2px dashed #ccc;
     background-color: #f9f9f9;
   }
+
+  .icon-delete {
+    color: purple;
+  }
 }
+
+.custom-button-class {
+  border-radius: 20px;
+}
+
+::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full {
+  background-color: var(--ngx-valepro-color-tertiary);
+}
+::ng-deep .mdc-text-field--filled .mdc-floating-label {
+  color: var(--ngx-valepro-color-tertiary);
+}
+
+::ng-deep
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
+  .mdc-list-item__primary-text {
+  color: var(--ngx-valepro-color-tertiary) !important;
+}
+
+::ng-deep
+  .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
+  .mdc-floating-label--float-above {
+  color: var(--ngx-valepro-color-tertiary) !important;
+}
+
+::ng-deep.mat-form-field.mat-focused .mat-form-field-ripple{
+  color: green !important;
+}
+

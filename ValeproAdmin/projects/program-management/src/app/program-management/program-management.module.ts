@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 
-import { ButtonComponent, FileInputComponent } from './program/components';
+import { ButtonComponent, CloseSvgComponent, DeleteSvgComponent, FileInputComponent, ModalComponent, WarningSvgComponent } from './program/components';
 import { ProgramManagementRoutingModule } from './program-management-routing.module';
 import { ProgramComponent } from './program/program.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -18,6 +18,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     InfoGeneralComponent,
     GestSeccionesComponent,
     WidgetsComponent,
-    NewsComponent
+    NewsComponent,
+    ModalComponent,
+    DeleteSvgComponent,
+    CloseSvgComponent,
+    WarningSvgComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +50,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatSelectModule,
     MatTabsModule,
     ProgramManagementRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule,
+    MatDialogModule,
+    MatButtonModule,
+    NgIf,
   ]
 })
 export class ProgramManagementModule { }

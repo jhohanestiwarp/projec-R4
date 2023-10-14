@@ -4,10 +4,10 @@ export default {
       name: 'Gestión del Sistema',
       icon: 'SystemManagement',
       subMenu: [
-        { name: 'Roles y Funciones', route: 'Roles y Funciones' },
+        { name: 'Roles y Funciones', route: '/main/system' },
         {
           name: 'Formulario Registro de Usuarios',
-          route: 'Formulario Registro de Usuarios',
+          route: '/main/user/create-users',
         },
       ],
       subMenuVisible: false, //propiedad para controlar la visibilidad del submenú
@@ -18,17 +18,18 @@ export default {
       icon: '',
       subMenu: [
         {
-          name: 'Crear usuario (individual)',
-          route: 'Crear usuario (individual)',
-        },
-        {
-          name: 'Crear y actualizar usuarios (masivo)',
-          route: 'Crear y actualizar usuarios (masivo)',
-        },
-        {
           name: 'Consultar y gestionar usuarios',
-          route: 'Consultar y gestionar usuarios',
+          route: '/main/user/users',
         },
+        {
+          name: 'Crear usuario (Individual)',
+          route: 'Crear usuario (Individual)',
+        },
+        {
+          name: 'Crear y actualizar usuarios (Masivo)',
+          route: '/main/user/masive-users',
+        }
+
       ],
       subMenuVisible: false,
     },
@@ -37,8 +38,8 @@ export default {
       name: 'Gestión de programas',
       icon: '',
       subMenu: [
-        { name: 'Información general', route: '/program-management/#' },
-        { name: 'Secciones', route: '/program-management/sections' },
+        { name: 'Información general', route: '/main/programs' },
+        { name: 'Secciones', route: '/main/programs/program-sections' },
       ],
       subMenuVisible: false,
     },

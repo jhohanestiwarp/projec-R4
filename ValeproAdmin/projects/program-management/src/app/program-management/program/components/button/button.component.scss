@@ -8,3 +8,8 @@ button {
   text-align: center;
   width: 230px;
 }
+
+.outlined {
+  background: none;
+  border: var(--color-secundario) 1px solid;
+}

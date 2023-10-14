@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.model';
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
@@ -7,6 +7,8 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ResponseBase } from '../../core/models/responseBase.model';
 import { RecoverRepository } from '../../core/repositories/recover.repository';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../core/models/generateCodeRequest.model';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-update-password',
@@ -27,11 +29,15 @@ export class UpdatePasswordComponent {
   btnColor: string = '';
   updateForm: FormGroup;
   user: string = '';
+  showResend: boolean = false;
+  username: string = '';
+
 
   constructor(
     private router: Router,
     private dialogService: DialogService,
-    private recoverRepository: RecoverRepository
+    private recoverRepository: RecoverRepository,
+    private toastService: ToastrService
   ) {
     this.updateForm = new FormGroup({
       Pass: new FormControl('', [Validators.required]),
@@ -40,7 +46,7 @@ export class UpdatePasswordComponent {
   }
   ngOnInit(): void {
     this.countDown();
-    this.user = sessionStorage.getItem('username')!;
+    this.user = sessionStorage.getItem('user')!;
   }
 
   get codeComplete(): AbstractControl | null {
@@ -49,7 +55,7 @@ export class UpdatePasswordComponent {
 
   onCodeCompleted(code: string): void {
     this.codeCompleteControl = code;
-    
+
   }
 
 
@@ -59,7 +65,6 @@ export class UpdatePasswordComponent {
     } else {
       this.hide = true;
     }
-    console.log(this.hide);
   }
 
   onInputBlur(hide: boolean) {
@@ -68,7 +73,6 @@ export class UpdatePasswordComponent {
     } else {
       this.hide = false;
     }
-    console.log(this.hide);
   }
 
 
@@ -81,6 +85,7 @@ export class UpdatePasswordComponent {
       if (this.minutes === '0' && this.seconds === '00') {
         clearInterval(interval);
         this.date = new Date('2020-01-01 00:05');
+        this.showResend = true;
       }
       if (this.router.url !== '/update') {
         clearInterval(interval);
@@ -89,8 +94,53 @@ export class UpdatePasswordComponent {
   }
 
   confirmPassword() {
-    let data: ValidateCodeRequestModel ={
-      userName: this.user,
+    if (this.codeCompleteControl.length < 6) {
+      this.toastService.error('Código incorrecto', undefined, {
+        timeOut: 9000,
+        progressBar: true,
+        disableTimeOut: 'extendedTimeOut',
+        progressAnimation: 'increasing',
+        tapToDismiss: false,
+        positionClass: 'toast-top-center',
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (this.updateForm.get('Pass')?.value != this.updateForm.get('NewPass')?.value) {
+      this.toastService.error('Las contraseñas no coinciden', undefined, {
+        timeOut: 9000,
+        progressBar: true,
+        disableTimeOut: 'extendedTimeOut',
+        progressAnimation: 'increasing',
+        tapToDismiss: false,
+        positionClass: 'toast-top-center',
+        closeButton: true,
+      });
+      return;
+    }
+
+    if (!this.updateForm.get('Pass')?.value || !this.updateForm.get('NewPass')?.value) {
+      this.toastService.error('La información ingresada no es válida.', undefined, {
+        timeOut: 9000,
+        progressBar: true,
+        disableTimeOut: 'extendedTimeOut',
+        progressAnimation: 'increasing',
+        tapToDismiss: false,
+        positionClass: 'toast-top-center',
+        closeButton: true,
+      });
+      return;
+    }
+    this.sendCodeValidate();
+
+  }
+
+
+
+  sendCodeValidate() {
+    let data: ValidateCodeRequestModel = {
+      userName: this.username,
       programId: 0,
       newPassword: this.updateForm.get('Pass')?.value,
       newPasswordVerified: this.updateForm.get('NewPass')?.value,
@@ -103,33 +153,49 @@ export class UpdatePasswordComponent {
           confirmText: '¡Tu contraseña fue cambiada con éxito!'
         };
         this.dialogService.openConfirmDialog(params);
+        this.router.navigate(['/login']);
 
       },
-      error: (error) => {
-        console.log(error);
-        //pop up de error
+      error: (error: HttpErrorResponse) => {
+        this.toastService.error(error.error.Message, undefined, {
+          timeOut: 9000,
+          progressBar: true,
+          disableTimeOut: 'extendedTimeOut',
+          progressAnimation: 'increasing',
+          tapToDismiss: false,
+          positionClass: 'toast-top-center',
+          closeButton: true,
+        });
       },
     });
-
   }
 
-  resendCode(){
-    let data: GenerateCodeRequestModel ={
+  resendCode() {
+    let data: GenerateCodeRequestModel = {
       UserName: this.user,
       ProgramId: 0
     }
     this.recoverRepository.generateCode(data).subscribe({
       next: (res: ResponseBase<GenerateCodeResponseModel>) => {
-        console.log(res);
         let params: DialogParams = {
           success: false,
           title: 'El código de verificación fue enviado',
-          confirmText: 'a tu número de celular:' + 'o al correo electrónico: *****vp@gmail.com'
+          confirmText: 'a tu número de celular: ' + res.data.Phone + ' o al correo electrónico: ' + res.data.Email
         };
+        this.showResend = false;
         this.dialogService.openConfirmDialog(params);
+        this.countDown();
       },
       error: (error) => {
-        console.error(error);
+        this.toastService.error(error.error.Data[0].ErrorMessage, undefined, {
+          timeOut: 9000,
+          progressBar: true,
+          disableTimeOut: 'extendedTimeOut',
+          progressAnimation: 'increasing',
+          tapToDismiss: false,
+          positionClass: 'toast-top-center',
+          closeButton: true,
+        });
         //pop up de error
       },
     });

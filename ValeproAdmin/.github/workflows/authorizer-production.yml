@@ -27,7 +27,7 @@ jobs:
         node-version: '16.x'
 
     - name: Install Dependencies
-      run: npm install
+      run: npm install --legacy-peer-deps
 
     - name: Build Angular App
       run: npm run authprod
@@ -36,3 +36,8 @@ jobs:
       if: success()
       run: aws s3 sync ./dist/authorizer/production s3://prodvalepro-admin-authorizer
 
+    - name: Sonarqube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

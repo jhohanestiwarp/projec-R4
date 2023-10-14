@@ -1,0 +1,65 @@
+.container.system__roles-content {
+    padding-top: 32px;
+}
+.system__roles-menu{
+    padding-bottom: 32px;
+}
+span.bold-32 {
+    padding-left: 3%;
+    padding-bottom: 32px;
+    color: var(--ngx-valepro-color-tertiary);
+}
+p {
+    display: flex;
+    align-items: center;
+    height: 57px;
+    padding-left: 5%;
+    color: var(--ngx-valepro-color-tertiary);
+}
+.image{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.system__roles-menu-row{
+    border-bottom: 1px solid #C3C3C3;
+    display: grid;
+    grid-template-columns: 8fr 1fr;
+}
+.system__content__button {
+    height: 44px;
+    width: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    border: var(--ngx-valepro-color-secondary) 2px solid;
+}
+button.bold-16.system__button {
+    color: var(--ngx-valepro-color-tertiary);
+}
+.container.system_container__button {
+    display: flex;
+    justify-content: center;
+}
+//Tablet
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .system__roles-menu-row {
+        grid-template-columns: 13fr 1fr;
+    }
+    .container.system_container__button {
+        justify-content: flex-end;
+    }
+}
+
+//Web
+
+@media screen and (min-width: 1024px){
+    .container.system__roles-content{
+        padding: 32px 11% 0;
+    }
+    .container.system_container__button {
+        justify-content: flex-end;
+    }
+}

@@ -145,18 +145,6 @@ mat-icon.mat-icon {
 }
 
 
-
-
-
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -180,7 +168,15 @@ html {
   justify-content: center;
 }
 
-@media screen and (min-width: 64em) {
+
+::ng-deep .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  margin-left: 1px;
+  margin-right: 0px;
+  content: "" !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
   .login_col_form {
     padding-top: 80px;
   }
@@ -190,12 +186,14 @@ html {
   }
 
   .grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 
   }
 }
 
-@media screen and (min-width: 40em) and (max-width: 63.9em) {
+@media screen and (min-width: 1024px) {
+
+
   .login_col-img--mobile {
     height: 100vh;
   }

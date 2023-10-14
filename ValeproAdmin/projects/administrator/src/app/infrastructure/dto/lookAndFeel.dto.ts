@@ -1,5 +1,5 @@
 export interface LookAndFeelDTO {
-  ProgramId: string
+  ProgramId: number;
   ImageBackgroundLogin: string
   Logo: string
   PrimaryColor: string

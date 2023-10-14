@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../components';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -18,7 +19,7 @@ export class GestSeccionesComponent {
     errors: {
       maxLength: 'Este campo excede los 50 caracteres.',
       required: (field: string) =>
-        `El campo ${field.toLowerCase()} es obligatorio.`,
+        `Campo obligatorio.`,
     },
     form: {
       endDate: 'Vigencia - Fecha fin',
@@ -51,54 +52,81 @@ export class GestSeccionesComponent {
   ];
 
   // form
-  managementForm = this.fb.nonNullable.group({
-    endDate: ['', Validators.required],
-    files: [[]],
-    opening: [this.openingOptions[0].value],
-    segment: ['', Validators.required],
-    section: ['', Validators.required],
-    startDate: ['', Validators.required],
-    title: ['', [Validators.maxLength(50), Validators.required]],
-    url: '',
-    segmentCheckbox: this.fb.control(false), // Inicializa segmentCheckbox como un FormControl
-  });
+  managementForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  animal: string = "";
+  name: string = "";
 
-  // pop-up -> sin título y sin url
-  // widget -> apertura
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {
+    this.managementForm = this.fb.group({
+      endDate: ['', Validators.required],
+      files: [[]],
+      opening: [this.openingOptions[0].value],
+      segment: ['', Validators.required],
+      section: ['', Validators.required],
+      startDate: ['', Validators.required],
+      title: ['', [Validators.maxLength(50), Validators.required]],
+      url: '',
+      segmentCheckbox: this.fb.control(false),
+    });
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: { name: this.name, animal: this.animal },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 
   getFiles(fileList: FileList): void {
     const { files } = this.managementForm.value;
     const newFiles = Array.from(fileList);
-    const data = files ? [...files, ...newFiles] : files;
+    const data = files ? [...files, ...newFiles] : newFiles;
     this.managementForm.patchValue({
       ...this.managementForm.value,
-      files: data as never,
+      files: data,
     });
   }
 
+  truncateUrl(url: string): string {
+    const maxLength = 30;
+    if (url.length > maxLength) {
+      const truncatedUrl = `${url.substr(0, 30)}...`;
+      return truncatedUrl;
+    }
+    return url;
+  }
 
-  tableData: { position: number, url: string }[] = [
-  ];
+  tableData: { position: number; url: string }[] = [];
 
-  drop(event: any): void {
+  drop(event: CdkDragDrop<any>): void {
     moveItemInArray(this.tableData, event.previousIndex, event.currentIndex);
   }
 
   onDelete(position: number): void {
-    const isConfirmed = window.confirm('¿Estás seguro de que quieres eliminar este registro?');
-
-    if (isConfirmed) {
-      this.tableData = this.tableData.filter((item) => item.position !== position);
-    }
+    const dialogRef = this.dialog.open(ModalComponent, {});
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'confirm') {
+        this.tableData = this.tableData.filter(item => item.position !== position);
+      }
+    });
   }
 
-  onSubmit(): void {
-    if (this.managementForm.valid) {
-      const { section, title, url, files } = this.managementForm.value;
-      this.tableData.push({ position: this.tableData.length + 1, url: url || 'N/A' });
-      this.managementForm.reset();
-    }
+ onSubmit(): void {
+  if (this.managementForm.valid) {
+    const { section, title, url, files } = this.managementForm.value;
+    const truncatedUrl = this.truncateUrl(url || 'N/A');
+    this.tableData.push({ position: this.tableData.length + 1, url: truncatedUrl });
+    // Asigna la URL truncada al formulario antes de agregarla a tableData
+    this.managementForm.patchValue({
+      ...this.managementForm.value,
+      url: truncatedUrl
+    });
+    this.managementForm.reset();
   }
+}
 }

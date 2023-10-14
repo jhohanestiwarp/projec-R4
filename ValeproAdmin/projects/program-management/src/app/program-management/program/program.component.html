@@ -1,6 +1,8 @@
-<mat-tab-group>
-  <mat-tab [label]="PAGE_CONTENT.tab1"> </mat-tab>
-  <mat-tab [label]="PAGE_CONTENT.tab2">
-    <app-gest-secciones></app-gest-secciones>
-  </mat-tab>
-</mat-tab-group>
+<div class="container-fluid">
+  <div class="Program-top-bar">
+    <button [routerLink]="['/main/programs']" routerLinkActive="active-button">Información general</button>
+    <button [routerLink]="['/main/programs/program-sections']" routerLinkActive="active-button">Gestión de
+      secciones</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -5,43 +5,43 @@
   <div class="fr2">
     <div class="row Autoraizer__formulario-generate-code">
 
-      <div class="Autoraizer__formulario-generate-code__generate__inputCode col-12  col-md-5">
-        <span class="bold-32 text-titulo">Recuperar<br>contraseña</span>
+      <div class="Autoraizer__formulario-generate-code__generate__inputCode col-12">
+        <span class="bold-32 text-titulo mb-3">Recuperar<br>contraseña</span>
+        <form [formGroup]="GenerateForm" (ngSubmit)="onSubmit()">
+          <div class="Autoraizer__formulario-generate-code__generate__input mb-3">
 
-        <div class="Autoraizer__formulario-generate-code__generate__input mb-3">
-          <form [formGroup]="GenerateForm">
             <mat-form-field class="generate_mat-form" appearance="fill">
               <mat-label>Número de identificación</mat-label>
               <input matInput placeholder="Número de identificación" formControlName="Id">
             </mat-form-field>
-          </form>
-        </div>
 
-        <div class="Autoraizer__formulario-generate-code__generate__recapcha mb-3">
-
-          <div class="captcha">
-            <re-captcha (resolved)="resolved($event)" siteKey={{this.keyCaptcha}}></re-captcha>
-            <div *ngIf="submitted && (captcha == '' || this.captcha == null)">
-              <div class="error-login error-captcha">Confirmacion de re-Captcha es requerida</div>
-            </div>
           </div>
 
-        </div>
+          <div class="Autoraizer__formulario-generate-code__generate__recapcha mb-3">
 
-        <div class="Autoraizer__formulario-generate-code__generate__disclaimer ">
+            <div class="captcha">
+              <re-captcha id="g-recaptcha" (resolved)="resolved($event)" siteKey="{{ this.keyCaptcha }}"></re-captcha>
+              <div class="error-recover" *ngIf="mostrarMensajeError">
+                Confirmacion de re-Captcha es requerida
+              </div>
+            </div>
 
-          <span class="regular-16 text-titulo">A tu correo electrónico o número de celular registrados llegará el
-            código
-            de
-            verificación.</span>
+          </div>
 
-        </div>
+          <div class="Autoraizer__formulario-generate-code__generate__disclaimer ">
 
-        <div class="Autoraizer__formulario-generate-code__generate_btn">
-          <button class="generate_btn" (click)="navigate()" routerLinkActive="router-link-active" type="submit">Obtener
-            código</button>
-        </div>
+            <span class="regular-16 text-titulo">A tu correo electrónico o número de celular registrados llegará el
+              código
+              de
+              verificación.</span>
 
+          </div>
+
+          <div class="Autoraizer__formulario-generate-code__generate_btn">
+            <button class="generate_btn" routerLinkActive="router-link-active" type="submit">Obtener
+              código</button>
+          </div>
+        </form>
       </div>
 
 

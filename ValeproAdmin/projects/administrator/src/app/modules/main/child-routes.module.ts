@@ -12,10 +12,14 @@ const childRoutes: Routes = [
     loadChildren: () => import('Program/ProgramManagementModule').then((m) => m.ProgramManagementModule)
   },
   {
-    path: 'systems',
-    loadChildren: () => import('System/SystemManagementModule').then((m) => m.SystemManagementModule)
+    path: 'system',
+    loadChildren: () => import('System/SystemModule').then((m) => m.SystemModule)
   },
-  { path:'**', redirectTo: '/main', pathMatch: 'full' }
+  {
+    path: 'user',
+    loadChildren: () => import('UserAdmin/UserAdminModule').then((m) => m.UserAdminModule)
+  },
+  { path:'**', redirectTo: '/main/home', pathMatch: 'full' }
 ]
 
 

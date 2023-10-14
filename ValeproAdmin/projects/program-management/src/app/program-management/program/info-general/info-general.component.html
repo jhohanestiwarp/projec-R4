@@ -1,55 +1,83 @@
-<!-- <div class="container ">
+<div class="container ">
   <div class="row align-items-start">
-    <div class="col">
-      <div class="title">
-        <span>Información general</span>
+    <div class="programas-secciones">
+      <div class="programas-secciones-title">
+        <span class="bold-32 mb-2">Información general</span>
+        <span class="bold-14  mb-2">Datos del programa</span>
       </div>
 
-      <div class="fomr">
-        <span>Datos del programa</span>
-        <mat-form-field>
-          <mat-label>Nombre de programa*</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Centro de costo</mat-label>
-          <input matInput>
-        </mat-form-field>
+      <form action="">
 
-        <span>Centro de acopio del programa</span>
-        <mat-form-field>
-          <mat-label>Sección</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Sección</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Sección</mat-label>
-          <mat-select>
-            <mat-option value="one">First option</mat-option>
-            <mat-option value="two">Second option</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="fomr">
+          <mat-form-field>
+            <mat-label>Nombre de programa</mat-label>
+            <input matInput placeholder="Nombre de programa">
+          </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Centro de costo</mat-label>
-          <input matInput>
-        </mat-form-field>
+          <div class="box-datepicker">
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="Vigencia - Fecha de inicio">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
 
-        <div class="col-12">
-          <button type="submit">Ingresar</button>
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="Vigencia - Fecha de fin">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Centro de costo</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <div class="programas-secciones-title">
+            <span class="bold-14  mb-2">Centro de acopio del programa</span>
+          </div>
+
+          <mat-form-field>
+            <mat-label>País</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Departamento / Estado</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ciudad</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Centro de costo</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+
+          <div class="col-12 col-md-4 btn-ingresar ">
+            <button class="submit_btn" type="submit">Guardar</button>
+          </div>
+
+
+
         </div>
-
-      </div>
+      </form>
 
     </div>
   </div>
-</div> -->
+</div>
