@@ -21,6 +21,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { ProgramSectionsRepository } from '../core/repositories/program-sections.repository';
+import { ProgramSectionsRepositoryImpl } from '../infrastructure/repositories/program-sections.repository.impl';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     MatButtonModule,
     NgIf,
+  ],
+  providers: [
+    {
+      provide: ProgramSectionsRepository,
+      useClass: ProgramSectionsRepositoryImpl,
+    }
   ]
 })
 export class ProgramManagementModule { }
