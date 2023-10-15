@@ -78,7 +78,7 @@
           [matDatepicker]="picker"
           (input)="validateStartDate($event, 'startDate')"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker"
@@ -103,7 +103,7 @@
           [matDatepicker]="picker2"
           (input)="validateStartDate($event, 'endDate')"
         />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [disabled]="!managementForm.value.startDate"
