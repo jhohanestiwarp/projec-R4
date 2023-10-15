@@ -19,11 +19,10 @@ export class FileInputComponent {
   constructor() {}
 
   onFileSelect(ev: any): void {
-    const fileList = ev?.target?.files;
+    const fileList: FileList = ev?.target?.files;
     if (fileList && fileList.length) {
-      const files = this.multiple ? fileList : [fileList[0]];
-      this.filename = this.setFilename(files);
-      this.uploadFile.emit(files);
+      this.filename = this.setFilename(fileList);
+      this.uploadFile.emit(fileList);
     }
   }
 
