@@ -1,4 +1,4 @@
-<section class="content">
+<section class="container content">
   <form class="form" [formGroup]="managementForm">
     <h1 class="main-title">{{ COMPONENT_CONTENT.title }}</h1>
     <!-- section -->
@@ -10,7 +10,7 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="managementForm.get('section')?.hasError('required')">
-        {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.section) }}
+        {{ COMPONENT_CONTENT.errors.required }}
       </mat-error>
     </mat-form-field>
 
@@ -18,14 +18,17 @@
       {{ COMPONENT_CONTENT.subtitle_resource_form }}
     </h2>
     <!-- title -->
-    <mat-form-field [hideRequiredMarker]="true" *ngIf="managementForm.value.section !== POP_UP_OPTION">
+    <mat-form-field
+      [hideRequiredMarker]="true"
+      *ngIf="managementForm.value.section !== POP_UP_OPTION"
+    >
       <mat-label>{{ COMPONENT_CONTENT.form.title }}</mat-label>
       <input matInput formControlName="title" />
       <mat-error *ngIf="managementForm.get('title')?.hasError('maxlength')">
         {{ COMPONENT_CONTENT.errors.maxLength }}
       </mat-error>
       <mat-error *ngIf="managementForm.get('title')?.hasError('required')">
-        {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.title) }}
+        {{ COMPONENT_CONTENT.errors.required }}
       </mat-error>
     </mat-form-field>
 
@@ -33,17 +36,23 @@
     <mat-form-field [hideRequiredMarker]="true">
       <mat-label>{{ COMPONENT_CONTENT.form.segment }}</mat-label>
       <mat-select multiple formControlName="segment">
-        <mat-option *ngFor="let segment of openingSelects" [value]="openingSelects">
+        <mat-option
+          *ngFor="let segment of openingSelects"
+          [value]="openingSelects"
+        >
           {{ segment.label | titlecase }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="managementForm.get('segment')?.hasError('required')">
-        {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.segment) }}
+        {{ COMPONENT_CONTENT.errors.required }}
       </mat-error>
     </mat-form-field>
 
     <!-- opening mode -->
-    <mat-form-field [hideRequiredMarker]="true" *ngIf="managementForm.value.section === WIDGET_OPTION">
+    <mat-form-field
+      [hideRequiredMarker]="true"
+      *ngIf="managementForm.value.section === WIDGET_OPTION"
+    >
       <mat-label>{{ COMPONENT_CONTENT.form.opening }}</mat-label>
       <mat-select formControlName="segment">
         <mat-option
@@ -54,7 +63,7 @@
         </mat-option>
       </mat-select>
       <mat-error *ngIf="managementForm.get('opening')?.hasError('required')">
-        {{ COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.opening) }}
+        {{ COMPONENT_CONTENT.errors.required }}
       </mat-error>
     </mat-form-field>
 
@@ -72,9 +81,7 @@
         <mat-error
           *ngIf="managementForm.get('startDate')?.hasError('required')"
         >
-          {{
-            COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.startDate)
-          }}
+          {{ COMPONENT_CONTENT.errors.required }}
         </mat-error>
       </mat-form-field>
 
@@ -89,9 +96,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
         <mat-error *ngIf="managementForm.get('endDate')?.hasError('required')">
-          {{
-            COMPONENT_CONTENT.errors.required(COMPONENT_CONTENT.form.endDate)
-          }}
+          {{ COMPONENT_CONTENT.errors.required }}
         </mat-error>
       </mat-form-field>
     </div>
@@ -111,18 +116,26 @@
       * Las dimensiones de las imágenes deben ser de 1062x380 píxeles.
     </p>
 
-<!-- url -->
-<mat-form-field [hideRequiredMarker]="true" *ngIf="managementForm.value.section !== POP_UP_OPTION">
-  <mat-label>{{ COMPONENT_CONTENT.form.url }}</mat-label>
-  <input matInput formControlName="url" />
-  <div *ngIf="managementForm.get('url')?.value && managementForm.get('url')?.value.length > 50" class="url-warning">
-    URL muy larga...
-  </div>
-</mat-form-field>
-
+    <!-- url -->
+    <mat-form-field
+      [hideRequiredMarker]="true"
+      *ngIf="managementForm.value.section !== POP_UP_OPTION"
+    >
+      <mat-label>{{ COMPONENT_CONTENT.form.url }}</mat-label>
+      <input matInput formControlName="url" />
+      <div
+        *ngIf="
+          managementForm.get('url')?.value &&
+          managementForm.get('url')?.value.length > 50
+        "
+        class="url-warning"
+      >
+        URL muy larga...
+      </div>
+    </mat-form-field>
 
     <!-- send -->
-    <app-button (click)="onSubmit()" class="self-center" >Guardar</app-button>
+    <app-button (click)="onSubmit()" class="self-center">Guardar</app-button>
 
     <table *ngIf="tableData.length > 0" class="example-list">
       <thead>
@@ -139,7 +152,7 @@
           <td>{{ truncateUrl(item.url) }}</td>
           <td>{{ item.url }}</td>
           <td>
-            <button mat-raised-button (click)="openDialog()" >
+            <button mat-raised-button (click)="openDialog()">
               <!-- <mat-icon class="icon-delete">delete_outline</mat-icon> -->
 
               <app-delete-svg />
@@ -149,10 +162,11 @@
       </tbody>
       <tfoot>
         <div>
-          <app-button [outlined]="true" (click)="null" class="self-center" >Guardar posiciones</app-button>
+          <app-button [outlined]="true" (click)="(null)" class="self-center"
+            >Guardar posiciones</app-button
+          >
         </div>
       </tfoot>
     </table>
-
   </form>
 </section>

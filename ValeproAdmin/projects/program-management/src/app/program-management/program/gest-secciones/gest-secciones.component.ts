@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
 import { ModalComponent } from '../components';
+import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -18,8 +21,7 @@ export class GestSeccionesComponent {
     subtitle_upload_form: 'Carga de imágenes',
     errors: {
       maxLength: 'Este campo excede los 50 caracteres.',
-      required: (field: string) =>
-        `Campo obligatorio.`,
+      required: 'Campo obligatorio.',
     },
     form: {
       endDate: 'Vigencia - Fecha fin',
@@ -52,23 +54,58 @@ export class GestSeccionesComponent {
   ];
 
   // form
-  managementForm: FormGroup;
+  $loading: Observable<boolean> = new Observable();
+  managementForm: FormGroup = this.fb.group({
+    endDate: ['', Validators.required],
+    files: [[]],
+    opening: [this.openingOptions[0].value],
+    segment: ['', Validators.required],
+    section: ['', Validators.required],
+    startDate: ['', Validators.required],
+    title: ['', [Validators.maxLength(50), Validators.required]],
+    url: '',
+    segmentCheckbox: false,
+  });
 
   animal: string = "";
   name: string = "";
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {
-    this.managementForm = this.fb.group({
-      endDate: ['', Validators.required],
-      files: [[]],
-      opening: [this.openingOptions[0].value],
-      segment: ['', Validators.required],
-      section: ['', Validators.required],
-      startDate: ['', Validators.required],
-      title: ['', [Validators.maxLength(50), Validators.required]],
-      url: '',
-      segmentCheckbox: this.fb.control(false),
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private programSectionsRepository: ProgramSectionsRepository
+  ) {}
+
+  addBoard() {
+    const request = this.programSectionsRepository.createBoard({
+      BoardTypeId: 1,
+      Segments: [1],
+      LanguageId: 1,
+      ProgramId: 1,
+      Name: '',
+      StartDateValidity: '',
+      EndDateValidity: '',
+      OpeningModeId: 1,
+      Url: '',
+      Image: {
+        ImageData: '',
+        ImageName: '',
+        ImageExtension: '',
+      },
+      Properties: ''
     });
+
+    request.subscribe({
+      next: (res) => {
+        if (!res.CreateBoardStatus) {
+          // informar al usuario que no se creó
+          return;
+        }
+
+        // informar al usuario que se creó
+      },
+      error: () => {}
+    })
   }
 
   openDialog(): void {
