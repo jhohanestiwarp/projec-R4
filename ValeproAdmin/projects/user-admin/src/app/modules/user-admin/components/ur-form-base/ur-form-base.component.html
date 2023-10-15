@@ -4,16 +4,19 @@
     <th mat-header-cell *matHeaderCellDef class="main-header common-row bold">
       {{ displayedHeaders[0] }}
     </th>
-    <td mat-cell class="common-row" *matCellDef="let row">{{ row.name }}</td>
+    <td mat-cell class="common-row" *matCellDef="let row">
+      <p class="common-row__text">{{ row.name }}</p>
+    </td>
   </ng-container>
 
   <!-- visible web -->
   <ng-container matColumnDef="visibleWeb">
-    <th mat-header-cell *matHeaderCellDef class="common-row bold">
+    <th mat-header-cell *matHeaderCellDef class="common-row bold text-center">
       {{ displayedHeaders[1] }}
     </th>
     <td mat-cell class="common-row" *matCellDef="let row; let i = index">
       <mat-checkbox
+        class="checkbox-cell"
         color="primary"
         [checked]="row.visibleWeb"
         (change)="setFormVisibleWeb($event.checked, i)"
@@ -24,11 +27,12 @@
 
   <!-- visible -->
   <ng-container matColumnDef="visible">
-    <th mat-header-cell *matHeaderCellDef class="common-row bold">
+    <th mat-header-cell *matHeaderCellDef class="common-row bold text-center">
       {{ displayedHeaders[2] }}
     </th>
     <td mat-cell class="common-row" *matCellDef="let row; let i = index">
       <mat-checkbox
+        class="checkbox-cell"
         color="primary"
         [checked]="row.visible"
         (change)="setFormVisible($event.checked, i)"
@@ -39,11 +43,12 @@
 
   <!-- required -->
   <ng-container matColumnDef="required">
-    <th mat-header-cell *matHeaderCellDef class="common-row bold">
+    <th mat-header-cell *matHeaderCellDef class="common-row bold text-center">
       {{ displayedHeaders[3] }}
     </th>
     <td mat-cell class="common-row" *matCellDef="let row; let i = index">
       <mat-checkbox
+        class="checkbox-cell"
         color="primary"
         [checked]="row.required"
         (change)="setFormRequired($event.checked, i)"
