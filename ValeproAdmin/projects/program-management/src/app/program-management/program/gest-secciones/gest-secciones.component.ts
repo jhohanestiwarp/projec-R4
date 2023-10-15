@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+
 import { ModalComponent } from '../components';
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
 
@@ -27,7 +28,7 @@ export class GestSeccionesComponent {
     },
     form: {
       endDate: 'Vigencia - Fecha fin',
-      files: 'Selecciona una imagen',
+      file: 'Selecciona una imagen',
       opening: 'Modo de apertura',
       segment: 'Segmento',
       section: 'Sección',
@@ -59,7 +60,7 @@ export class GestSeccionesComponent {
   $loading: Observable<boolean> = new Observable();
   managementForm: FormGroup = this.fb.group({
     endDate: ['', Validators.required],
-    files: [[]],
+    file: [[]],
     opening: [this.openingOptions[0].value],
     segment: ['', Validators.required],
     section: ['', Validators.required],
@@ -75,7 +76,8 @@ export class GestSeccionesComponent {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private programSectionsRepository: ProgramSectionsRepository
+    private programSectionsRepository: ProgramSectionsRepository,
+    // private toastrService: ToastrService,
   ) {}
 
   addBoard() {
@@ -122,12 +124,10 @@ export class GestSeccionesComponent {
   }
 
   getFiles(fileList: FileList): void {
-    const { files } = this.managementForm.value;
-    const newFiles = Array.from(fileList);
-    const data = files ? [...files, ...newFiles] : newFiles;
+    fileList[0].name
     this.managementForm.patchValue({
       ...this.managementForm.value,
-      files: data,
+      file: fileList[0],
     });
   }
 
@@ -157,7 +157,7 @@ export class GestSeccionesComponent {
 
  onSubmit(): void {
   if (this.managementForm.valid) {
-    const { section, title, url, files } = this.managementForm.value;
+    const { section, title, url } = this.managementForm.value;
     const truncatedUrl = this.truncateUrl(url || 'N/A');
     this.tableData.push({ position: this.tableData.length + 1, url: truncatedUrl });
     // Asigna la URL truncada al formulario antes de agregarla a tableData

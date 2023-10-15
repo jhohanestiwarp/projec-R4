@@ -119,10 +119,12 @@
     <h2 class="form__subtitle">{{ COMPONENT_CONTENT.subtitle_upload_form }}</h2>
     <!-- file -->
     <div class="form__file">
-      <mat-hint>{{ COMPONENT_CONTENT.form.files }}</mat-hint>
+      <mat-hint>
+        {{ managementForm.value.file?.name || COMPONENT_CONTENT.form.file }}
+      </mat-hint>
       <app-file-input
         fileTitle="Subir imagen"
-        [multiple]="true"
+        [multiple]="false"
         (uploadFile)="getFiles($event)"
       ></app-file-input>
     </div>
