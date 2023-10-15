@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { ModalComponent } from '../components';
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -13,6 +12,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./gest-secciones.component.scss'],
 })
 export class GestSeccionesComponent {
+  @ViewChild('startDate', { static: false }) startDateInput!: ElementRef;
+  @ViewChild('endDate', { static: false }) endDateInput!: ElementRef;
+
   readonly POP_UP_OPTION = 'pop-ups';
   readonly WIDGET_OPTION = 'widgets';
   readonly COMPONENT_CONTENT = {
@@ -67,8 +69,8 @@ export class GestSeccionesComponent {
     segmentCheckbox: false,
   });
 
-  animal: string = "";
-  name: string = "";
+  animal: string = '';
+  name: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -92,7 +94,7 @@ export class GestSeccionesComponent {
         ImageName: '',
         ImageExtension: '',
       },
-      Properties: ''
+      Properties: '',
     });
 
     request.subscribe({
@@ -104,8 +106,8 @@ export class GestSeccionesComponent {
 
         // informar al usuario que se creó
       },
-      error: () => {}
-    })
+      error: () => {},
+    });
   }
 
   openDialog(): void {
@@ -166,4 +168,22 @@ export class GestSeccionesComponent {
     this.managementForm.reset();
   }
 }
+
+  validateStartDate(ev: any, field: 'endDate' | 'startDate') {
+    const regex = /[^0-9/]/;
+    const value: string = ev.target.value;
+    const result = value.split(regex)[0];
+
+    if (field === 'endDate') {
+      this.endDateInput.nativeElement.value = result;
+    } else {
+      this.startDateInput.nativeElement.value = result;
+    }
+
+    // validate date
+    const parsedDate = Date.parse(value);
+    if (value.length === 10 && !isNaN(parsedDate)) {
+      this.managementForm.get(field)?.patchValue(new Date(parsedDate));
+    }
+  }
 }

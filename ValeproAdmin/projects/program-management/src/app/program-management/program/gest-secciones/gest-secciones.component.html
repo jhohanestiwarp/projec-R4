@@ -71,7 +71,13 @@
       <!-- surveillance start date -->
       <mat-form-field [hideRequiredMarker]="true">
         <mat-label>{{ COMPONENT_CONTENT.form.startDate }}</mat-label>
-        <input matInput formControlName="startDate" [matDatepicker]="picker" />
+        <input
+          #startDate
+          matInput
+          formControlName="startDate"
+          [matDatepicker]="picker"
+          (input)="validateStartDate($event, 'startDate')"
+        />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
@@ -88,10 +94,19 @@
       <!-- surveillance end date -->
       <mat-form-field [hideRequiredMarker]="true">
         <mat-label>{{ COMPONENT_CONTENT.form.endDate }}</mat-label>
-        <input matInput formControlName="endDate" [matDatepicker]="picker2" />
+        <input
+          #endDate
+          matInput
+          formControlName="endDate"
+          [readonly]="!managementForm.value.startDate"
+          [min]="managementForm.value.startDate"
+          [matDatepicker]="picker2"
+          (input)="validateStartDate($event, 'endDate')"
+        />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
+          [disabled]="!managementForm.value.startDate"
           [for]="picker2"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
