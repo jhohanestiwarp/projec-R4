@@ -42,7 +42,6 @@ export const CUSTOM_DATE_FORMATS = {
     components.CloseSvgComponent,
     components.DeleteSvgComponent,
     components.FileInputComponent,
-    components.ModalComponent,
     components.ModalConfirmComponent,
     components.WarningSvgComponent,
     ProgramComponent,
