@@ -21,7 +21,6 @@
     <button
       *ngIf="data.buttons?.retry"
       mat-button
-      matStepperNext
       class="btn-outlined bold"
       (click)="accept()"
     >
@@ -29,21 +28,11 @@
     </button>
 
     <div *ngIf="data.buttons?.accept && data.buttons?.cancel" class="btn-group">
-      <button
-        mat-button
-        matStepperNext
-        class="btn-outlined bold"
-        (click)="accept()"
-      >
+      <button mat-button class="btn-outlined bold" (click)="accept()">
         {{ data.buttons?.accept || DEFAULT_MESSAGES.accept }}
       </button>
 
-      <button
-        mat-button
-        matStepperNext
-        class="btn-outlined bold"
-        (click)="cancel()"
-      >
+      <button mat-button class="btn-outlined bold" (click)="cancel()">
         {{ data.buttons?.cancel || DEFAULT_MESSAGES.cancel }}
       </button>
     </div>
