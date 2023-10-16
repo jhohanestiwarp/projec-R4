@@ -1,6 +1,5 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-program',
@@ -14,7 +13,6 @@ import { ActivatedRoute, Router } from '@angular/router';
   ],
 })
 export class ProgramComponent {
-  private readonly REDIRECT_PATH = '/main/programs/general-information';
   readonly PAGE_CONTENT = {
     tab1: {
       path: 'general-information',
@@ -27,20 +25,18 @@ export class ProgramComponent {
   };
   currentPath = '';
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-    const path = this.activatedRoute.snapshot.paramMap.get('path');
+  constructor() {
+    const currentUrl = window.location.href;
+    const path = currentUrl.split('/').pop();
 
-    if (path === null || this.getIndexByPath(path) === -1) {
-      this.router.navigate([this.REDIRECT_PATH]);
-      return;
+    if (path) {
+      this.currentPath = path.toLowerCase();
     }
-
-    this.currentPath = path;
   }
 
   getIndexByPath(path: string): number {
     const values = Object.values(this.PAGE_CONTENT);
     const index = values.findIndex((e) => e.path === path);
-    return index;
+    return Math.abs(index);
   }
 }

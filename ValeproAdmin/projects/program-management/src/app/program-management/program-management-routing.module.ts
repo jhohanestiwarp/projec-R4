@@ -3,9 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProgramComponent } from './program/program.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'general-information', pathMatch: 'full' },
   {
-    path: ':path',
+    path: '',
     component: ProgramComponent,
     loadChildren: () => import('./child-routes-program.module').then((m) => m.ChildRoutesProgramModule )
   },
