@@ -76,7 +76,7 @@
     mat-button
     matStepperNext
     class="btn-continue bold"
-    (click)="stepperNext()"
+    (click)="finish ? submit() : stepperNext()"
   >
     {{ finish ? "Guardar" : "Continuar" }}
   </button>

@@ -20,6 +20,7 @@ export class URFormStepBaseComponent implements OnInit {
 
   // outputs
   @Output() nextEvent = new EventEmitter<UserRegistrationResult>();
+  @Output() submitEvent = new EventEmitter<UserRegistrationResult>();
 
   // table
   dataSource = new MatTableDataSource<any>([]);
@@ -46,6 +47,10 @@ export class URFormStepBaseComponent implements OnInit {
 
     // set form
     this.urForm = this.fb.nonNullable.group(this.getFormInitialValue());
+  }
+
+  submit() {
+    this.submitEvent.emit(this.urForm.value);
   }
 
   stepperNext() {
