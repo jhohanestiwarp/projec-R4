@@ -4,6 +4,7 @@ import { UsersComponent } from './users/users.component';
 import { UserAdminComponent } from './user-admin.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 import { UserAdminRoutingModule } from './user-admin-routing.module';
 import * as components from './components';
@@ -17,8 +18,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
   declarations: [
+    components.ModalConfirmComponent,
     components.URFormStepBaseComponent,
     components.UserRegistrationFormComponent,
     UserAdminComponent,
@@ -33,6 +36,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     FormsModule,
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatIconModule,
@@ -41,8 +45,6 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableModule,
     MatTabsModule,
     ReactiveFormsModule,
-    
-
   ]
 })
 export class UserAdminModule { }
