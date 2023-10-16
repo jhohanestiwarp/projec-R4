@@ -140,19 +140,16 @@
     >
       <mat-label>{{ COMPONENT_CONTENT.form.url }}</mat-label>
       <input matInput formControlName="url" />
-      <div
-        *ngIf="
-          managementForm.get('url')?.value &&
-          managementForm.get('url')?.value.length > 50
-        "
+      <mat-error
+        *ngIf="managementForm.get('url')?.value?.length > 50"
         class="url-warning"
       >
-        URL muy larga...
-      </div>
+        URL demasiado extensa larga...
+      </mat-error>
     </mat-form-field>
 
     <!-- send -->
-    <app-button (click)="onSubmit()" class="self-center">Guardar</app-button>
+    <app-button (click)="addBoard()" class="self-center">Guardar</app-button>
 
     <table *ngIf="tableData.length > 0" class="example-list">
       <thead>
@@ -169,7 +166,7 @@
           <td>{{ truncateUrl(item.url) }}</td>
           <td>{{ item.url }}</td>
           <td>
-            <button mat-raised-button (click)="openDialog()">
+            <button mat-raised-button (click)="removeItem(item.position)">
               <!-- <mat-icon class="icon-delete">delete_outline</mat-icon> -->
 
               <app-delete-svg />
