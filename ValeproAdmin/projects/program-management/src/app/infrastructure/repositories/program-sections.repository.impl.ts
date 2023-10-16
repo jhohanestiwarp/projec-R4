@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProgramSectionsRepository } from '../../core/repositories/program-sections.repository';
 import { BoardByTypeAndProgramRequest, BoardCreateRequest, BoardRemoveRequest } from '../../core/models/BoardRequest.model';
-import { ProgramSectionsService } from '../services/program-sections.services';
+import { ProgramSectionsService } from '../services/program-sections.service';
 
 @Injectable({
   providedIn: 'root'

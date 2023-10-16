@@ -1,0 +1,51 @@
+<mat-card>
+  <img
+    alt="close"
+    class="close"
+    src="./assets/images/close-icon.svg"
+    (click)="cancel()"
+  />
+
+  <div class="modal-container">
+    <img
+      [alt]="data.type"
+      [src]="'./assets/images/alert-' + data.type + '.svg'"
+      height="120"
+      width="120"
+    />
+
+    <h1 *ngIf="data.title" class="modal-title">{{ data.title }}</h1>
+
+    <p *ngIf="data.message" class="modal-text">{{ data.message }}</p>
+
+    <button
+      *ngIf="data.buttons?.retry"
+      mat-button
+      matStepperNext
+      class="btn-outlined bold"
+      (click)="accept()"
+    >
+      {{ data.buttons?.retry || DEFAULT_MESSAGES.retry }}
+    </button>
+
+    <div *ngIf="data.buttons?.accept && data.buttons?.cancel" class="btn-group">
+      <button
+        mat-button
+        matStepperNext
+        class="btn-outlined bold"
+        (click)="accept()"
+      >
+        {{ data.buttons?.accept || DEFAULT_MESSAGES.accept }}
+      </button>
+
+      <button
+        mat-button
+        matStepperNext
+        class="btn-outlined bold"
+        (click)="cancel()"
+      >
+        {{ data.buttons?.cancel || DEFAULT_MESSAGES.cancel }}
+      </button>
+    </div>
+  </div>
+</mat-card>
