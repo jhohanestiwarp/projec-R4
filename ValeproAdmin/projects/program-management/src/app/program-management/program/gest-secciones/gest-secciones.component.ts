@@ -1,7 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 import { AlertModalService } from '../../../infrastructure/services/alertModal.service';
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
@@ -68,7 +67,6 @@ export class GestSeccionesComponent {
   ];
 
   // form
-  $loading: Observable<boolean> = new Observable();
   managementForm: FormGroup = this.fb.group({
     endDate: ['', Validators.required],
     file: [null],
