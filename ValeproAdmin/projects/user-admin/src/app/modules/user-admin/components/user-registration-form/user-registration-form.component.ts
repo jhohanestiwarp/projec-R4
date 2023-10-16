@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { UserRegistrationResult } from '../../../../interfaces/system-management.interface';
-
+import { AlertModalService } from 'projects/user-admin/src/app/infrastructure/services/alertModal.service';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -59,10 +58,15 @@ export class UserRegistrationFormComponent {
     'Código externo',
   ];
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private alertModalService: AlertModalService) {}
+
+  async submit(ev: UserRegistrationResult) {
+    await this.alertModalService.successAlert({
+      title: '¡Cambios guardados con éxito!'
+    });
+  }
 
   stepperNext(ev: UserRegistrationResult) {
     console.log(ev);
-
   }
 }
