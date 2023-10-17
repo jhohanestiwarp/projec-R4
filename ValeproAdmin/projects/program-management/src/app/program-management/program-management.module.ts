@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -60,6 +61,7 @@ export const CUSTOM_DATE_FORMATS = {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatTableModule,
     MatTabsModule,
     ProgramManagementRoutingModule,
     ReactiveFormsModule,

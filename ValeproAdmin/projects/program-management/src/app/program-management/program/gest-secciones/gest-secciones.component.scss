@@ -1,5 +1,13 @@
+.mb-2 {
+  margin-bottom: 2em;
+}
+
 .self-center {
   align-self: center;
+}
+
+.self-end {
+  align-self: flex-end;
 }
 
 .main-title {
@@ -106,73 +114,53 @@
   .main-title {
     text-align: left;
   }
-
-  .example-list {
-    width: 100%; /* ajusta el ancho según tus necesidades */
-    border: 1px solid #ccc;
-    margin-top: 20px; /* o ajusta según tus necesidades */
-    border-radius: 4px;
-    overflow: hidden;
-
-    tfoot {
-      display: table-caption;
-      padding: 0.8rem;
-
-      div {
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-      }
-    }
-  }
-
-  .example-list th,
-  .example-list td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-  }
-
-  .example-list th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-
-  .example-list .cdk-drag-placeholder {
-    opacity: 0.5;
-    border: 2px dashed #ccc;
-    background-color: #f9f9f9;
-  }
-
-  .icon-delete {
-    color: purple;
-  }
 }
 
-.custom-button-class {
-  border-radius: 20px;
-}
-
-::ng-deep .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full {
-  background-color: var(--ngx-valepro-color-tertiary);
-}
-::ng-deep .mdc-text-field--filled .mdc-floating-label {
-  color: var(--ngx-valepro-color-tertiary);
-}
-
-::ng-deep
+::ng-deep {
+  .mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-full {
+    background-color: var(--ngx-valepro-color-tertiary);
+  }
+  .mdc-text-field--filled .mdc-floating-label {
+    color: var(--ngx-valepro-color-tertiary);
+  }
   .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
-  .mdc-list-item__primary-text {
-  color: var(--ngx-valepro-color-tertiary) !important;
-}
-
-::ng-deep
+    .mdc-list-item__primary-text {
+    color: var(--ngx-valepro-color-tertiary) !important;
+  }
   .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
-  .mdc-floating-label,
-.mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
-  .mdc-floating-label--float-above {
-  color: var(--ngx-valepro-color-tertiary) !important;
+    .mdc-floating-label,
+  .mdc-text-field--filled:not(.mdc-text-field--disabled).mdc-text-field--focused
+    .mdc-floating-label--float-above {
+    color: var(--ngx-valepro-color-tertiary) !important;
+  }
 }
 
+.icon-delete {
+  color: purple;
+  cursor: pointer;
+}
 
+.mat-mdc-cell,
+.mat-mdc-header-cell {
+  vertical-align: middle !important;
+}
 
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+.mat-column-imagen,
+.mat-column-name,
+.mat-column-position,
+.mat-column-url {
+  border-right: 1px solid #d9d2d2;
+  align-self: stretch;
+  text-align: center;
+}
+
+.mat-mdc-header-cell {
+  background-color: #f4f4f4 !important;
+  font-weight: bold;
+  text-align: left;
+}

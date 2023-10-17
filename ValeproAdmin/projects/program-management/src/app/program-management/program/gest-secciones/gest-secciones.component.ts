@@ -5,6 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertModalService } from '../../../infrastructure/services/alertModal.service';
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -36,6 +37,19 @@ export class GestSeccionesComponent {
       url: 'URL de contenido',
     },
   };
+
+  // table
+  dataSource = new MatTableDataSource<{
+    name: string;
+    position: number;
+    url: string;
+  }>([
+    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
+    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
+    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
+    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
+  ]);
+  displayedColumns = ['position', 'imagen', 'url', 'actions'];
 
   // config
   private readonly toastConfig: Partial<IndividualConfig> = {
@@ -113,8 +127,9 @@ export class GestSeccionesComponent {
 
     const truncatedUrl = this.truncateUrl(url || 'N/A');
     // temporal push
-    this.tableData.push({
-      position: this.tableData.length + 1,
+    this.dataSource.data.push({
+      name: file?.name,
+      position: this.dataSource.data.length + 1,
       url: truncatedUrl,
     });
     const request = this.programSectionsRepository.createBoard({
@@ -178,10 +193,12 @@ export class GestSeccionesComponent {
     return url;
   }
 
-  tableData: { position: number; url: string }[] = [];
-
   drop(event: CdkDragDrop<any>): void {
-    moveItemInArray(this.tableData, event.previousIndex, event.currentIndex);
+    moveItemInArray(
+      this.dataSource.data,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 
   async removeItem(position: number) {
@@ -193,7 +210,9 @@ export class GestSeccionesComponent {
 
     if (!isConfirm) return;
 
-    this.tableData = this.tableData.filter((e) => e.position !== position);
+    this.dataSource.data = this.dataSource.data.filter(
+      (e: any) => e.position !== position
+    );
   }
 
   validateStartDate(ev: any, field: 'endDate' | 'startDate') {
