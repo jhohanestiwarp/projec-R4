@@ -44,10 +44,26 @@ export class GestSeccionesComponent {
     position: number;
     url: string;
   }>([
-    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
-    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
-    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
-    { name: 'archivo.png', position: 1, url: 'https://material.angular.io/components/table/examples' },
+    {
+      name: 'archivo.png',
+      position: 1,
+      url: 'https://material.angular.io/components/table/examples',
+    },
+    {
+      name: 'archivo.png',
+      position: 2,
+      url: 'https://material.angular.io/components/table/examples',
+    },
+    {
+      name: 'archivo.png',
+      position: 3,
+      url: 'https://material.angular.io/components/table/examples',
+    },
+    {
+      name: 'archivo.png',
+      position: 4,
+      url: 'https://material.angular.io/components/table/examples',
+    },
   ]);
   displayedColumns = ['position', 'imagen', 'url', 'actions'];
 
@@ -201,9 +217,15 @@ export class GestSeccionesComponent {
     );
   }
 
+  async confirmChangePosition() {
+    await this.alertModalService.successAlert({
+      title: '¡Posiciones cambiadas con éxito!',
+    });
+  }
+
   async removeItem(position: number) {
     const isConfirm = await this.alertModalService.warningAlert({
-      title: '¿Estás seguro de eliminar este board?',
+      title: '¿Estás seguro de eliminar esta board?',
       accept: 'Eliminar',
       cancel: 'Volver a secciones',
     });
@@ -213,6 +235,10 @@ export class GestSeccionesComponent {
     this.dataSource.data = this.dataSource.data.filter(
       (e: any) => e.position !== position
     );
+
+    await this.alertModalService.successAlert({
+      title: '¡Board eliminada con éxito!',
+    });
   }
 
   validateStartDate(ev: any, field: 'endDate' | 'startDate') {
