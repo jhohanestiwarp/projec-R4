@@ -5,7 +5,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AlertModalService } from '../../../infrastructure/services/alertModal.service';
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -39,32 +39,12 @@ export class GestSeccionesComponent {
   };
 
   // table
+  @ViewChild('table') table!: MatTable<any>;
   dataSource = new MatTableDataSource<{
     name: string;
     position: number;
     url: string;
-  }>([
-    {
-      name: 'archivo.png',
-      position: 1,
-      url: 'https://material.angular.io/components/table/examples',
-    },
-    {
-      name: 'archivo.png',
-      position: 2,
-      url: 'https://material.angular.io/components/table/examples',
-    },
-    {
-      name: 'archivo.png',
-      position: 3,
-      url: 'https://material.angular.io/components/table/examples',
-    },
-    {
-      name: 'archivo.png',
-      position: 4,
-      url: 'https://material.angular.io/components/table/examples',
-    },
-  ]);
+  }>([]);
   displayedColumns = ['position', 'imagen', 'url', 'actions'];
 
   // config
@@ -209,12 +189,12 @@ export class GestSeccionesComponent {
     return url;
   }
 
-  drop(event: CdkDragDrop<any>): void {
-    moveItemInArray(
-      this.dataSource.data,
-      event.previousIndex,
-      event.currentIndex
+  drop(event: CdkDragDrop<any>) {
+    const previousIndex = this.dataSource.data.findIndex(
+      (row) => row === event.item.data
     );
+    moveItemInArray(this.dataSource.data, previousIndex, event.currentIndex);
+    this.table.renderRows();
   }
 
   async confirmChangePosition() {

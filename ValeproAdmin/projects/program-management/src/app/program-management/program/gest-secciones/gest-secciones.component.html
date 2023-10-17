@@ -157,7 +157,15 @@
       *ngIf="dataSource.data.length"
       class="table-container mat-elevation-z6"
     >
-      <table mat-table [dataSource]="dataSource">
+      <table
+        #table
+        cdkDropList
+        mat-table
+        cdkDropListOrientation="vertical"
+        [cdkDropListData]="dataSource"
+        [dataSource]="dataSource"
+        (cdkDropListDropped)="drop($event)"
+      >
         <!-- position -->
         <ng-container matColumnDef="position">
           <th mat-header-cell *matHeaderCellDef>Posición</th>
@@ -190,7 +198,12 @@
           mat-header-row
           *matHeaderRowDef="displayedColumns; sticky: true"
         ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr
+          cdkDrag
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+          [cdkDragData]="row"
+        ></tr>
       </table>
     </section>
     <app-button
