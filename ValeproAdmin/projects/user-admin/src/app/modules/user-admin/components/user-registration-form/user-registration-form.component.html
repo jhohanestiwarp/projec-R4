@@ -33,6 +33,10 @@
         (nextEvent)="stepperNext($event)"
         (submitEvent)="submit($event)"
       ></app-ur-form-base>
+
+      <p *ngIf="errorSubmit" class="error">
+        {{ PAGE_CONTENT.errorSubmit }}
+      </p>
     </mat-step>
 
     <!-- Replace icon mat-step -->

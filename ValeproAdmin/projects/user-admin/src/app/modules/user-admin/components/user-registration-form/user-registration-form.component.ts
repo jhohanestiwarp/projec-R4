@@ -17,6 +17,7 @@ import { AlertModalService } from 'projects/user-admin/src/app/infrastructure/se
 export class UserRegistrationFormComponent {
   readonly PAGE_CONTENT = {
     title: 'Formulario registro de usuarios',
+    errorSubmit: 'Error al guardar info',
   };
 
   readonly oneFieldNames = [
@@ -57,6 +58,7 @@ export class UserRegistrationFormComponent {
     'Crear Siempre Establecimiento',
     'Código externo',
   ];
+  errorSubmit = true;
 
   constructor(private alertModalService: AlertModalService) {}
 
@@ -64,6 +66,7 @@ export class UserRegistrationFormComponent {
     await this.alertModalService.successAlert({
       title: '¡Cambios guardados con éxito!'
     });
+    this.errorSubmit = false;
   }
 
   stepperNext(ev: UserRegistrationResult) {
