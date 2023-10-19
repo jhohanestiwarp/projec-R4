@@ -72,4 +72,21 @@ export class UserRegistrationFormComponent {
   stepperNext(ev: UserRegistrationResult) {
     console.log(ev);
   }
+
+
+async errorSubmitClicked() {
+  await this.errorSubmitAlert({
+    retry: 'Inténtalo nuevamente',
+    message: '¿Los datos no se guardaron correctamente.',
+    title: 'Lo sentimos',
+    type: 'error',
+  });
+  this.errorSubmit = false;
+}
+
+
+private async errorSubmitAlert(args: { retry?: string; message: string; title: string; type: string }) {
+  return await this.alertModalService.errorAlert(args);
+}
+
 }

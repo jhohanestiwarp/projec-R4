@@ -6,6 +6,11 @@
   top: 1em;
   width: 2em;
 }
+.modal{
+  min-height: 400px !important;
+  width: 500px !important;
+}
+
 
 .modal {
   &-container {
@@ -47,7 +52,7 @@
 }
 
 .bold {
-  font-weight: bold;
+  font-family: bold;
 }
 
 ::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {

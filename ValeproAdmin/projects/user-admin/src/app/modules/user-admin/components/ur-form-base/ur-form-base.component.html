@@ -72,12 +72,14 @@
   </button>
 
   <button
-    *ngIf="next || finish"
-    mat-button
-    matStepperNext
-    class="btn-continue bold"
-    (click)="finish ? submit() : stepperNext()"
-  >
-    {{ finish ? "Guardar" : "Continuar" }}
-  </button>
+  *ngIf="next || finish"
+  mat-button
+  matStepperNext
+  class="btn-continue bold"
+  [ngClass]="{'button-purple-bg': isFinishButton()}"
+  (click)="finish ? submit() : stepperNext()"
+>
+  {{ finish ? "Guardar" : "Continuar" }}
+</button>
+
 </div>

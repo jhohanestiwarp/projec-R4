@@ -13,9 +13,13 @@
     }
   }
 
+  .mat-step-icon.mat-step-icon-done {
+    background-color: var(--color-gris-claro) !important;
+   }
+
   .mat-step-icon:not(.mat-step-icon-state-done),
-  .mat-step-icon.mat-step-icon-selected {
-    background-color: var(--color-gris-claro);
+  .mat-step-icon.mat-step-icon-edit{
+       background-color: var(--color-gris-claro);
   }
 
   // center and adjust horizontal line
@@ -34,7 +38,7 @@
 .main-title {
   color: var(--color-primario);
   font-size: 32px;
-  font-weight: bold;
+  font-family: bold;
   padding: 32px 16px;
 }
 
@@ -42,6 +46,7 @@
   color: var(--color-rojo);
   padding: 2em 0;
   text-align: center;
+  font-family: bold;
 }
 
 @media (min-width: 1366px) {

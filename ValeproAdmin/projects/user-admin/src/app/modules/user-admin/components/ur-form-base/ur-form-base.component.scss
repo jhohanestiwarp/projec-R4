@@ -27,7 +27,7 @@
 
 .bold {
   color: var(--color-primario);
-  font-weight: bold;
+  font-family: bold;
 }
 
 .common-row {
@@ -41,6 +41,7 @@
 
 .main-header {
   width: 60%;
+  font-family: bold;
 }
 
 .mb-2 {
@@ -72,5 +73,9 @@ table {
   .common-row__text {
     position: relative;
     bottom: 1em;
+    font-family: bold;
+  }
+  .button-purple-bg {
+    background-color: var(--color-secundario);
   }
 }

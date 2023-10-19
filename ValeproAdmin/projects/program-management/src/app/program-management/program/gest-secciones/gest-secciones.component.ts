@@ -6,6 +6,7 @@ import { AlertModalService } from '../../../infrastructure/services/alertModal.s
 import { ProgramSectionsRepository } from '../../../core/repositories/program-sections.repository';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ProgramSectionsService } from '../../../infrastructure/services/program-sections.service';
 
 @Component({
   selector: 'app-gest-secciones',
@@ -92,7 +93,8 @@ export class GestSeccionesComponent {
     private alertModalService: AlertModalService,
     private fb: FormBuilder,
     private programSectionsRepository: ProgramSectionsRepository,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private programService: ProgramSectionsService
   ) {}
 
   async addBoard() {
@@ -128,8 +130,11 @@ export class GestSeccionesComponent {
       position: this.dataSource.data.length + 1,
       url: truncatedUrl,
     });
+
+    // console.log("TEST VALUES => ",this.managementForm.getRawValue())
+
     const request = this.programSectionsRepository.createBoard({
-      BoardTypeId: this.managementForm.value.section,
+      BoardTypeId: this.managementForm.get("section")?.value,
       Segments: this.managementForm.value.segment,
       LanguageId: 1,
       ProgramId: 1,
@@ -163,7 +168,8 @@ export class GestSeccionesComponent {
           this.toastConfig
         );
       },
-      error: () => {
+      error: (e) => {
+        console.log(e)
         this.toastrService.error(
           'Ocurrió un error durante la operación.',
           undefined,

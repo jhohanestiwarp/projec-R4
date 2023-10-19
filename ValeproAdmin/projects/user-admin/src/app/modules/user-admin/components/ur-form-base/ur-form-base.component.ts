@@ -94,4 +94,8 @@ export class URFormStepBaseComponent implements OnInit {
 
     return formValue;
   }
+  isFinishButton(): boolean {
+    return this.finish;
+  }
+
 }

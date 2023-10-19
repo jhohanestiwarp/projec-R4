@@ -13,17 +13,17 @@ export class ProgramSectionsService {
   constructor(private http: HttpClient) { }
 
   createBoard(params: BoardCreateRequest) {
-    return this.http.post<BoardCreateResponse>(`${env.apiBoard}/api/v1/login/login-administrator`, params)
+    return this.http.post<BoardCreateResponse>(`${env.apiBoard}/api/v1/board`, params)
       .pipe(map((data) => data));
   }
 
   removeBoard(params: BoardRemoveRequest) {
-    return this.http.post<BoardRemoveResponse>(`${env.apiBoard}/api/v1/login/login-administrator`, params)
+    return this.http.delete<BoardRemoveResponse>(`/api/v1/board/${params.BoardId}`)
       .pipe(map((data) => data));
   }
 
   getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest) {
-    return this.http.post<BoardByTypeAndProgramResponse>(`${env.apiBoard}/api/v1/login/login-administrator`, params)
+    return this.http.post<BoardByTypeAndProgramResponse>(`${env.apiBoard}/api/v1/board`, params)
       .pipe(map((data) => data));
   }
 }
