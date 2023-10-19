@@ -76,6 +76,7 @@
           matInput
           formControlName="startDate"
           [matDatepicker]="picker"
+          [min]="managementForm.value.startDate"
           (input)="validateStartDate($event, 'startDate')"
         />
         <mat-hint>DD/MM/YYYY</mat-hint>
