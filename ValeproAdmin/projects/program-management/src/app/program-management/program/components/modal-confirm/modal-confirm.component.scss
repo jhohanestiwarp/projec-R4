@@ -63,3 +63,10 @@
     width: 12em;
   }
 }
+
+@media (min-width: 1366px) {
+  .alert-content {
+    min-height: 400px;
+    width: 500px;
+  }
+}
