@@ -11,6 +11,7 @@ import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.mode
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthRepository } from '../../core/repositories/auth.repository';
+import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 
 @Component({
@@ -66,7 +67,7 @@ export class LoginComponent {
     let data: LoginRequestModel = {
       UserName: this.loginForm.get('Id')?.value,
       Password: this.loginForm.get('Pass')?.value,
-      ProgramId: 0
+      ProgramId: getSession<number>('programId'),
     }
 
     //Load login before send http request

@@ -9,6 +9,7 @@ import { ResponseBase } from '../../../core/models/responseBase.model';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthRepository } from '../../../core/repositories/auth.repository';
+import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 
 
@@ -95,7 +96,7 @@ export class GeneratecodeComponent implements OnInit {
   navigate() {
     let data: GenerateCodeRequestModel = {
       UserName: this.GenerateForm.get('Id')?.value,
-      ProgramId: 0
+      ProgramId: getSession<number>('programId'),
     }
 
 

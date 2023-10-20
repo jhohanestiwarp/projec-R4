@@ -3,6 +3,7 @@ import { Component, HostListener, ViewChild, OnInit, inject } from '@angular/cor
 import sidenavMockup from './sidenav.mockup';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { getSession, saveSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 
 @Component({
@@ -56,6 +57,10 @@ export class SidenavComponent implements OnInit {
   }
 
   logout() {
+    localStorage.setItem('programId', getSession('programId'));
+    sessionStorage.clear();
+    saveSession(Number(localStorage.getItem('programId')) || '0', 'programId');
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

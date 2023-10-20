@@ -1,7 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { loadLogin, loadedLogin } from "../actions/login.actions";
 import { LoginResponseState } from '../models/login-response.state';
-import { LoginResponseModel } from "projects/authorizer/src/app/core/models/loginResponse.model";
 import { saveSession } from "../storage/storage.storage";
 
 

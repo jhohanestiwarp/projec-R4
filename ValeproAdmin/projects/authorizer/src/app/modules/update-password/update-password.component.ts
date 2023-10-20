@@ -9,6 +9,7 @@ import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../core/
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthRepository } from '../../core/repositories/auth.repository';
+import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 @Component({
   selector: 'app-update-password',
@@ -145,7 +146,7 @@ export class UpdatePasswordComponent {
   sendCodeValidate() {
     let data: ValidateCodeRequestModel = {
       userName: this.user,
-      programId: 0,
+      programId: getSession<number>('programId'),
       newPassword: this.updateForm.get('Pass')?.value,
       newPasswordVerified: this.updateForm.get('NewPass')?.value,
       confirmationCode: this.codeCompleteControl
@@ -177,7 +178,7 @@ export class UpdatePasswordComponent {
   resendCode() {
     let data: GenerateCodeRequestModel = {
       UserName: this.user,
-      ProgramId: 0
+      ProgramId: getSession<number>('programId'),
     }
     this.authRepository.generateCode(data).subscribe({
       next: (res: ResponseBase<GenerateCodeResponseModel>) => {

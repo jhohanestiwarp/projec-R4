@@ -11,6 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthRepository } from '../../../core/repositories/auth.repository';
 import { ErrorResponseModel } from '../../../core/models/responseError.model';
+import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 
 
@@ -150,7 +151,7 @@ export class RecoverPasswordComponent implements OnInit {
   sendCodeValidate() {
     let data: ValidateCodeRequestModel = {
       userName: this.username,
-      programId: 0,
+      programId: getSession<number>('programId'),
       newPassword: this.recoverForm.get('Pass')?.value,
       newPasswordVerified: this.recoverForm.get('NewPass')?.value,
       confirmationCode: this.codeCompleteControl
@@ -204,7 +205,7 @@ export class RecoverPasswordComponent implements OnInit {
 
     let data: GenerateCodeRequestModel = {
       UserName: this.username,
-      ProgramId: 0
+      ProgramId: getSession<number>('programId'),
     }
     this.recoverRepository.generateCode(data).subscribe({
       next: (res: ResponseBase<GenerateCodeResponseModel>) => {
