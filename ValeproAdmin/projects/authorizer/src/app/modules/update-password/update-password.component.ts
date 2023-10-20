@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.model';
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
 import { ValidateCodeRequestModel, ValidateCodeResponseModel } from '../../core/models/validateCode.model';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ResponseBase } from '../../core/models/responseBase.model';
-import { RecoverRepository } from '../../core/repositories/recover.repository';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../core/models/generateCodeRequest.model';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthRepository } from '../../core/repositories/auth.repository';
 
 @Component({
   selector: 'app-update-password',
@@ -27,26 +27,30 @@ export class UpdatePasswordComponent {
   seconds: string = '';
   colorbackground: string = '';
   btnColor: string = '';
-  updateForm: FormGroup;
+  updateForm!: FormGroup;
   user: string = '';
   showResend: boolean = false;
-  username: string = '';
+
+  //#region Injectable
+  router = inject(Router);
+  dialogService = inject(DialogService);
+  authRepository = inject(AuthRepository);
+  toastService = inject(ToastrService);
+  //#endregion
 
 
-  constructor(
-    private router: Router,
-    private dialogService: DialogService,
-    private recoverRepository: RecoverRepository,
-    private toastService: ToastrService
-  ) {
+
+  ngOnInit(): void {
+    this.createForm();
+    this.countDown();
+    this.user = sessionStorage.getItem('user')!;
+  }
+
+  createForm() {
     this.updateForm = new FormGroup({
       Pass: new FormControl('', [Validators.required]),
       NewPass: new FormControl('', [Validators.required]),
     });
-  }
-  ngOnInit(): void {
-    this.countDown();
-    this.user = sessionStorage.getItem('user')!;
   }
 
   get codeComplete(): AbstractControl | null {
@@ -140,13 +144,13 @@ export class UpdatePasswordComponent {
 
   sendCodeValidate() {
     let data: ValidateCodeRequestModel = {
-      userName: this.username,
+      userName: this.user,
       programId: 0,
       newPassword: this.updateForm.get('Pass')?.value,
       newPasswordVerified: this.updateForm.get('NewPass')?.value,
       confirmationCode: this.codeCompleteControl
     };
-    this.recoverRepository.validateCode(data).subscribe({
+    this.authRepository.validateCode(data).subscribe({
       next: (res: ResponseBase<ValidateCodeResponseModel>) => {
         let params: DialogParams = {
           success: true,
@@ -175,7 +179,7 @@ export class UpdatePasswordComponent {
       UserName: this.user,
       ProgramId: 0
     }
-    this.recoverRepository.generateCode(data).subscribe({
+    this.authRepository.generateCode(data).subscribe({
       next: (res: ResponseBase<GenerateCodeResponseModel>) => {
         let params: DialogParams = {
           success: false,

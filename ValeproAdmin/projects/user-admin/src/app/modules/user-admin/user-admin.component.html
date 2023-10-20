@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="system__managment-nav-bar Program-top-bar">
+    <button [routerLink]="['/main/user/users']" routerLinkActive="active-button">Consultar y gestionar usuarios</button>
+    <button [routerLink]="['/main/user/create-users']" routerLinkActive="active-button">Crear usuario
+      (Individual)</button>
+    <button [routerLink]="['/main/user/masive-users']" routerLinkActive="active-button">Crear usuario (Masivo)</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

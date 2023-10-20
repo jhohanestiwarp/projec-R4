@@ -3,18 +3,17 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { UsersComponent } from './users/users.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
-import { UserRegistrationFormComponent } from './components';
+
 
 
 const childRoutes: Routes = [
   {
     path: 'users',
-    component: UserRegistrationComponent,
+    component: UsersComponent,
   },
   {
     path: 'create-users',
-    component: UserRegistrationFormComponent,
+    component: CreateUserComponent,
   },
   {
     path: 'masive-users',

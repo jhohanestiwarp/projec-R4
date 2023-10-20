@@ -1,0 +1,76 @@
+<div class="container ">
+  <div class="row align-items-start">
+    <div class="programas-secciones">
+      <div class="programas-secciones-title">
+        <span class="bold-32 mb-2">Información general</span>
+        <span class="bold-14  mb-2">Datos del programa</span>
+      </div>
+
+      <form [formGroup]="programCreateForm">
+
+        <div class="fomr">
+          <mat-form-field>
+            <mat-label>Nombre de programa</mat-label>
+            <input formControlName="programName" matInput placeholder="Nombre de programa" autocomplete="off">
+          </mat-form-field>
+
+          <div class="box-datepicker">
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <input formControlName="starDate" matInput [matDatepicker]="startPicker" placeholder="Vigencia - Fecha de inicio">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <input formControlName="endDate" [min]="programCreateForm.get('starDate')!.value" matInput [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
+              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Centro de costo</mat-label>
+            <input formControlName="costCenter" matInput placeholder="Centro de costo" autocomplete="off">
+          </mat-form-field>
+
+          <div class="programas-secciones-title">
+            <span class="bold-14  mb-2">Centro de acopio del programa</span>
+          </div>
+
+          <mat-form-field>
+            <mat-label>País</mat-label>
+            <mat-select formControlName="country" (selectionChange)="getDepartments()">
+              <mat-option [value]="countryItem.codeId" *ngFor="let countryItem of _listCountry">{{countryItem.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Departamento / Estado</mat-label>
+            <mat-select formControlName="department" (selectionChange)="getCities()">
+              <mat-option [value]="departmentItem.name" *ngFor="let departmentItem of _listDepartments">{{departmentItem.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ciudad</mat-label>
+            <mat-select formControlName="city">
+              <mat-option [value]="cityItem.codeId" *ngFor="let cityItem of _listCities">{{cityItem.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Dirección</mat-label>
+            <input formControlName="address" matInput placeholder="Dirección" autocomplete="off">
+          </mat-form-field>
+
+          <div class="col-12 col-md-4 btn-ingresar ">
+            <button (click)="saveProgram()" [disabled]="programCreateForm.invalid" class="submit_btn" type="submit">Guardar</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -13,18 +13,11 @@
 /* Estilo para los cuadros */
 .box {
   text-align: center;
-  padding: 1px;
   width: 100%;
   font-size: 18px;
   margin-top: 0;
 }
 
-/* Estilo para el primer cuadro */
-.containerline {
-  background-color: var(--ngx-valepro-color-secondary);
-  height: 1%;
-  font-weight: normal;
-}
 
 /* Estilo para el segundo cuadro */
 .containersyn {
@@ -80,4 +73,13 @@
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    height: calc(100% - 60px);
+  }
 }

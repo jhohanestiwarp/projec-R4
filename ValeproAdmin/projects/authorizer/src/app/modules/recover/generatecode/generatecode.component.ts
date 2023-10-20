@@ -1,14 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'projects/authorizer/src/environments/environment';
 import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.model';
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
-import { RecoverRepository } from '../../../core/repositories/recover.repository';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../../core/models/generateCodeRequest.model';
 import { ResponseBase } from '../../../core/models/responseBase.model';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { AuthRepository } from '../../../core/repositories/auth.repository';
 
 
 
@@ -26,23 +26,26 @@ export class GeneratecodeComponent implements OnInit {
   hide1 = true;
   colorbackground: string = '';
   btnColor: string = '';
-  GenerateForm: FormGroup;
+  GenerateForm!: FormGroup;
   mostrarMensajeError: boolean = false;
 
-  constructor(
-    private router: Router,
-    private dialogService: DialogService,
-    private recoverRepository: RecoverRepository,
-    private formBuilder: FormBuilder,
-    private toastService: ToastrService
+  //#region Injectable
+  router = inject(Router);
+  dialogService = inject(DialogService);
+  authRepository = inject(AuthRepository);
+  toastService = inject(ToastrService);
+  formBuilder = inject(FormBuilder);
+  //#endregion
 
-  ) {
+
+  ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
     this.GenerateForm = this.formBuilder.group({
       Id: ['', [Validators.required]],
     });
-  }
-
-  ngOnInit() {
   }
 
 
@@ -97,7 +100,7 @@ export class GeneratecodeComponent implements OnInit {
 
 
 
-    this.recoverRepository.generateCode(data).subscribe({
+    this.authRepository.generateCode(data).subscribe({
       next: (res: ResponseBase<GenerateCodeResponseModel>) => {
         this.sendPopUp(res.data.Phone, res.data.Email);
         sessionStorage.setItem('username', data.UserName);

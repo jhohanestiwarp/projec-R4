@@ -7,7 +7,7 @@ export default {
         { name: 'Roles y Funciones', route: '/main/system' },
         {
           name: 'Formulario Registro de Usuarios',
-          route: '/main/user/create-users',
+          route: 'Formulario Registro de Usuarios',
         },
       ],
       subMenuVisible: false, //propiedad para controlar la visibilidad del submenú
@@ -23,7 +23,7 @@ export default {
         },
         {
           name: 'Crear usuario (Individual)',
-          route: 'Crear usuario (Individual)',
+          route: '/main/user/create-users',
         },
         {
           name: 'Crear y actualizar usuarios (Masivo)',

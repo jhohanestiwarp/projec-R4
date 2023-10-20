@@ -16,7 +16,9 @@
 
 ::ng-deep .dashboard-toolbar.mat-primary {
   justify-content: space-between;
-  background-color: var(--ngx-valepro-color-tertiary);
+  background-color: #F4F4F4;
+  border-bottom: 8px solid #DBDBDB;
+  height: 60px;
 }
 
 h1.app-name {
@@ -50,11 +52,11 @@ ul li {
 .header {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 11px;
   width: 100%;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .icono {
@@ -113,4 +115,44 @@ h3 {
 
 .header ul.header li {
   margin-bottom: 10px;
+}
+
+
+
+.top-bar-escritorio {
+  display: none;
+}
+
+.btn-main-logout {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  border-radius: 50px;
+  border: 2px solid var(--color-secundario);
+  min-width: 200px;
+  min-height: 44px;
+
+}
+
+.main-sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {}
+
+@media screen and (min-width: 1024px) {
+  .top-bar-movil {
+    display: none;
+  }
+
+  .top-bar-escritorio {
+    display: flex;
+  }
+
 }

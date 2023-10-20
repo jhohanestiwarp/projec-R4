@@ -10,17 +10,14 @@ import { MatConfirmDialogComponent } from 'projects/dialogs-lib/src/components/m
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { CodeInputModule } from 'angular-code-input';
-import { LoginRepository } from '../core/repositories/login.repository';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginRepositoryImpl } from '../infraestructure/repositories/login.repository.impl';
-import { RecoverRepository } from '../core/repositories/recover.repository';
-import { RecoverRepositoryImpl } from '../infraestructure/repositories/recover.repository.impl';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { loginReducer } from 'projects/store-lib/src/public-api';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { AuthRepository } from '../core/repositories/auth.repository';
+import { AuthService } from '../infraestructure/services/auth.service';
 
 
 @NgModule({
@@ -45,8 +42,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
     ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
-    StoreModule.forFeature('feature', loginReducer),
-    StoreDevtoolsModule.instrument({ name: 'TEST' }),
+    StoreModule.forFeature('loginReducer', loginReducer),
     ToastrModule.forRoot()
   ],
   exports: [
@@ -57,12 +53,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   ],
   providers: [
     {
-      provide: LoginRepository,
-      useClass: LoginRepositoryImpl,
-    },
-    {
-      provide: RecoverRepository,
-      useClass: RecoverRepositoryImpl,
+      provide: AuthRepository,
+      useClass: AuthService,
     },
     {
       provide: MatDialogRef,

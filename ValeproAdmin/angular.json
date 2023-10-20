@@ -34,7 +34,7 @@
 							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"./node_modules/swiper/swiper-bundle.css",
 							"projects/administrator/src/scss/styles.scss",
-							"node_modules/ngx-toastr/toastr.css"
+							"projects/administrator/src/scss/toastr.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/administrator/webpack.config.js",
@@ -230,7 +230,7 @@
 							"./node_modules/bootstrap/dist/css/bootstrap.min.css",
 							"./node_modules/swiper/swiper-bundle.css",
 							"projects/administrator/src/scss/styles.scss",
-							"node_modules/ngx-toastr/toastr.css"
+							"projects/administrator/src/scss/toastr.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/authorizer/webpack.config.js",
@@ -438,7 +438,7 @@
 						],
 						"styles": [
 							"projects/program-management/src/styles.scss",
-							"node_modules/ngx-toastr/toastr.css"
+							"projects/administrator/src/scss/toastr.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/program-management/webpack.config.js",
@@ -638,7 +638,7 @@
 						],
 						"styles": [
 							"projects/system/src/styles.scss",
-							"node_modules/ngx-toastr/toastr.css"
+							"projects/administrator/src/scss/toastr.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/system/webpack.config.js",
@@ -807,7 +807,7 @@
 						],
 						"styles": [
 							"projects/user-admin/src/styles.scss",
-              "node_modules/ngx-toastr/toastr.css"
+              "projects/administrator/src/scss/toastr.css"
 						],
 						"scripts": [],
 						"extraWebpackConfig": "projects/user-admin/webpack.config.js",

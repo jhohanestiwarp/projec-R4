@@ -22,10 +22,10 @@ export class HomeComponent {
   }
 
   setIsMenuInserted(value: boolean): void {
-   this.isMenuInserted = value;
-   }
+    this.isMenuInserted = value;
+  }
 
   toggleSubMenu(item: any): void {
     item.subMenuVisible = !item.subMenuVisible;
-   }
+  }
 }

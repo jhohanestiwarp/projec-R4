@@ -12,6 +12,8 @@ import { AuthInterceptor } from './infrastructure/services/auth.interceptor';
 import { StoreModule } from '@ngrx/store';
 import { ROOT_REDUCERS } from 'projects/store-lib/src/lib/store/app.state';
 import { LookAndFeelService } from './infrastructure/services/look-and-feel.service';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MaterialModule } from './modules/shared/material.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,9 @@ import { LookAndFeelService } from './infrastructure/services/look-and-feel.serv
     SharedModule,
     MatIconModule,
     RouterModule,
+    MaterialModule,
     StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ name: 'TEST' }),
   ],
   providers: [
     { provide: LookAndFeelRepository, useClass:LookAndFeelService  },
@@ -31,7 +35,7 @@ import { LookAndFeelService } from './infrastructure/services/look-and-feel.serv
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    },
+    }
   ],
   bootstrap: [AppComponent],
 })

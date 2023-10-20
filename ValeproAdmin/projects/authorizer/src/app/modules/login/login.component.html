@@ -4,9 +4,7 @@
   </div>
 
   <div class="fr2">
-
     <div class="row login_row_form">
-
       <div class="col-12 login_col_form">
         <form *ngIf="loginForm" [formGroup]="loginForm">
           <mat-label class="login_label">Iniciar sesión</mat-label>
@@ -24,13 +22,10 @@
           </mat-form-field>
           <a class="login_a" (click)="navigate()">Recuperar contraseña</a>
           <div class="col-12 login_button">
-            <button class="login_btn" type="submit" (click)="login()">Ingresar</button>
+            <button [disabled]="$loading | async" class="login_btn" type="submit" (click)="login()">Ingresar</button>
           </div>
         </form>
       </div>
-
-
-
     </div>
 
   </div>

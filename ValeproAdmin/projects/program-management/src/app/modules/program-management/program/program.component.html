@@ -1,0 +1,10 @@
+<div class="container-fluid">
+  <div class="system__managment-nav-bar Program-top-bar">
+    <button [routerLink]="['/main/programs']" routerLinkActive="active-button" [class.activo]="istrue"
+      (click)="activo()">Información general</button>
+    <button [routerLink]="['/main/programs/program-sections']" routerLinkActive="active-button"
+      [class.activo2]="istrue2" (click)="activo()">Gestión de
+      secciones</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>

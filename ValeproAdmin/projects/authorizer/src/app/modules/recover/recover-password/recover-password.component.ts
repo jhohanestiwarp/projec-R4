@@ -3,12 +3,14 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { DialogParams } from 'projects/dialogs-lib/src/models/dialog-params.model';
 import { DialogService } from 'projects/dialogs-lib/src/services/dialog.service';
-import { RecoverRepository } from '../../../core/repositories/recover.repository';
 import { ResponseBase } from '../../../core/models/responseBase.model';
 import { ValidateCodeRequestModel, ValidateCodeResponseModel } from '../../../core/models/validateCode.model';
 import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../../core/models/generateCodeRequest.model';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { AuthRepository } from '../../../core/repositories/auth.repository';
+import { ErrorResponseModel } from '../../../core/models/responseError.model';
 
 
 
@@ -22,7 +24,7 @@ export class RecoverPasswordComponent implements OnInit {
   logo: string = '';
   hide = true;
   hide1 = true;
-  recoverForm: FormGroup;
+  recoverForm!: FormGroup;
   anio: number = new Date().getFullYear();
   showError: boolean = false;
   date = new Date('2020-01-01 00:05');
@@ -33,20 +35,26 @@ export class RecoverPasswordComponent implements OnInit {
   codeCompleteControl: string = '';
   username: string = '';
   showResend: boolean = false;
-  constructor(
-    private router: Router,
-    private dialogService: DialogService,
-    private recoverRepository: RecoverRepository,
-    private toastService: ToastrService
-  ) {
+
+  //#region Injectables
+  router = inject(Router);
+  dialogService = inject(DialogService);
+  recoverRepository = inject(AuthRepository);
+  toastService = inject(ToastrService);
+  //#endregion
+
+
+  ngOnInit(): void {
+    this.createForm();
+    this.countDown();
+    this.username = sessionStorage.getItem('username')!;
+  }
+
+  createForm() {
     this.recoverForm = new FormGroup({
       Pass: new FormControl('', [Validators.required]),
       NewPass: new FormControl('', [Validators.required]),
     });
-  }
-  ngOnInit(): void {
-    this.countDown();
-    this.username = sessionStorage.getItem('username')!;
   }
 
   get codeComplete(): AbstractControl | null {
@@ -120,6 +128,7 @@ export class RecoverPasswordComponent implements OnInit {
       return;
     }
 
+
     if (!this.recoverForm.get('Pass')?.value || !this.recoverForm.get('NewPass')?.value) {
       this.toastService.error('La información ingresada no es válida.', undefined, {
         timeOut: 9000,
@@ -156,16 +165,31 @@ export class RecoverPasswordComponent implements OnInit {
         this.router.navigate(['/login']);
 
       },
-      error: (error: HttpErrorResponse) => {
-        this.toastService.error(error.error.Message, undefined, {
-          timeOut: 9000,
-          progressBar: true,
-          disableTimeOut: 'extendedTimeOut',
-          progressAnimation: 'increasing',
-          tapToDismiss: false,
-          positionClass: 'toast-top-center',
-          closeButton: true,
-        });
+      error: (error: ResponseBase<ErrorResponseModel[]>) => {
+        let res = error;
+        console.log(res, 'joselo');
+        if (res.codeId == 400) {
+          this.toastService.error(res.data[0].ErrorMessage, undefined, {
+            timeOut: 9000,
+            progressBar: true,
+            disableTimeOut: 'extendedTimeOut',
+            progressAnimation: 'increasing',
+            tapToDismiss: false,
+            positionClass: 'toast-top-center',
+            closeButton: true,
+          });
+        } else {
+          this.toastService.error(error.message, undefined, {
+            timeOut: 9000,
+            progressBar: true,
+            disableTimeOut: 'extendedTimeOut',
+            progressAnimation: 'increasing',
+            tapToDismiss: false,
+            positionClass: 'toast-top-center',
+            closeButton: true,
+          });
+        }
+
       },
     });
   }

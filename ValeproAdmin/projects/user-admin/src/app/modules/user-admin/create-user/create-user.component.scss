@@ -1,0 +1,100 @@
+.fomr {
+  display: flex;
+  flex-direction: column;
+}
+
+.programas-secciones-title {
+  display: flex;
+  flex-direction: column;
+
+  span {
+    color: var(--ngx-valepro-color-tertiary);
+  }
+
+}
+
+::ng-deep .mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  margin-left: 1px;
+  margin-right: 0px;
+  content: "" !important;
+}
+
+.btn-ingresar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .submit_btn {
+    border-radius: 50px;
+    border: none;
+    background-color: var(--color-secundario);
+    min-height: 50px;
+    font-family: "bold";
+    font-size: 16px;
+    color: #1A0C3F;
+    width: 100%;
+    margin: 2rem 0rem;
+    max-width: 260px;
+  }
+}
+
+.programas-secciones {
+  padding: 0rem 1rem;
+}
+
+.box-datepicker {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+  width: 100%;
+  height: 185px;
+  padding-bottom: 5rem;
+}
+
+
+.mat-stepper-horizontal {
+  margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+  margin-top: 16px;
+}
+
+
+//Tablet
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .box-datepicker {
+
+    grid-template-columns: 1fr 1fr;
+    height: 60px;
+
+  }
+
+  .programas-secciones {
+    padding: 0rem 2rem;
+  }
+
+}
+
+//Web
+
+@media screen and (min-width: 1024px) {
+
+  .box-datepicker {
+
+    grid-template-columns: 1fr 1fr;
+    height: 60px;
+  }
+
+  .programas-secciones {
+    padding: 0rem 4rem;
+  }
+
+}

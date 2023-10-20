@@ -1,0 +1,214 @@
+<div class="container ">
+  <div class="row align-items-start">
+    <div class="programas-secciones">
+      <div class="programas-secciones-title">
+        <span class="bold-32 mb-2">Crear usuario (Individual)</span>
+      </div>
+
+      <form action="">
+
+        <div class="form" [formGroup]="formGroupUser">
+
+          <mat-form-field>
+            <mat-label>Tipo de documento</mat-label>
+            <mat-select formControlName="documentId">
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Número de identificación</mat-label>
+            <input matInput placeholder="Número de identificación">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Primer nombre</mat-label>
+            <input matInput placeholder="Primer nombre">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Segundo nombre</mat-label>
+            <input matInput placeholder="Segundo nombre">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Primer apellido</mat-label>
+            <input matInput placeholder="Primer apellido">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Segundo apellido</mat-label>
+            <input matInput placeholder="Segundo apellido">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Número telefónico</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput placeholder="Correo electrónico">
+          </mat-form-field>
+
+          <!--segunda pantalla  -->
+
+          <mat-form-field>
+            <mat-label>País de residencia</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Departamento / Estado de residencia</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Ciudad de residencia</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Dirección completa de residencia</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Barrio de residencia</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Sexo</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Tipo persona</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!--tercera pantalla  -->
+
+          <mat-form-field>
+            <mat-label>Fecha de nacimiento</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento">
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>NIT Empresa</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>NIT Establecimiento</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Nombre establecimiento</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Número telefónico establecimiento</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Dirección establecimiento</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Rol</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="check-box">
+            <span>Estado</span>
+            <section class="example-section">
+              <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+              <mat-checkbox class="example-margin">Disabled</mat-checkbox>
+            </section>
+          </div>
+
+          <!-- pantalla cuatro    -->
+
+
+          <mat-form-field>
+            <mat-label>IDAgencia</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Código externo</mat-label>
+            <input matInput placeholder="Centro de costo">
+          </mat-form-field>
+
+
+          <div class="check-box">
+            <section class="example-section">
+              <mat-label>CrearSiempreAfiliado</mat-label>
+              <mat-checkbox class="example-margin"></mat-checkbox>
+              <mat-label>CrearSiempreCuenta</mat-label>
+              <mat-checkbox class="example-margin"></mat-checkbox>
+              <mat-label>CrearSiempreEstablecimiento</mat-label>
+              <mat-checkbox class="example-margin"></mat-checkbox>
+            </section>
+          </div>
+
+
+
+
+
+          <div class="col-12 col-md-4 btn-ingresar ">
+            <button class="submit_btn" type="submit">Guardar</button>
+          </div>
+
+
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>

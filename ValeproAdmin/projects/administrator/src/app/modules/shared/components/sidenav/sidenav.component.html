@@ -1,75 +1,59 @@
 <div class="dashboard-container" [class.is-mobile]="mobileQuery.matches">
 
   <!-- empieza toolbar-->
-  <mat-toolbar class="mat-primary dashboard-toolbar">
+  <mat-toolbar class="mat-primary dashboard-toolbar top-bar-movil">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon class="custom-icon">menu</mat-icon></button>
-
-    <div class="right">
-      <ul>
-        <li>
-          <button mat-icon-button>
-          </button>
-        </li>
-        <li>
-          <b class="app-logo">
-            <!-- Agregar la imagen de fondo como fondo de este elemento -->
-          </b>
-        </li>
-      </ul>
-    </div>
-    <button *ngIf="isMobile" mat-icon-button (click)="null">
+    <button mat-icon-button (click)="null">
       <mat-icon class="custom-icon">person_outline</mat-icon>
     </button>
-
-
   </mat-toolbar>
 
   <!-- empieza sidenav-->
-  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches? 'over': 'side'" [fixedInViewport]="mobileQuery.matches"
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #snav [mode]="drawerMode" [opened]="menuAbierto" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-
-      <mat-nav-list>
-        <!--profile-->
+      <div class="main-sidenav">
+        <mat-nav-list>
+          <div class="profile-card">
+            <div class="header">
+              <mat-icon class="custom-icon">person_outline</mat-icon>
+              <div class="bold-14">Nombre Apellido</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <ul>
+            <ng-container *ngFor="let item of menuNav">
+              <li>
+                <span class="header" (click)="toggleSubMenu(item)">
+                  <span class="bold-14">{{ item.name }}</span>
+                  <mat-icon *ngIf=" item.subMenu" class="expand-icon">{{ item.subMenuVisible ? 'expand_less' :
+                    'expand_more' }}</mat-icon>
+                </span>
+                <ul *ngIf="item.subMenuVisible" class="header">
+                  <li *ngFor="let subItem of item.subMenu">
+                    <a mat-list-item [routerLink]="subItem.route">
+                      <span class="bold-14">{{ subItem.name }}</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ng-container>
+          </ul>
+        </mat-nav-list>
 
         <div class="profile-card">
-          <div class="header">
-            <mat-icon class="custom-icon">person_outline</mat-icon>
-            <div class="bold-14">Nombre</div>
-            <div class="bold-14">Apellido</div>
+          <div class="btn-main-logout" (click)="logout()">
+            <mat-icon class="custom-icon">logout</mat-icon>
+            <div class="bold-14">Cerrar sesión</div>
           </div>
         </div>
-
-
-        <mat-divider></mat-divider>
-
-
-        <ul>
-          <ng-container *ngFor="let item of menuNav">
-            <li>
-              <span class="header" (click)="toggleSubMenu(item)">
-                <span class="bold-14">{{ item.name }}</span>
-                <mat-icon *ngIf=" item.subMenu" class="expand-icon">{{ item.subMenuVisible ? 'expand_less' :
-                  'expand_more' }}</mat-icon>
-              </span>
-              <ul *ngIf="item.subMenuVisible" class="header">
-                <li *ngFor="let subItem of item.subMenu">
-                  <a mat-list-item [routerLink]="subItem.route">
-                    <span class="bold-14">{{ subItem.name }}</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ng-container>
-        </ul>
-
-
-
-      </mat-nav-list>
-
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
+      <mat-toolbar class="mat-primary dashboard-toolbar  top-bar-escritorio">
+      </mat-toolbar>
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
 

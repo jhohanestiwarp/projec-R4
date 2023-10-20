@@ -5,7 +5,7 @@ module.exports = withModuleFederationPlugin({
   name: 'Program',
 
   exposes: {
-    './ProgramManagementModule': 'projects/program-management/src/app/program-management/program-management.module.ts',
+    './ProgramManagementModule': 'projects/program-management/src/app/modules/program-management/program-management.module.ts',
   },
 
   shared: {
