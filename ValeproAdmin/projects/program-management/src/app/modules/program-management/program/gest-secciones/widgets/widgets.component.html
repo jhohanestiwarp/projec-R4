@@ -1,40 +1,73 @@
-<!-- <div class="container ">
+<div class="container ">
   <div class="row align-items-start">
     <div class="col">
-      <div class="fomr">
-        <span>Configuración de banner principal</span>
-        <mat-form-field>
-          <mat-label>Nombre de la board</mat-label>
-          <input matInput>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Modo de apertura</mat-label>
-          <input matInput>
-        </mat-form-field>
+      <form [formGroup]="widgetSelect">
+        <div class="fomr">
 
+          <span class="bold-14 primario mb-2">Configuración de recursos</span>
 
+          <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input formControlName="titulo" matInput placeholder="Título" autocomplete="off">
+          </mat-form-field>
 
-        <span>Carga de imágenes</span>
-        <mat-form-field>
-          <mat-label>URL de la imagen</mat-label>
-          <input matInput>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>Segmento</mat-label>
+            <mat-select [(value)]="selectedSegmento" placeholder="Segmento">
+              <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
+                {{Segmento.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
+          <div class="box-datepicker-banner">
 
-        <div class="col-12">
-          <span>Selecciona una imagen</span>
-          <button type="submit">Subir imagen</button>
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <input formControlName="starDate" [min]="currentDate" matInput [matDatepicker]="startPicker"
+                placeholder="Vigencia - Fecha de inicio">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <input formControlName="endDate" [min]="widgetSelect.get('starDate')!.value" matInput
+                [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+              <mat-datepicker #endPicker></mat-datepicker>
+            </mat-form-field>
+
+          </div>
+
+          <span class="bold-14 primario mb-2">Carga de imágenes</span>
+          <div class="uploadImg">
+            <div class="uploadImg-text primario">
+              <span class="regular-16 primary20">Selecciona una imagen</span>
+            </div>
+            <div class="uploadImg-Btn primario">
+              <button type="submit" class="bold-16 primario">Subir imagen </button><mat-icon
+                class="custom-icon">file_upload</mat-icon>
+            </div>
+
+          </div>
+          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 390x270
+            píxeles.</span>
+
+          <mat-form-field>
+            <mat-label>URL de contenido</mat-label>
+            <input formControlName="url" matInput placeholder="URL de contenido" autocomplete="off">
+          </mat-form-field>
+
+          <div class="col-12 col-md-4 btn-ingresar ">
+            <button [disabled]="widgetSelect.invalid" class="submit_btn" type="submit"
+              (click)="submit()">Guardar</button>
+          </div>
+
         </div>
-
-        <span>* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas tincidunt mi a sem laoreet
-          aenean.</span>
-
-        <div class="col-12">
-          <button type="submit">Guardar</button>
-        </div>
-
-      </div>
-
+      </form>
     </div>
   </div>
-</div> -->
+</div>

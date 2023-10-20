@@ -13,11 +13,11 @@ import { ProgramRepository } from 'projects/program-management/src/app/core/repo
   templateUrl: './info-general.component.html',
   styleUrls: ['./info-general.component.scss']
 })
-export class InfoGeneralComponent{
-
+export class InfoGeneralComponent {
+  currentDate: Date = new Date();
   //#region Injects
-  programRepository:ProgramRepository = inject(ProgramRepository);
-  diviPolaRepository: DivipolaRepository =  inject(DivipolaRepository);
+  programRepository: ProgramRepository = inject(ProgramRepository);
+  diviPolaRepository: DivipolaRepository = inject(DivipolaRepository);
   formBuilder: FormBuilder = inject(FormBuilder);
   store: Store = inject(Store);
   //#endregion
@@ -32,13 +32,13 @@ export class InfoGeneralComponent{
   _listCities: DivipolaResponse[] = [];
   //#endregion
 
-  constructor(){
+  constructor() {
     this.creatreForm();
     this.getCountry();
   }
 
-  creatreForm(){
-    this.programCreateForm =  this.formBuilder.group({
+  creatreForm() {
+    this.programCreateForm = this.formBuilder.group({
       programName: ['', Validators.required],
       starDate: ['', Validators.required],
       endDate: ['', Validators.required],
@@ -50,34 +50,34 @@ export class InfoGeneralComponent{
     });
   }
 
-  getCountry(){
+  getCountry() {
     this.diviPolaRepository.getCountry(0).subscribe({
-      next: (data: ResponseBase<DivipolaResponse[]>)=> {
+      next: (data: ResponseBase<DivipolaResponse[]>) => {
         this._listCountry = data.data;
       },
-      error: (error: HttpErrorResponse) => { console.error(error);}
+      error: (error: HttpErrorResponse) => { console.error(error); }
     });
   }
 
-  getDepartments(){
-    this.diviPolaRepository.getDepartment(0 ,this.programCreateForm.get('country')?.value).subscribe({
-      next: (data: ResponseBase<DivipolaResponse[]>)=> {
+  getDepartments() {
+    this.diviPolaRepository.getDepartment(0, this.programCreateForm.get('country')?.value).subscribe({
+      next: (data: ResponseBase<DivipolaResponse[]>) => {
         this._listDepartments = data.data;
       },
-      error: (error: HttpErrorResponse) => { console.error(error);}
+      error: (error: HttpErrorResponse) => { console.error(error); }
     });
   }
 
-  getCities(){
+  getCities() {
     this.diviPolaRepository.getCities(0, this.programCreateForm.get('country')?.value, this.programCreateForm.get('department')?.value).subscribe({
-      next: (data: ResponseBase<DivipolaResponse[]>)=> {
+      next: (data: ResponseBase<DivipolaResponse[]>) => {
         this._listCities = data.data;
       },
-      error: (error: HttpErrorResponse) => { console.error(error);}
+      error: (error: HttpErrorResponse) => { console.error(error); }
     });
   }
 
-  saveProgram(){
+  saveProgram() {
     let programModel: ProgramSaveRequestModel = {
       name: this.programCreateForm.get('programName')?.value,
       startDateValidity: this.programCreateForm.get('starDate')?.value,

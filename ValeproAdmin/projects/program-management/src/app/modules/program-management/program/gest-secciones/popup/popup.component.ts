@@ -9,23 +9,22 @@ interface Parts {
 
 
 @Component({
-  selector: 'app-widgets',
-  templateUrl: './widgets.component.html',
-  styleUrls: ['./widgets.component.scss']
+  selector: 'app-popup',
+  templateUrl: './popup.component.html',
+  styleUrls: ['./popup.component.scss']
 })
-export class WidgetsComponent {
+export class PopupComponent {
+
 
   //#region variables
-  widgetSelect!: FormGroup;
+  popupSelect!: FormGroup;
   selectedSegmento?: string;
   currentDate: Date = new Date();
-
   //#endregion
 
   //#region Injectables
   dialogService = inject(DialogService);
   //#endregion
-
 
   Segmentos: Parts[] = [
     { value: 'Option 1', viewValue: 'Option 1' },
@@ -36,8 +35,7 @@ export class WidgetsComponent {
 
 
   constructor(private formBuilder: FormBuilder) {
-    this.widgetSelect = this.formBuilder.group({
-      titulo: ['', Validators.required],
+    this.popupSelect = this.formBuilder.group({
       starDate: ['', Validators.required],
       endDate: ['', Validators.required],
       url: ['', Validators.required],

@@ -941,6 +941,18 @@ $fte-parrafo-book: $font-book;
   &.gris {
     color: #acacac;
   }
+
+  &.primary20 {
+    color: var(--color-primario20);
+  }
+
+  &.primary40 {
+    color: var(--color-primario40);
+  }
+
+  &.primary60 {
+    color: var(--color-primario60);
+  }
 }
 
 .regular-15 {

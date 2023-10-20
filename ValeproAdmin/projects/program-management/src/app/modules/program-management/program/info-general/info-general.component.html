@@ -17,7 +17,8 @@
           <div class="box-datepicker">
             <mat-form-field>
               <mat-label>Vigencia - Fecha de inicio</mat-label>
-              <input formControlName="starDate" matInput [matDatepicker]="startPicker" placeholder="Vigencia - Fecha de inicio">
+              <input formControlName="starDate" matInput [matDatepicker]="startPicker"
+                placeholder="Vigencia - Fecha de inicio" [min]="currentDate">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
               <mat-datepicker #startPicker></mat-datepicker>
@@ -25,7 +26,8 @@
 
             <mat-form-field>
               <mat-label>Vigencia - Fecha de fin</mat-label>
-              <input formControlName="endDate" [min]="programCreateForm.get('starDate')!.value" matInput [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
+              <input formControlName="endDate" [min]="programCreateForm.get('starDate')!.value" matInput
+                [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
               <mat-hint>DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
               <mat-datepicker #endPicker></mat-datepicker>
@@ -44,13 +46,15 @@
           <mat-form-field>
             <mat-label>País</mat-label>
             <mat-select formControlName="country" (selectionChange)="getDepartments()">
-              <mat-option [value]="countryItem.codeId" *ngFor="let countryItem of _listCountry">{{countryItem.name}}</mat-option>
+              <mat-option [value]="countryItem.codeId"
+                *ngFor="let countryItem of _listCountry">{{countryItem.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Departamento / Estado</mat-label>
             <mat-select formControlName="department" (selectionChange)="getCities()">
-              <mat-option [value]="departmentItem.name" *ngFor="let departmentItem of _listDepartments">{{departmentItem.name}}</mat-option>
+              <mat-option [value]="departmentItem.name"
+                *ngFor="let departmentItem of _listDepartments">{{departmentItem.name}}</mat-option>
             </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -66,7 +70,8 @@
           </mat-form-field>
 
           <div class="col-12 col-md-4 btn-ingresar ">
-            <button (click)="saveProgram()" [disabled]="programCreateForm.invalid" class="submit_btn" type="submit">Guardar</button>
+            <button (click)="saveProgram()" [disabled]="programCreateForm.invalid" class="submit_btn"
+              type="submit">Guardar</button>
           </div>
         </div>
       </form>

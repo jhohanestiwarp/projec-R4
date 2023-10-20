@@ -3,6 +3,8 @@
   flex-direction: column;
 }
 
+
+
 .programas-secciones-title {
   display: flex;
   flex-direction: column;
@@ -76,6 +78,11 @@
 //Web
 
 @media screen and (min-width: 1024px) {
+
+  .container {
+    width: 900px;
+    margin: 0 auto;
+  }
 
   .box-datepicker {
 

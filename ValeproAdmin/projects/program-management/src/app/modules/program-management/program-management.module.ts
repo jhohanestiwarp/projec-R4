@@ -1,3 +1,4 @@
+
 import { DivipolaService } from './../../infraestructure/services/city/divipola.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -22,6 +23,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ProgramRepository } from '../../core/repositories/program.repository';
 import { ProgramService } from '../../infraestructure/services/program/program.service';
 import { DivipolaRepository } from '../../core/repositories/divipola.repository';
+import { PopupComponent } from './program/gest-secciones/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { DivipolaRepository } from '../../core/repositories/divipola.repository'
     InfoGeneralComponent,
     GestSeccionesComponent,
     WidgetsComponent,
-    NewsComponent
+    NewsComponent,
+    PopupComponent
   ],
   imports: [
     CommonModule,
@@ -51,8 +54,8 @@ import { DivipolaRepository } from '../../core/repositories/divipola.repository'
     DragDropModule
   ],
   providers: [
-    { provide: ProgramRepository, useClass:ProgramService  },
-    { provide: DivipolaRepository, useClass:DivipolaService  },
+    { provide: ProgramRepository, useClass: ProgramService },
+    { provide: DivipolaRepository, useClass: DivipolaService },
   ],
 })
 export class ProgramManagementModule { }

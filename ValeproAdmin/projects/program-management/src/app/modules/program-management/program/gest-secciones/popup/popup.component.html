@@ -1,15 +1,12 @@
 <div class="container ">
   <div class="row align-items-start">
     <div class="col">
-      <form [formGroup]="newsSelect">
+      <form [formGroup]="popupSelect">
         <div class="fomr">
 
           <span class="bold-14 primario mb-2">Configuración de recursos</span>
 
-          <mat-form-field>
-            <mat-label>Título</mat-label>
-            <input formControlName="titulo" matInput placeholder="Título" autocomplete="off">
-          </mat-form-field>
+
 
           <mat-form-field>
             <mat-label>Segmento</mat-label>
@@ -33,7 +30,7 @@
 
             <mat-form-field>
               <mat-label>Vigencia - Fecha de fin</mat-label>
-              <input formControlName="endDate" [min]="newsSelect.get('starDate')!.value" matInput
+              <input formControlName="endDate" [min]="popupSelect.get('starDate')!.value" matInput
                 [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
@@ -53,7 +50,7 @@
             </div>
 
           </div>
-          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 1061x308
+          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 890x470
             píxeles.</span>
 
           <mat-form-field>
@@ -62,7 +59,8 @@
           </mat-form-field>
 
           <div class="col-12 col-md-4 btn-ingresar ">
-            <button [disabled]="newsSelect.invalid" class="submit_btn" type="submit" (click)="submit()">Guardar</button>
+            <button [disabled]="popupSelect.invalid" class="submit_btn" type="submit"
+              (click)="submit()">Guardar</button>
           </div>
 
         </div>

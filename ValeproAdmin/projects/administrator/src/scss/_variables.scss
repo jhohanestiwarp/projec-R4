@@ -1,6 +1,9 @@
 //colores
 
 $primary: #1b0c3f;
+$primary20: #1A0C3F33;
+$primary40: #1A0C3F66;
+$primary60: #1A0C3F99;
 $secondary: #c567f2;
 $terciary: #f5f5f500;
 $alert: #db4040;
@@ -8,11 +11,14 @@ $succes: #40db62;
 $back: #F7F7F7;
 $white: #fff;
 $black: #000;
-$gray: #2c2a29;
+$gray: #C3C3C3;
 $light-gray: #1a0c3f66;
 
 :root {
   --color-primario: #{$primary};
+  --color-primario20: #{$primary20};
+  --color-primario40: #{$primary40};
+  --color-primario60: #{$primary60};
   --color-secundario: #{$secondary};
   --color-terciario: #{$terciary};
   --color-fondo: #{$back};

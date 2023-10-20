@@ -1,9 +1,93 @@
-table {
-  width: 100%;
-}
-
 .fomr {
   display: flex;
   flex-direction: column;
-  padding: 0 2rem;
+}
+
+.box-datepicker-banner {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: stretch;
+  align-items: stretch;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.uploadImg {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-gris);
+  margin-bottom: 1rem;
+
+  .uploadImg-text {
+    padding-left: 16px;
+  }
+
+  .uploadImg-Btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ngx-valepro-color-secondary);
+    margin: 0 auto;
+    border-radius: 22px;
+    width: 260px;
+    height: 44px;
+    padding-top: 0.3rem;
+  }
+}
+
+.btn-ingresar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  .submit_btn {
+    border-radius: 50px;
+    border: none;
+    background-color: var(--color-secundario);
+    min-height: 50px;
+    font-family: "bold";
+    font-size: 16px;
+    color: #1A0C3F;
+    width: 100%;
+    margin: 2rem 0rem;
+    max-width: 260px;
+  }
+}
+
+.txt-info {
+  padding-left: 16px;
+}
+
+//Tablet
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .uploadImg {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+
+  .box-datepicker-banner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+//Web
+
+@media screen and (min-width: 1024px) {
+  .uploadImg {
+    grid-template-columns: 1fr 1fr;
+    text-align: left;
+  }
+
+  .box-datepicker-banner {
+    grid-template-columns: 1fr 1fr;
+  }
 }
