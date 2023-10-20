@@ -13,6 +13,7 @@ import { BoardDeleteResponseMapper } from '../../../core/mappers/boardDeleteResp
 import { BoardByTypeAndProgramResponseDTO, BoardCreateResponseDTO, BoardDeleteResponseDTO } from '../../dto/board.dto';
 import { BoardByTypeAndProgramResponseMapper } from '../../../core/mappers/boardByTypeAndProgramResponse.mapper';
 import { BoardCreateResponseMapper } from '../../../core/mappers/boardCreateResponse.mapper';
+import { ResponseBase } from '../../../core/models/responseBase.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,19 +25,19 @@ export class BoardService implements BoardRepository {
 
   boardCreate(params: BoardCreateRequest) {
     const boardParams = BoardCreateMapper.fromDomainToApi(params);
-    return this.http.post<BoardCreateResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
-      .pipe(map(data => BoardCreateResponseMapper.fromApiToDomain(data)));
+    return this.http.post<ResponseBase<BoardCreateResponseDTO>>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+      .pipe(map(res => ({ ...res, data: BoardCreateResponseMapper.fromApiToDomain(res.data) })));
   }
 
   boardDelete(params: BoardDeleteRequest) {
     const boardParams = BoardDeleteMapper.fromDomainToApi(params);
-    return this.http.delete<BoardDeleteResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}${boardParams.BoardId}`)
-      .pipe(map(data => BoardDeleteResponseMapper.fromApiToDomain(data)));
+    return this.http.delete<ResponseBase<BoardDeleteResponseDTO>>(`${env.apiUrlBoard}${this.baseUrl}${boardParams.BoardId}`)
+      .pipe(map(res => ({ ...res, data: BoardDeleteResponseMapper.fromApiToDomain(res.data) })));
   }
 
   getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest) {
     const boardParams = BoardByTypeAndProgramMapper.fromDomainToApi(params);
-    return this.http.post<BoardByTypeAndProgramResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
-      .pipe(map(data => BoardByTypeAndProgramResponseMapper.fromApiToDomain(data)));
+    return this.http.post<ResponseBase<BoardByTypeAndProgramResponseDTO>>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+      .pipe(map(res => ({ ...res, data: BoardByTypeAndProgramResponseMapper.fromApiToDomain(res.data) })));
   }
 }
