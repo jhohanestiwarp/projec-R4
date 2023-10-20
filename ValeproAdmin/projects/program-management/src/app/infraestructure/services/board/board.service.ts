@@ -1,21 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ProgramRepository } from '../../../core/repositories/program.repository';
+import { map } from 'rxjs';
 import { environment as env } from '../../../../environments/environment';
 import { BoardCreateMapper } from '../../../core/mappers/boardCreate.mapper';
-import { ProgramSaveRequestModel } from '../../../core/models/programSaveRequest.model';
-import { ResponseBase } from '../../../core/models/responseBase.model';
-import { ProgramDTO } from '../../dto/program.dto';
 import { BoardCreateRequest } from '../../../core/models/boardCreateRequest.model';
 import { BoardRepository } from '../../../core/repositories/board.repository';
-import { BoardCreateResponse } from '../../../core/models/boardCreateResponse.model';
 import { BoardDeleteMapper } from '../../../core/mappers/boardDelete.mapper';
-import { BoardDeleteResponse } from '../../../core/models/boardDeleteResponse.model';
 import { BoardDeleteRequest } from '../../../core/models/boardDeleteRequest.model';
 import { BoardByTypeAndProgramMapper } from '../../../core/mappers/boardByTypeAndProgram.mapper';
 import { BoardByTypeAndProgramRequest } from '../../../core/models/boardByTypeAndProgramRequest.model';
-import { BoardByTypeAndProgramResponse } from '../../../core/models/boardByTypeAndProgramResponse.model';
+import { BoardDeleteResponseMapper } from '../../../core/mappers/boardDeleteResponse.mapper';
+import { BoardByTypeAndProgramResponseDTO, BoardCreateResponseDTO, BoardDeleteResponseDTO } from '../../dto/board.dto';
+import { BoardByTypeAndProgramResponseMapper } from '../../../core/mappers/boardByTypeAndProgramResponse.mapper';
+import { BoardCreateResponseMapper } from '../../../core/mappers/boardCreateResponse.mapper';
 
 @Injectable({
   providedIn: 'root'
@@ -27,17 +24,19 @@ export class BoardService implements BoardRepository {
 
   boardCreate(params: BoardCreateRequest) {
     const boardParams = BoardCreateMapper.fromDomainToApi(params);
-
-    return this.http.post<BoardCreateResponse>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams);
+    return this.http.post<BoardCreateResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+      .pipe(map(data => BoardCreateResponseMapper.fromApiToDomain(data)));
   }
 
   boardDelete(params: BoardDeleteRequest) {
     const boardParams = BoardDeleteMapper.fromDomainToApi(params);
-    return this.http.delete<BoardDeleteResponse>(`${env.apiUrlBoard}${this.baseUrl}${boardParams.BoardId}`)
+    return this.http.delete<BoardDeleteResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}${boardParams.BoardId}`)
+      .pipe(map(data => BoardDeleteResponseMapper.fromApiToDomain(data)));
   }
 
   getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest) {
     const boardParams = BoardByTypeAndProgramMapper.fromDomainToApi(params);
-    return this.http.post<BoardByTypeAndProgramResponse>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+    return this.http.post<BoardByTypeAndProgramResponseDTO>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+      .pipe(map(data => BoardByTypeAndProgramResponseMapper.fromApiToDomain(data)));
   }
 }

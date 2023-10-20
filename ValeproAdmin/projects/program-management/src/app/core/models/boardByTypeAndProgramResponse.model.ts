@@ -1,20 +1,20 @@
 export class BoardByTypeAndProgramResponse {
   constructor(
-    public BoardId: number,
-    public BoardTypeId: number,
-    public LanguageId: number,
-    public ProgramId: number,
-    public Name: string,
-    public StartDateValidity: string,
-    public EndDateValidity: string,
-    public OpeningModeId: number,
-    public Url: string,
-    public Image: string,
-    public DisplayOrder: number,
-    public Properties: string,
-    public DateRegister: string,
-    public DateUpdate: string,
-    public PersonIdCreate: number,
-    public PersonIdUpdate: number
+    public boardId: number,
+    public boardTypeId: number,
+    public languageId: number,
+    public programId: number,
+    public name: string,
+    public startDateValidity: string,
+    public endDateValidity: string,
+    public openingModeId: number,
+    public url: string,
+    public image: string,
+    public displayOrder: number,
+    public properties: string,
+    public dateRegister: string,
+    public dateUpdate: string,
+    public personIdCreate: number,
+    public personIdUpdate: number
   ) {}
 }

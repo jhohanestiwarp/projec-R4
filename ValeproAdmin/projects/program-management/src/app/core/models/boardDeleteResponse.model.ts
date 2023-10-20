@@ -1,5 +1,5 @@
 export class BoardDeleteResponse {
   constructor(
-    public DeleteBoardStatus: boolean
+    public deleteBoardStatus: boolean
   ) {}
 }

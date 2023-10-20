@@ -1,28 +1,28 @@
 export interface BoardCreateResponseDTO {
-  createBoardStatus: boolean;
+  CreateBoardStatus: boolean;
 }
 
 export interface BoardDeleteResponseDTO {
-  deleteBoardStatus: boolean;
+  DeleteBoardStatus: boolean;
 }
 
 export interface BoardByTypeAndProgramResponseDTO {
-  boardId: number;
-  boardTypeId: number;
-  languageId: number;
-  programId: number;
-  name: string;
-  startDateValidity: string;
-  endDateValidity: string;
-  openingModeId: number;
-  url: string;
-  image: string;
-  displayOrder: number;
-  properties: string;
-  dateRegister: string;
-  dateUpdate: string;
-  personIdCreate: number;
-  personIdUpdate: number;
+  BoardId: number;
+  BoardTypeId: number;
+  LanguageId: number;
+  ProgramId: number;
+  Name: string;
+  StartDateValidity: string;
+  EndDateValidity: string;
+  OpeningModeId: number;
+  Url: string;
+  Image: string;
+  DisplayOrder: number;
+  Properties: string;
+  DateRegister: string;
+  DateUpdate: string;
+  PersonIdCreate: number;
+  PersonIdUpdate: number;
 }
 
 export interface BoardCreateRequestDTO {

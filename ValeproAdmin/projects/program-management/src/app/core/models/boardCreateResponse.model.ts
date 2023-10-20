@@ -1,5 +1,5 @@
 export class BoardCreateResponse {
   constructor(
-    public CreateBoardStatus: boolean
+    public createBoardStatus: boolean
   ) {}
 }
