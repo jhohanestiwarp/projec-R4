@@ -24,6 +24,8 @@ import { ProgramRepository } from '../../core/repositories/program.repository';
 import { ProgramService } from '../../infraestructure/services/program/program.service';
 import { DivipolaRepository } from '../../core/repositories/divipola.repository';
 import { PopupComponent } from './program/gest-secciones/popup/popup.component';
+import { BoardRepository } from '../../core/repositories/board.repository';
+import { BoardService } from '../../infraestructure/services/board/board.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,7 @@ import { PopupComponent } from './program/gest-secciones/popup/popup.component';
   providers: [
     { provide: ProgramRepository, useClass: ProgramService },
     { provide: DivipolaRepository, useClass: DivipolaService },
+    { provide: BoardRepository, useClass: BoardService },
   ],
 })
 export class ProgramManagementModule { }
