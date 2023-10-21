@@ -10,5 +10,5 @@ import { ResponseBase } from '../models/responseBase.model';
 export abstract class BoardRepository {
   abstract boardCreate(params: BoardCreateRequest): Observable<ResponseBase<BoardCreateResponse>>;
   abstract boardDelete(params: BoardDeleteRequest): Observable<ResponseBase<BoardDeleteResponse>>;
-  abstract getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest): Observable<ResponseBase<BoardByTypeAndProgramResponse>>;
+  abstract getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest): Observable<ResponseBase<BoardByTypeAndProgramResponse[]>>;
 }

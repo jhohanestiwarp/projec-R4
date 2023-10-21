@@ -38,9 +38,9 @@ export class BoardService implements BoardRepository {
       .pipe(map(res => ({ ...res, data: BoardDeleteResponseMapper.fromApiToDomain(res.data) })));
   }
 
-  getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest): Observable<ResponseBase<BoardByTypeAndProgramResponse>> {
+  getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest): Observable<ResponseBase<BoardByTypeAndProgramResponse[]>> {
     const boardParams = BoardByTypeAndProgramMapper.fromDomainToApi(params);
-    return this.http.post<ResponseBase<BoardByTypeAndProgramResponseDTO>>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
-      .pipe(map(res => ({ ...res, data: BoardByTypeAndProgramResponseMapper.fromApiToDomain(res.data) })));
+    return this.http.post<ResponseBase<BoardByTypeAndProgramResponseDTO[]>>(`${env.apiUrlBoard}${this.baseUrl}`, boardParams)
+      .pipe(map(res => ({ ...res, data: res.data.map(BoardByTypeAndProgramResponseMapper.fromApiToDomain) })));
   }
 }
