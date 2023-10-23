@@ -1,4 +1,4 @@
-export class BoardDeleteResponse {
+export class BoardDeleteResponseModel {
   constructor(
     public deleteBoardStatus: boolean
   ) {}

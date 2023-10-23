@@ -1,8 +1,8 @@
 import { BoardDeleteResponseDTO } from '../../infraestructure/dto/board.dto';
-import { BoardDeleteResponse } from '../models/boardDeleteResponse.model';
+import { BoardDeleteResponseModel } from '../models/boardDeleteResponse.model';
 
 export class BoardDeleteResponseMapper {
-  static fromApiToDomain(dto: BoardDeleteResponseDTO): BoardDeleteResponse {
+  static fromApiToDomain(dto: BoardDeleteResponseDTO): BoardDeleteResponseModel {
     return {
       deleteBoardStatus: dto.DeleteBoardStatus
     };

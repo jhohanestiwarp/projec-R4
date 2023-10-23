@@ -1,0 +1,102 @@
+.modal-confirma-borrar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-flow: row;
+  margin-top: 2em;
+  padding: 0;
+
+  ngx-ui-buttons {
+    margin: 0 5px;
+    max-width: 265px;
+  }
+}
+
+.info {
+  margin-bottom: 3em;
+
+  img {
+    width: 100%;
+    max-width: 120px;
+  }
+}
+
+
+.icon-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #C567F2;
+}
+
+.container-dialog-custom {
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+.text-dialog {
+  color: var(--ngx-valepro-color-tertiary);
+}
+
+.title-popUP {
+  color: var(--ngx-valepro-color-tertiary);
+}
+
+.submit_btn {
+  border-radius: 50px;
+  border: 2px solid var(--color-secundario);
+  min-height: 50px;
+  font-family: "bold";
+  font-size: 16px;
+  color: #1A0C3F;
+  width: 100%;
+  margin: 0.5rem 1rem;
+  max-width: 200px;
+}
+
+//Tablet
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .submit_btn {
+    margin: 2rem 1rem;
+    max-width: 260px;
+  }
+
+  .regular-18 {
+    font-size: 15px;
+  }
+
+  .regular-13 {
+    .submit_btn {
+      margin: 2rem 1rem;
+      max-width: 260px;
+    }
+
+    font-size: 14px !important;
+  }
+}
+
+//Web
+
+@media screen and (min-width: 1024px) {
+  .submit_btn {
+    margin: 2rem 1rem;
+    max-width: 260px;
+  }
+
+  .regular-18 {
+    font-size: 15px;
+  }
+
+  .regular-13 {
+    .submit_btn {
+      margin: 2rem 1rem;
+      max-width: 260px;
+    }
+
+    font-size: 14px !important;
+  }
+}

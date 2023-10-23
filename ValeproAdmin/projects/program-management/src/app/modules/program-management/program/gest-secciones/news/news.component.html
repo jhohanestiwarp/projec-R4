@@ -48,8 +48,9 @@
               <span class="regular-16 primary20">Selecciona una imagen</span>
             </div>
             <div class="uploadImg-Btn primario">
-              <button type="submit" class="bold-16 primario">Subir imagen </button><mat-icon
-                class="custom-icon">file_upload</mat-icon>
+              <label for="fileInput" class="bold-16 primario btn-active">Subir imagen<mat-icon
+                  class="custom-icon">file_upload</mat-icon></label>
+              <input type="file" id="fileInput" ormControlName="url" />
             </div>
 
           </div>
@@ -63,6 +64,27 @@
 
           <div class="col-12 col-md-4 btn-ingresar ">
             <button [disabled]="newsSelect.invalid" class="submit_btn" type="submit" (click)="submit()">Guardar</button>
+          </div>
+
+          <div class="col-12 col-12 ">
+            <div cdkDropList class="recurso-list" (cdkDropListDropped)="drop($event)">
+              <div class="container-tab">
+                <div class="grid__item bold-14 primario">Posición</div>
+                <div class="grid__item bold-14 primario">Imagen</div>
+                <div class="grid__item bold-14 primario">URL</div>
+                <div class="grid__item bold-14 primario"></div>
+              </div>
+
+              <div class="recurso-box" *ngFor="let recurso of recursos; let i = index " cdkDrag>
+                <div class="container-tab-info">
+                  <div class="grid__item regular-14 primario">{{i + 1}}.</div>
+                  <div class="grid__item regular-14 primario">{{recurso[0]}}</div>
+                  <div class="grid__item regular-14 primario">{{recurso[1]}}</div>
+                  <div class="grid__item regular-14 primario" (click)="PopUpconfirm()"><mat-icon
+                      class="custom-icon">delete</mat-icon> </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>

@@ -1,4 +1,4 @@
-export class BoardCreateResponse {
+export class BoardCreateResponseModel {
   constructor(
     public createBoardStatus: boolean
   ) {}

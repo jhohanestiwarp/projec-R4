@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogParams, DialogService } from 'projects/dialogs-lib/src/public-api';
@@ -53,5 +54,27 @@ export class PopupComponent {
       confirmText: ''
     };
     this.dialogService.openConfirmDialog(params);
+  }
+
+  recursos = [
+    ['Primeraimagen.extension1', 'Https://www.primeraimagen.com.co'],
+    ['Primeraimagen.extension2', 'Https://www.primeraimagen.com.co'],
+    ['Primeraimagen.extension3', 'Https://www.primeraimagen.com.co'],
+    ['Primeraimagen.extension4', 'Https://www.primeraimagen.com.co'],
+    ['Primeraimagen.extension5', 'Https://www.primeraimagen.com.co'],
+  ];
+
+
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.recursos, event.previousIndex, event.currentIndex);
+  }
+
+  PopUpconfirm() {
+    let params: DialogParams = {
+      success: true,
+      title: '¿Estás seguro de eliminar esta board?',
+    };
+    this.dialogService.openConfirmCancelDialog(params);
   }
 }

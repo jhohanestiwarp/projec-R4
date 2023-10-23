@@ -1,0 +1,16 @@
+<div class="container-dialog-custom">
+  <em class="icon-close" (click)="closeDialog()">X</em>
+  <div class="info text-center">
+    <img [src]="dialogIcon" alt="">
+  </div>
+
+  <div class="container-fluid bold-32 terciary text-center block">
+    <span class="title-popUP bold-36 mb-3">{{title}}</span>
+    <span class="regular-24 text-dialog">{{confirmText}}</span>
+    <div class="btn-box">
+      <button class="submit_btn">Eliminar</button>
+      <button class="submit_btn">Volver a secciones</button>
+    </div>
+  </div>
+
+</div>
