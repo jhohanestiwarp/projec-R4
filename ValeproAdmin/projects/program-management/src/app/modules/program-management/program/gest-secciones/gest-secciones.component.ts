@@ -100,9 +100,9 @@ export class GestSeccionesComponent {
   async submit() {
   }
 
-  removeItem(boardId: number) {
+  removeItem(ev: { boardId: number }) {
     this.popUpConfirm();
-    this.boardService.boardDelete({ boardId }).subscribe({
+    this.boardService.boardDelete({ boardId: ev.boardId }).subscribe({
       next: (res) => {
         this.openPopUp(res.message);
         this.listBoard()

@@ -18,10 +18,26 @@
           </mat-form-field>
         </div>
 
-        <app-banner *ngIf="selectedSection==='banner'"></app-banner>
-        <app-news *ngIf="selectedSection==='news'"></app-news>
-        <app-widgets *ngIf="selectedSection==='widget'"></app-widgets>
-        <app-popup *ngIf="selectedSection==='popup'"></app-popup>
+        <app-banner
+          *ngIf="selectedSection === 'banner'"
+          (getSubmitValue)="getSubmitValue($event)"
+          (deleteItem)="removeItem($event)"
+        ></app-banner>
+        <app-news
+          *ngIf="selectedSection === 'news'"
+          (getSubmitValue)="getSubmitValue($event)"
+          (deleteItem)="removeItem($event)"
+        ></app-news>
+        <app-widgets
+          *ngIf="selectedSection === 'widget'"
+          (getSubmitValue)="getSubmitValue($event)"
+          (deleteItem)="removeItem($event)"
+        ></app-widgets>
+        <app-popup
+          *ngIf="selectedSection === 'popup'"
+          (getSubmitValue)="getSubmitValue($event)"
+          (deleteItem)="removeItem($event)"
+        ></app-popup>
 
 
       </form>
