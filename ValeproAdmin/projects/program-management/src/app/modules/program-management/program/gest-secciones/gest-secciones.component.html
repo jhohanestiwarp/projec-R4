@@ -20,21 +20,25 @@
 
         <app-banner
           *ngIf="selectedSection === 'banner'"
+          (getFile)="getFile($event)"
           (getSubmitValue)="getSubmitValue($event)"
           (deleteItem)="removeItem($event)"
         ></app-banner>
         <app-news
           *ngIf="selectedSection === 'news'"
+          (getFile)="getFile($event)"
           (getSubmitValue)="getSubmitValue($event)"
           (deleteItem)="removeItem($event)"
         ></app-news>
         <app-widgets
           *ngIf="selectedSection === 'widget'"
+          (getFile)="getFile($event)"
           (getSubmitValue)="getSubmitValue($event)"
           (deleteItem)="removeItem($event)"
         ></app-widgets>
         <app-popup
           *ngIf="selectedSection === 'popup'"
+          (getFile)="getFile($event)"
           (getSubmitValue)="getSubmitValue($event)"
           (deleteItem)="removeItem($event)"
         ></app-popup>

@@ -16,6 +16,7 @@ interface Parts {
   styleUrls: ['./popup.component.scss']
 })
 export class PopupComponent {
+  @Output() getFile = new EventEmitter<File>();
   @Output() getSubmitValue = new EventEmitter<BoardCreateForm>();
   @Output() deleteItem = new EventEmitter<{ boardId: number }>();
 
@@ -59,6 +60,12 @@ export class PopupComponent {
 
   removeItem(boardId: number) {
     this.deleteItem.emit({ boardId });
+  }
+
+  onFileSelected(ev: any) {
+    if (ev.target.files.length > 0) {
+      this.getFile.emit(ev.target.files[0]);
+    }
   }
 
   openPopUp(title: string = '¡Cambios guardados con éxito!') {

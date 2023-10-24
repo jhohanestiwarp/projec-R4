@@ -124,6 +124,10 @@ export class GestSeccionesComponent {
     })
   }
 
+  getFile(file: File) {
+    this.file = file;
+  }
+
   private fileToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();

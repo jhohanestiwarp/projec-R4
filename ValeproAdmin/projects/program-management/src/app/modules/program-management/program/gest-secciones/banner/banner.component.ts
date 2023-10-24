@@ -16,6 +16,7 @@ interface Parts {
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent {
+  @Output() getFile = new EventEmitter<File>();
   @Output() getSubmitValue = new EventEmitter<BoardCreateForm>();
   @Output() deleteItem = new EventEmitter<{ boardId: number }>();
 
@@ -60,6 +61,12 @@ export class BannerComponent {
 
   removeItem(boardId: number) {
     this.deleteItem.emit({ boardId });
+  }
+
+  onFileSelected(ev: any) {
+    if (ev.target.files.length > 0) {
+      this.getFile.emit(ev.target.files[0]);
+    }
   }
 
   recursos = [

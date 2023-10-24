@@ -64,7 +64,7 @@
           <div class="uploadImg-Btn primario">
             <label for="fileInput" class="bold-16 primario btn-active">Subir imagen<mat-icon
                 class="custom-icon">file_upload</mat-icon></label>
-            <input type="file" id="fileInput" ormControlName="url" />
+            <input type="file" id="fileInput" ormControlName="url" (change)="onFileSelected($event)" />
           </div>
 
         </div>
