@@ -74,7 +74,7 @@ export class GestSeccionesComponent {
 
     this.boardService.boardCreate({
       languageId: this.languageId,
-      openingModeId: ev.openingModeId || 0,
+      openingModeId: ev.openingModeId || 1,
       boardTypeId: this.boardTypeId,
       programId: this.programId,
       segments: ev.segments,
@@ -117,11 +117,6 @@ export class GestSeccionesComponent {
       programId: this.programId,
     }).subscribe({
       next: (res) => {
-        if (res.codeId !== 200) {
-          this.toastService.error(res.message, undefined, this.toastConfig);
-          return;
-        }
-
         // asignar al listado
         res.data.boardEntities;
       },
