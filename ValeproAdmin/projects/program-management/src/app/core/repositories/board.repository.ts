@@ -11,5 +11,4 @@ export abstract class BoardRepository {
   abstract  boardCreate(params: BoardCreateRequest): Observable<ResponseBase<BoardCreateResponseModel>> ;
   abstract boardDelete(params: BoardDeleteRequest): Observable<ResponseBase<BoardDeleteResponseModel>>;
   abstract getBoardByTypeAndProgram(params: BoardByTypeAndProgramRequest): Observable<ResponseBase<BoardByTypeAndProgramResponse>>;
-
 }
