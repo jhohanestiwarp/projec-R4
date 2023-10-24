@@ -17,3 +17,12 @@ export class BoardCreateRequest {
     public properties: null | string
   ) {}
 }
+
+export interface BoardCreateForm {
+  segments: number[];
+  name: string;
+  startDateValidity: string;
+  endDateValidity: string;
+  openingModeId?: number;
+  url: string;
+}
