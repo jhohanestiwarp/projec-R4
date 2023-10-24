@@ -1,9 +1,8 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DialogParams, DialogService } from 'projects/dialogs-lib/src/public-api';
-import { BoardRepository } from 'projects/program-management/src/app/core/repositories/board.repository';
-import { IndividualConfig, ToastrService } from 'ngx-toastr';
+import { BoardCreateForm } from 'projects/program-management/src/app/core/models/boardCreateRequest.model';
 
 interface Parts {
   value: number;
@@ -17,26 +16,16 @@ interface Parts {
   styleUrls: ['./widgets.component.scss']
 })
 export class WidgetsComponent {
+  @Output() getSubmitValue = new EventEmitter<BoardCreateForm>();
+  @Output() deleteItem = new EventEmitter<{ boardId: number }>();
 
   //#region variables
-  file!: File;
   widgetSelect!: FormGroup;
   selectedSegmento?: string;
   currentDate: Date = new Date();
-  private readonly toastConfig: Partial<IndividualConfig<any>> = {
-    timeOut: 9000,
-    progressBar: true,
-    disableTimeOut: 'extendedTimeOut',
-    progressAnimation: 'increasing',
-    tapToDismiss: false,
-    positionClass: 'toast-top-center',
-    closeButton: true,
-  };
   //#endregion
 
   //#region Injectables
-  private boardService: BoardRepository = inject(BoardRepository);
-  private toastService: ToastrService = inject(ToastrService);
   dialogService = inject(DialogService);
   //#endregion
 
@@ -60,92 +49,18 @@ export class WidgetsComponent {
     });
   }
 
-  async submit() {
-    const imageData = await this.fileToBase64(this.file);
-    const imageName = this.file.name;
-    const imageExtension = imageName.split('.').pop();
-    const boardTypeId = 1;
-    const programId= 1;
-
-    this.boardService.boardCreate({
-      languageId: 1,
-      openingModeId: 1,
-      boardTypeId,
-      programId,
+  submit() {
+    this.getSubmitValue.emit({
       segments: this.widgetSelect.value.segmento,
       name: this.widgetSelect.value.titulo,
       startDateValidity: this.widgetSelect.value.starDate,
       endDateValidity: this.widgetSelect.value.endDate,
       url: this.widgetSelect.value.url,
-      image: {
-        imageData,
-        imageName,
-        imageExtension: `.${imageExtension}`,
-      },
-      properties: null,
-    }).subscribe({
-      next: (res) => {
-        if (res.codeId !== 200) {
-          this.toastService.error(res.message, undefined, this.toastConfig);
-          return;
-        }
-
-        this.openPopUp();
-        this.listBoard(boardTypeId, programId);
-      },
-      error: () => this.unexpectedError()
-    })
+    });
   }
 
   removeItem(boardId: number) {
-    this.boardService.boardDelete({ boardId }).subscribe({
-      next: (res) => {
-        if (res.codeId !== 200 || res.data.deleteBoardStatus === false) {
-          this.toastService.error(res.message, undefined, this.toastConfig);
-          return;
-        }
-
-        this.openPopUp('¡Registro eliminado con éxito!');
-        const programId = 1;
-        this.listBoard(boardId, programId)
-      },
-      error: () => this.unexpectedError()
-    });
-  }
-
-  listBoard(boardTypeId: number, programId: number) {
-    this.boardService.getBoardByTypeAndProgram({
-      boardTypeId,
-      programId,
-    }).subscribe({
-      next: (res) => {
-        if (res.codeId !== 200) {
-          this.toastService.error(res.message, undefined, this.toastConfig);
-          return;
-        }
-
-        // asignar al listado
-        res.data.boardEntities;
-      },
-      error: () => this.unexpectedError()
-    })
-  }
-
-  private fileToBase64(file: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-    });
-  }
-
-  private unexpectedError() {
-    this.toastService.error(
-      'Lo sentimos, ha sucedido un error inesperado.',
-      undefined,
-      this.toastConfig
-    );
+    this.deleteItem.emit({ boardId });
   }
 
   openPopUp(title: string = '¡Cambios guardados con éxito!') {
