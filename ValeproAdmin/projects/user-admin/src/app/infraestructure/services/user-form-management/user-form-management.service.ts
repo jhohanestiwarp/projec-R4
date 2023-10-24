@@ -18,7 +18,6 @@ import { GetAllUserDTO } from '../../dto/userFormManagement.dto';
   providedIn: 'root'
 })
 export class UserFormManagementService implements UserFormManagementRepository {
-  private baseUrl = 'api/v1/';
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +28,7 @@ export class UserFormManagementService implements UserFormManagementRepository {
         search.append(key,`${value}`);
       }
     });
-    const url = `${env.apiUrlAuthUser}${this.baseUrl}/UserManagement/getUsers?${search.toString()}`;
+    const url = `${env.apiUrlAuthUser}/UserManagement/getUsers?${search.toString()}`;
     return this.http.get<ResponseBase<GetAllUserDTO[]>>(url)
       .pipe(map(res => ({ ...res, data: res.data.map(UserFormGetAllUserMapper.fromApiToDomain) })));
   }
@@ -38,7 +37,7 @@ export class UserFormManagementService implements UserFormManagementRepository {
     const search = new URLSearchParams();
     search.append('FormularyId', `${params.formularyId}`);
     search.append('ProgramId', `${params.programId}`);
-    const url = `${env.apiUrlAuthUser}${this.baseUrl}/attributes-configuration-form?${search.toString()}`;
+    const url = `${env.apiUrlAuthUser}/attributes-configuration-form?${search.toString()}`;
     return this.http.get<ResponseBase<GetCreateUserFormByProgramResponse>>(url);
   }
 
@@ -46,12 +45,12 @@ export class UserFormManagementService implements UserFormManagementRepository {
     const search = new URLSearchParams();
     search.append('FormularyId', `${params.formularyId}`);
     search.append('ProgramId', `${params.programId}`);
-    const url = `${env.apiUrlAuthUser}${this.baseUrl}/form-attributes?${search.toString()}`;
+    const url = `${env.apiUrlAuthUser}/form-attributes?${search.toString()}`;
     return this.http.get<ResponseBase<GetProgramConfigResponse>>(url);
   }
 
   saveFormConfig(params: SaveFormConfigRequest): Observable<ResponseBase<null>> {
-    const url = `${env.apiUrlAuthUser}${this.baseUrl}/FormManagement/save-configuration-form`;
+    const url = `${env.apiUrlAuthUser}/FormManagement/save-configuration-form`;
     const saveParams = UserFormSaveFormConfigMapper.fromDomainToApi(params);
     return this.http.post<ResponseBase<null>>(url, saveParams);
   }
