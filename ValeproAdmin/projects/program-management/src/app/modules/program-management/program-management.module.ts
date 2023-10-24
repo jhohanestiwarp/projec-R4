@@ -26,6 +26,7 @@ import { DivipolaRepository } from '../../core/repositories/divipola.repository'
 import { PopupComponent } from './program/gest-secciones/popup/popup.component';
 import { BoardRepository } from '../../core/repositories/board.repository';
 import { BoardService } from '../../infraestructure/services/board/board.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -53,12 +54,14 @@ import { BoardService } from '../../infraestructure/services/board/board.service
     MatTabsModule,
     ProgramManagementRoutingModule,
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: ProgramRepository, useClass: ProgramService },
     { provide: DivipolaRepository, useClass: DivipolaService },
     { provide: BoardRepository, useClass: BoardService },
+    ToastrService
   ],
 })
 export class ProgramManagementModule { }

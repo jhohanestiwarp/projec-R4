@@ -16,7 +16,7 @@
 
           <mat-form-field>
             <mat-label class="title-input">Segmento</mat-label>
-            <mat-select [(value)]="selectedSegmento" placeholder="Segmento" formControlName="segmento">
+            <mat-select multiple placeholder="Segmento" formControlName="segmento">
               <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
                 {{Segmento.viewValue}}
               </mat-option>
@@ -96,7 +96,7 @@
                   <div class="grid__item regular-14 primario">{{i + 1}}.</div>
                   <div class="grid__item regular-14 primario">{{recurso[0]}}</div>
                   <div class="grid__item regular-14 primario">{{recurso[1]}}</div>
-                  <div class="grid__item regular-14 primario" (click)="PopUpconfirm()"><mat-icon
+                  <div class="grid__item regular-14 primario" (click)="removeItem(i + 1)"><mat-icon
                       class="custom-icon">delete</mat-icon> </div>
                 </div>
               </div>
