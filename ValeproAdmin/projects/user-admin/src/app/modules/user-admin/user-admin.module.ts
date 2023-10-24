@@ -18,6 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormCreateusersComponent } from './form-createusers/form-createusers.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { UserFormManagementRepository } from '../../core/repositories/user-form-management.repository';
+import { UserFormManagementService } from '../../infraestructure/services/user-form-management/user-form-management.service';
 
 
 @NgModule({
@@ -27,7 +29,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CreateUserComponent,
     MasiveUsersComponent,
     FormCreateusersComponent
-
   ],
   imports: [
     CommonModule,
@@ -45,7 +46,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatCheckboxModule,
     MatPaginatorModule
-
+  ],
+  providers: [
+    { provide: UserFormManagementRepository, useClass: UserFormManagementService },
   ]
 })
 export class UserAdminModule { }
