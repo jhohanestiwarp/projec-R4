@@ -9,7 +9,7 @@ import { GenerateCodeRequestModel, GenerateCodeResponseModel } from '../../core/
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthRepository } from '../../core/repositories/auth.repository';
-import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
+import { getSession, saveSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
 @Component({
   selector: 'app-update-password',
@@ -158,8 +158,11 @@ export class UpdatePasswordComponent {
           confirmText: '¡Tu contraseña fue cambiada con éxito!'
         };
         this.dialogService.openConfirmDialog(params);
-        this.router.navigate(['/login']);
-
+          localStorage.setItem('programId', getSession('programId'));
+          sessionStorage.clear();
+          saveSession(Number(localStorage.getItem('programId')) || '0', 'programId');
+          localStorage.clear();
+          this.router.navigate(['/login']);
       },
       error: (error: HttpErrorResponse) => {
         this.toastService.error(error.error.Message, undefined, {

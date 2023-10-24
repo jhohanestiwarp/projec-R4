@@ -3,7 +3,7 @@ import { LoginRequestModel } from '../../core/models/loginRequest.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadLogin, loadedLogin, selectResponseLoginLoading } from 'projects/store-lib/src/public-api';
+import { loadFailLogin, loadLogin, loadedLogin, selectResponseLoginLoading } from 'projects/store-lib/src/public-api';
 import { ResponseBase } from '../../core/models/responseBase.model';
 import { LoginResponseModel } from '../../core/models/loginResponse.model';
 import { Router } from '@angular/router';
@@ -23,6 +23,7 @@ import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.sto
   providedIn: 'root',
 })
 export class LoginComponent {
+  isLoading: boolean = false;
   logo: string = '';
   colorbackground: string = '';
   btnColor: string = '';
@@ -52,6 +53,7 @@ export class LoginComponent {
   }
 
   login() {
+    this.isLoading = true;
     if (!this.loginForm.get('Id')?.value || !this.loginForm.get('Pass')?.value) {
       this.toastService.error('La información ingresada no es válida.', undefined, {
         timeOut: 9000,
@@ -78,7 +80,7 @@ export class LoginComponent {
     //Send http request
     this.authRepository.affiliateLogin(data).subscribe({
       next: (res: ResponseBase<LoginResponseModel>) => {
-        this.store.dispatch(loadedLogin({responseLogin:res.data}));
+        this.store.dispatch(loadedLogin({ responseLogin: res.data }));
         if (res.data.requiredNewPassword) {
           //pop up de actualizar contraseña
           let params: DialogParams = {
@@ -100,6 +102,8 @@ export class LoginComponent {
         }
       },
       error: (error) => {
+        this.store.dispatch(loadFailLogin());
+        this.$loading = this.store.select(selectResponseLoginLoading);
         if (error.error.Data[0].ErrorCode == "1015") {
           this.toastService.warning(error.error.Data[0].ErrorMessage, undefined, {
             timeOut: 9000,

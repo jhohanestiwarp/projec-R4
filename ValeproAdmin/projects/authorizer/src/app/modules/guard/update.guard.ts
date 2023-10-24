@@ -3,17 +3,16 @@ import { CanActivateFn, Router } from '@angular/router';
 import { LoginResponseModel } from '../../core/models/loginResponse.model';
 import { getSession } from 'projects/store-lib/src/lib/store/storage/storage.storage';
 
-
-export const authGuard: CanActivateFn = (route, state) => {
+export const updateGuard: CanActivateFn = (route, state) => {
   let router = inject(Router);
-  if (!sessionStorage.getItem('userLoginData')) {
-
+  if(!sessionStorage.getItem('userLoginData')) {
     router.navigate(['/login']);
     return false;
   }
   let session: LoginResponseModel = getSession<LoginResponseModel>('userLoginData');
-  if(session.requiredNewPassword){
-    router.navigate(['/update']);
+
+  if(!session.requiredNewPassword){
+    router.navigate(['/main/home']);
     return false;
   }
   return true;

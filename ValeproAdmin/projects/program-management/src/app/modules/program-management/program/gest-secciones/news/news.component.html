@@ -7,37 +7,49 @@
           <span class="bold-14 primario mb-2">Configuración de recursos</span>
 
           <mat-form-field>
-            <mat-label>Título</mat-label>
+            <mat-label class="title-input">Título</mat-label>
             <input formControlName="titulo" matInput placeholder="Título" autocomplete="off">
+            <mat-error *ngIf="newsSelect.get('titulo')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Segmento</mat-label>
-            <mat-select [(value)]="selectedSegmento" placeholder="Segmento">
+            <mat-label class="title-input">Segmento</mat-label>
+            <mat-select [(value)]="selectedSegmento" placeholder="Segmento" formControlName="segmento">
               <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
                 {{Segmento.viewValue}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="newsSelect.get('segmento')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="box-datepicker-banner">
 
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de inicio</mat-label>
               <input formControlName="starDate" [min]="currentDate" matInput [matDatepicker]="startPicker"
                 placeholder="Vigencia - Fecha de inicio">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
               <mat-datepicker #startPicker></mat-datepicker>
+              <mat-error *ngIf="newsSelect.get('starDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de fin</mat-label>
               <input formControlName="endDate" [min]="newsSelect.get('starDate')!.value" matInput
                 [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
               <mat-datepicker #endPicker></mat-datepicker>
+              <mat-error *ngIf="newsSelect.get('endDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
 
           </div>
@@ -54,12 +66,16 @@
             </div>
 
           </div>
-          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 1061x308
+          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de
+            1061x308
             píxeles.</span>
 
           <mat-form-field>
-            <mat-label>URL de contenido</mat-label>
+            <mat-label class="title-input">URL de contenido</mat-label>
             <input formControlName="url" matInput placeholder="URL de contenido" autocomplete="off">
+            <mat-error *ngIf="newsSelect.get('url')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="col-12 col-md-4 btn-ingresar ">

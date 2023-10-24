@@ -28,7 +28,9 @@ export class AppComponent {
 
   loadProgram() {
     let url = window.location.origin;
-    console.log(JSON.stringify(url));
+    if(url == 'http://localhost:4200'){
+      url = 'https://dev.valepro.com.co'
+    }
     let programRequest: ProgramRequestModel = {
       URL: url
     }

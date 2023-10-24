@@ -39,6 +39,8 @@ export class WidgetsComponent {
   constructor(private formBuilder: FormBuilder) {
     this.widgetSelect = this.formBuilder.group({
       titulo: ['', Validators.required],
+      segmento: ['', Validators.required],
+      mapertura: ['', Validators.required],
       starDate: ['', Validators.required],
       endDate: ['', Validators.required],
       url: ['', Validators.required],

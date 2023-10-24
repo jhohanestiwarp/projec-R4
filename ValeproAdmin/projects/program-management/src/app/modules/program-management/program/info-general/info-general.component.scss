@@ -58,9 +58,21 @@
   padding-bottom: 5rem;
 }
 
+.title-input {
+  color: var(--color-primario40);
+}
+
+::ng-deep.mat-mdc-select-arrow {
+  color: var(--color-primario40) !important;
+}
+
 //Tablet
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    width: 700px;
+    margin: 0 auto;
+  }
 
   .box-datepicker {
 
@@ -75,12 +87,13 @@
 
 }
 
+
 //Web
 
 @media screen and (min-width: 1024px) {
 
   .container {
-    width: 900px;
+    width: 800px;
     margin: 0 auto;
   }
 

@@ -38,6 +38,7 @@ export class NewsComponent {
   constructor(private formBuilder: FormBuilder) {
     this.newsSelect = this.formBuilder.group({
       titulo: ['', Validators.required],
+      segmento: ['', Validators.required],
       starDate: ['', Validators.required],
       endDate: ['', Validators.required],
       url: ['', Validators.required],

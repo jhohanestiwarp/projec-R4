@@ -6,6 +6,9 @@ export const noAuthGuard: CanActivateFn = (route, state) => {
   if (!sessionStorage.getItem('userLoginData')) {
     return true;
   } else {
+    if(state.url =='/update'){
+      return true;
+    }
     router.navigate(['/main/home']);
     return false;
   }

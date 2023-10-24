@@ -13,6 +13,9 @@
             <input matInput type="text" autocomplete="off" placeholder="Número de identificación" formControlName="Id">
             <mat-error *ngIf="this.loginForm.get('Id')?.errors">* Campo obligatorio</mat-error>
           </mat-form-field>
+          <div class="laod-box">
+            <mat-spinner [mode]="isLoading ? 'indeterminate' : 'determinate'" class="loader"></mat-spinner>
+          </div>
           <mat-form-field class="login_mat-form" appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput [type]="hide ? 'password' : 'text'" formControlName="Pass" placeholder="Contraseña">
@@ -27,6 +30,5 @@
         </form>
       </div>
     </div>
-
   </div>
 </div>

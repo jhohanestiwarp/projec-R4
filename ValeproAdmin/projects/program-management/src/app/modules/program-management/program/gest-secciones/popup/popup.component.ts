@@ -38,6 +38,7 @@ export class PopupComponent {
   constructor(private formBuilder: FormBuilder) {
     this.popupSelect = this.formBuilder.group({
       starDate: ['', Validators.required],
+      segmento: ['', Validators.required],
       endDate: ['', Validators.required],
       url: ['', Validators.required],
     });

@@ -9,32 +9,41 @@
 
 
           <mat-form-field>
-            <mat-label>Segmento</mat-label>
-            <mat-select [(value)]="selectedSegmento" placeholder="Segmento">
+            <mat-label class="title-input">Segmento</mat-label>
+            <mat-select [(value)]="selectedSegmento" placeholder="Segmento" formControlName="segmento">
               <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
                 {{Segmento.viewValue}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="popupSelect.get('segmento')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="box-datepicker-banner">
 
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de inicio</mat-label>
               <input formControlName="starDate" [min]="currentDate" matInput [matDatepicker]="startPicker"
                 placeholder="Vigencia - Fecha de inicio">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
               <mat-datepicker #startPicker></mat-datepicker>
+              <mat-error *ngIf="popupSelect.get('starDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de fin</mat-label>
               <input formControlName="endDate" [min]="popupSelect.get('starDate')!.value" matInput
                 [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
               <mat-datepicker #endPicker></mat-datepicker>
+              <mat-error *ngIf="popupSelect.get('endDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
 
           </div>
@@ -51,7 +60,8 @@
             </div>
 
           </div>
-          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 890x470
+          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de
+            890x470
             píxeles.</span>
 
 

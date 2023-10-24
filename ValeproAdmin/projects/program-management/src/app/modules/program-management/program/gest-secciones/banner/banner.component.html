@@ -1,102 +1,116 @@
 <div class="container ">
   <div class="row align-items-start">
-    <div class="col">
-      <form [formGroup]="bannerSelect">
-        <div class="fomr">
 
-          <span class="bold-14 primario mb-2">Configuración de recursos</span>
+    <form [formGroup]="bannerSelect">
+      <div class="fomr">
+
+        <span class="bold-14 primario mb-2">Configuración de recursos</span>
+
+        <mat-form-field>
+          <mat-label class="title-input">Título</mat-label>
+          <input formControlName="titulo" matInput placeholder="Título" autocomplete="off">
+          <mat-error *ngIf="bannerSelect.get('titulo')?.hasError('required')">
+            * Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label class="title-input">Segmento</mat-label>
+          <mat-select [(value)]="selectedSegmento" placeholder="Segmento" formControlName="segmento">
+            <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
+              {{Segmento.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="bannerSelect.get('segmento')?.hasError('required')">
+            * Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+
+        <div class="box-datepicker-banner">
 
           <mat-form-field>
-            <mat-label>Título</mat-label>
-            <input formControlName="titulo" matInput placeholder="Título" autocomplete="off">
+            <mat-label class="title-input">Vigencia - Fecha de inicio</mat-label>
+            <input formControlName="starDate" [min]="currentDate" matInput [matDatepicker]="startPicker"
+              placeholder="Vigencia - Fecha de inicio">
+            <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+            <mat-error *ngIf="bannerSelect.get('starDate')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Segmento</mat-label>
-            <mat-select [(value)]="selectedSegmento" placeholder="Segmento">
-              <mat-option *ngFor="let Segmento of Segmentos" [value]="Segmento.value">
-                {{Segmento.viewValue}}
-              </mat-option>
-            </mat-select>
+            <mat-label class="title-input">Vigencia - Fecha de fin</mat-label>
+            <input formControlName="endDate" [min]="bannerSelect.get('starDate')!.value" matInput
+              [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
+            <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+            <mat-error *ngIf="bannerSelect.get('endDate')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
-
-          <div class="box-datepicker-banner">
-
-            <mat-form-field>
-              <mat-label>Vigencia - Fecha de inicio</mat-label>
-              <input formControlName="starDate" [min]="currentDate" matInput [matDatepicker]="startPicker"
-                placeholder="Vigencia - Fecha de inicio">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
-              <mat-datepicker #startPicker></mat-datepicker>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Vigencia - Fecha de fin</mat-label>
-              <input formControlName="endDate" [min]="bannerSelect.get('starDate')!.value" matInput
-                [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
-              <mat-hint>MM/DD/YYYY</mat-hint>
-              <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
-              <mat-datepicker #endPicker></mat-datepicker>
-            </mat-form-field>
-
-          </div>
-
-          <span class="bold-14 primario mb-2">Carga de imágenes</span>
-          <div class="uploadImg">
-            <div class="uploadImg-text primario">
-              <span class="regular-16 primary20">Selecciona una imagen</span>
-            </div>
-
-
-            <div class="uploadImg-Btn primario">
-              <label for="fileInput" class="bold-16 primario btn-active">Subir imagen<mat-icon
-                  class="custom-icon">file_upload</mat-icon></label>
-              <input type="file" id="fileInput" ormControlName="url" />
-            </div>
-
-          </div>
-          <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 1061x308
-            píxeles.</span>
-
-          <mat-form-field>
-            <mat-label>URL de contenido</mat-label>
-            <input formControlName="url" matInput placeholder="URL de contenido" autocomplete="off">
-          </mat-form-field>
-
-
-
-
-          <div class="col-12 col-md-4 btn-ingresar ">
-            <button [disabled]="bannerSelect.invalid" class="submit_btn" type="submit"
-              (click)="submit()">Guardar</button>
-          </div>
-
-          <div class="col-12 col-12 ">
-            <div cdkDropList class="recurso-list" (cdkDropListDropped)="drop($event)">
-              <div class="container-tab">
-                <div class="grid__item bold-14 primario">Posición</div>
-                <div class="grid__item bold-14 primario">Imagen</div>
-                <div class="grid__item bold-14 primario">URL</div>
-                <div class="grid__item bold-14 primario"></div>
-              </div>
-
-              <div class="recurso-box" *ngFor="let recurso of recursos; let i = index " cdkDrag>
-                <div class="container-tab-info">
-                  <div class="grid__item regular-14 primario">{{i + 1}}.</div>
-                  <div class="grid__item regular-14 primario">{{recurso[0]}}</div>
-                  <div class="grid__item regular-14 primario">{{recurso[1]}}</div>
-                  <div class="grid__item regular-14 primario" (click)="PopUpconfirm()"><mat-icon
-                      class="custom-icon">delete</mat-icon> </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
 
         </div>
-      </form>
-    </div>
+
+        <span class="bold-14 primario mb-2">Carga de imágenes</span>
+        <div class="uploadImg">
+          <div class="uploadImg-text primario">
+            <span class="regular-16 primary20">Selecciona una imagen</span>
+          </div>
+
+
+          <div class="uploadImg-Btn primario">
+            <label for="fileInput" class="bold-16 primario btn-active">Subir imagen<mat-icon
+                class="custom-icon">file_upload</mat-icon></label>
+            <input type="file" id="fileInput" ormControlName="url" />
+          </div>
+
+        </div>
+        <span class="regular-12 primario mb-2 txt-info">* Las dimensiones de las imágenes deben ser de 1061x308
+          píxeles.</span>
+
+        <mat-form-field>
+          <mat-label class="title-input">URL de contenido</mat-label>
+          <input formControlName="url" matInput placeholder="URL de contenido" autocomplete="off">
+          <mat-error *ngIf="bannerSelect.get('url')?.hasError('required')">
+            * Campo obligatorio
+          </mat-error>
+        </mat-form-field>
+
+
+
+
+        <div class="col-12 col-md-4 btn-ingresar ">
+          <button [disabled]="bannerSelect.invalid" class="submit_btn" type="submit" (click)="submit()">Guardar</button>
+        </div>
+
+        <div class="col-12 col-12 ">
+          <div cdkDropList class="recurso-list" (cdkDropListDropped)="drop($event)">
+            <div class="container-tab">
+              <div class="grid__item bold-14 primario">Posición</div>
+              <div class="grid__item bold-14 primario">Imagen</div>
+              <div class="grid__item bold-14 primario">URL</div>
+              <div class="grid__item bold-14 primario"></div>
+            </div>
+
+            <div class="recurso-box" *ngFor="let recurso of recursos; let i = index " cdkDrag>
+              <div class="container-tab-info">
+                <div class="grid__item regular-14 primario">{{i + 1}}.</div>
+                <div class="grid__item regular-14 primario">{{recurso[0]}}</div>
+                <div class="grid__item regular-14 primario">{{recurso[1]}}</div>
+                <div class="grid__item regular-14 primario" (click)="PopUpconfirm()"><mat-icon
+                    class="custom-icon">delete</mat-icon> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </form>
+
   </div>
 </div>

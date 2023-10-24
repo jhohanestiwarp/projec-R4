@@ -129,10 +129,14 @@ button.toast-close-button {
 }
 .toast-container.toast-top-center .ngx-toastr,
 .toast-container.toast-bottom-center .ngx-toastr {
-  width: 512px;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
+
 .toast-container.toast-top-full-width .ngx-toastr,
 .toast-container.toast-bottom-full-width .ngx-toastr {
   width: 96%;
@@ -163,6 +167,8 @@ button.toast-close-button {
   background-color: #000000;
   opacity: 0.4;
 }
+
+
 /* Responsive Design */
 @media all and (max-width: 240px) {
   .toast-container .ngx-toastr.div {
@@ -189,4 +195,19 @@ button.toast-close-button {
     padding: 15px 15px 15px 50px;
     width: 25em;
   }
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+.toast-container.toast-top-center .ngx-toastr,
+.toast-container.toast-bottom-center .ngx-toastr {
+  width: 60%;
+}
+}
+
+@media screen and (min-width: 1024px){
+.toast-container.toast-top-center .ngx-toastr,
+.toast-container.toast-bottom-center .ngx-toastr {
+  width: 50%;
+}
 }

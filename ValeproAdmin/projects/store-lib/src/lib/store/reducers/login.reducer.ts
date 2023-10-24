@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { loadLogin, loadedLogin } from "../actions/login.actions";
+import { loadFailLogin, loadLogin, loadedLogin } from "../actions/login.actions";
 import { LoginResponseState } from '../models/login-response.state';
 import { saveSession } from "../storage/storage.storage";
 
@@ -29,6 +29,9 @@ export const loginReducer = createReducer(
   initialState,
   on(loadLogin, (state) => {
     return { ...state, loading: true };
+  }),
+  on(loadFailLogin, (state) => {
+    return { ...state, loading: false };
   }),
   on(loadedLogin, (state, response) => {
     if(response.responseLogin.accessToken != ''){

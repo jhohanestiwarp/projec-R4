@@ -18,6 +18,7 @@ import { loginReducer } from 'projects/store-lib/src/public-api';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { AuthRepository } from '../core/repositories/auth.repository';
 import { AuthService } from '../infraestructure/services/auth.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AuthService } from '../infraestructure/services/auth.service';
     MatIconModule,
     MatInputModule,
     RecaptchaModule,
+    MatProgressSpinnerModule,
     MatDialogModule,
     CodeInputModule.forRoot({
       codeLength: 6,

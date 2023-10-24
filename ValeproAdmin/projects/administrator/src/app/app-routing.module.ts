@@ -14,7 +14,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('Authorizer/AuthorizerModule').then(m => m.AuthorizerModule),
     canActivate: [noAuthGuard]
-  }
+  },
+  { path: "**", redirectTo: "/main/home", pathMatch: "full" },
 ];
 
 @NgModule({

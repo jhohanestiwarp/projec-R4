@@ -3,6 +3,11 @@
   flex-direction: column;
 }
 
+.container {
+  width: 100%;
+  padding: 0px;
+}
+
 .box-datepicker-banner {
   display: grid;
   grid-template-columns: 1fr;
@@ -184,6 +189,27 @@
 //fin Drag&Drop sorting
 #fileInput {
   display: none;
+}
+
+
+.title-input {
+  color: var(--color-primario40);
+}
+
+::ng-deep.mat-mdc-select-arrow {
+  color: var(--color-primario40) !important;
+}
+
+::ng-deep.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: var(--ngx-valepro-color-tertiary) !important;
+}
+
+
+::ng-deep.mdc-floating-label--required:not(.mdc-floating-label--hide-required-marker)::after {
+  margin-left: 1px;
+  margin-right: 0px;
+  content: "*";
+  display: none !important;
 }
 
 

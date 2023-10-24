@@ -2,13 +2,13 @@
   <div class="row align-items-start">
     <div class="programas-secciones">
       <div class="programas-secciones-title">
-        <span class="bold-32 mb-2">Gestión de secciones</span>
+        <span class="bold-32 primario mb-2">Gestión de secciones</span>
       </div>
 
       <form [formGroup]="programSelect">
         <div class="fomr">
           <mat-form-field>
-            <mat-label>Sección</mat-label>
+            <mat-label class="title-input">Sección</mat-label>
             <mat-select formControlName="selectedSections" [(value)]="selectedSection"
               (selectionChange)="isSelectionChange($event)" placeholder="Sección">
               <mat-option *ngFor="let section of sections" [value]="section.value">

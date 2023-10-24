@@ -1,3 +1,4 @@
+import { updateGuard } from './guard/update.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'recover', component: RecoverPasswordComponent },
   { path: 'generate', component: GeneratecodeComponent },
-  { path: 'update', component: UpdatePasswordComponent },
+  { path: 'update', component: UpdatePasswordComponent, canActivate: [updateGuard] },
 ];
 
 @NgModule({

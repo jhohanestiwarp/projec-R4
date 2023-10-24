@@ -131,7 +131,7 @@ $fte-parrafo-book: $font-book;
   @include font-family($fte-titulo, 1.2, $black);
 
   &.primario {
-    color: var(--color-primario);
+    color: var(--color-primario) !important;
   }
 
   &.secundario {
@@ -476,7 +476,7 @@ $fte-parrafo-book: $font-book;
   @include font-family($fte-titulo, 1.2, $black);
 
   &.primario {
-    color: var(--color-primario);
+    color: var(--color-primario) !important;
   }
 
   &.secundario {
@@ -1003,6 +1003,18 @@ $fte-parrafo-book: $font-book;
   &.gris {
     color: #acacac;
   }
+
+  &.primary20 {
+    color: var(--color-primario20);
+  }
+
+  &.primary40 {
+    color: var(--color-primario40);
+  }
+
+  &.primary60 {
+    color: var(--color-primario60);
+  }
 }
 
 .regular-13 {
@@ -1023,6 +1035,18 @@ $fte-parrafo-book: $font-book;
 
   &.negro {
     color: var(--color-negro);
+  }
+
+  &.primary20 {
+    color: var(--color-primario20);
+  }
+
+  &.primary40 {
+    color: var(--color-primario40);
+  }
+
+  &.primary60 {
+    color: var(--color-primario60);
   }
 }
 
@@ -1048,6 +1072,18 @@ $fte-parrafo-book: $font-book;
 
   &.gris {
     color: var(--color-gris);
+  }
+
+  &.primary20 {
+    color: var(--color-primario20);
+  }
+
+  &.primary40 {
+    color: var(--color-primario40);
+  }
+
+  &.primary60 {
+    color: var(--color-primario60);
   }
 }
 

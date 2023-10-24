@@ -2,7 +2,7 @@
   <div class="row align-items-start">
     <div class="programas-secciones">
       <div class="programas-secciones-title">
-        <span class="bold-32 mb-2">Información general</span>
+        <span class="bold-32 primario mb-2">Información general</span>
         <span class="bold-14  mb-2">Datos del programa</span>
       </div>
 
@@ -10,63 +10,95 @@
 
         <div class="fomr">
           <mat-form-field>
-            <mat-label>Nombre de programa</mat-label>
+            <mat-label class="title-input">Nombre de programa</mat-label>
             <input formControlName="programName" matInput placeholder="Nombre de programa" autocomplete="off">
+            <mat-error *ngIf="programCreateForm.get('programName')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="box-datepicker">
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de inicio</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de inicio44</mat-label>
               <input formControlName="starDate" matInput [matDatepicker]="startPicker"
                 placeholder="Vigencia - Fecha de inicio" [min]="currentDate">
-              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
               <mat-datepicker #startPicker></mat-datepicker>
+              <mat-error *ngIf="programCreateForm.get('starDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
 
+
+
+
+
             <mat-form-field>
-              <mat-label>Vigencia - Fecha de fin</mat-label>
+              <mat-label class="title-input">Vigencia - Fecha de fin</mat-label>
               <input formControlName="endDate" [min]="programCreateForm.get('starDate')!.value" matInput
                 [matDatepicker]="endPicker" placeholder="Vigencia - Fecha de fin" autocomplete="off">
-              <mat-hint>DD/MM/YYYY</mat-hint>
+              <mat-hint class="regular-12 primary40">DD/MM/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
               <mat-datepicker #endPicker></mat-datepicker>
+              <mat-error *ngIf="programCreateForm.get('endDate')?.hasError('required')">
+                * Campo obligatorio
+              </mat-error>
             </mat-form-field>
+
           </div>
 
           <mat-form-field>
-            <mat-label>Centro de costo</mat-label>
+            <mat-label class="title-input">Centro de costo</mat-label>
             <input formControlName="costCenter" matInput placeholder="Centro de costo" autocomplete="off">
+            <mat-error *ngIf="programCreateForm.get('costCenter')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="programas-secciones-title">
-            <span class="bold-14  mb-2">Centro de acopio del programa</span>
+            <span class="mb-2 bold-14 primario ">Centro de acopio del programa</span>
           </div>
 
           <mat-form-field>
-            <mat-label>País</mat-label>
-            <mat-select formControlName="country" (selectionChange)="getDepartments()">
-              <mat-option [value]="countryItem.codeId"
-                *ngFor="let countryItem of _listCountry">{{countryItem.name}}</mat-option>
+            <mat-label class="title-input regular-16 primario">País</mat-label>
+            <mat-select formControlName="country" (selectionChange)="getDepartments()" class="regular-16 primario">
+              <mat-option [value]="countryItem.codeId" *ngFor="let countryItem of _listCountry"
+                class="regular-16 primario">{{countryItem.name}}</mat-option>
             </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Departamento / Estado</mat-label>
-            <mat-select formControlName="department" (selectionChange)="getCities()">
-              <mat-option [value]="departmentItem.name"
-                *ngFor="let departmentItem of _listDepartments">{{departmentItem.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Ciudad</mat-label>
-            <mat-select formControlName="city">
-              <mat-option [value]="cityItem.codeId" *ngFor="let cityItem of _listCities">{{cityItem.name}}</mat-option>
-            </mat-select>
+            <mat-error *ngIf="programCreateForm.get('country')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field>
-            <mat-label>Dirección</mat-label>
-            <input formControlName="address" matInput placeholder="Dirección" autocomplete="off">
+            <mat-label class="title-input regular-16 primario">Departamento / Estado</mat-label>
+            <mat-select formControlName="department" (selectionChange)="getCities()" class="regular-16 primario">
+              <mat-option [value]="departmentItem.name"
+                *ngFor="let departmentItem of _listDepartments">{{departmentItem.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="programCreateForm.get('department')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label class="title-input regular-16 primario">Ciudad</mat-label>
+            <mat-select formControlName="city" class="regular-16 primario">
+              <mat-option [value]="cityItem.codeId" *ngFor="let cityItem of _listCities">{{cityItem.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="programCreateForm.get('city')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label class="title-input regular-16 primario">Dirección</mat-label>
+            <input formControlName="address" matInput placeholder="Dirección" autocomplete="off"
+              class="regular-16 primario">
+            <mat-error *ngIf="programCreateForm.get('address')?.hasError('required')">
+              * Campo obligatorio
+            </mat-error>
           </mat-form-field>
 
           <div class="col-12 col-md-4 btn-ingresar ">

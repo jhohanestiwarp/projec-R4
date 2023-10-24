@@ -6,6 +6,10 @@ export const loadLogin = createAction(
   '[Login page] loadLogin'
 );
 
+export const loadFailLogin = createAction(
+  '[Login page] loadFailLogin'
+);
+
 export const loadedLogin = createAction(
   '[Login page] loadedLogin success',
   props<{responseLogin: LoginResponseModel}>()

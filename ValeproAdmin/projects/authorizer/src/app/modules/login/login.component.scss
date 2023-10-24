@@ -175,6 +175,26 @@ mat-icon.mat-icon {
   content: "" !important;
 }
 
+.laod-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .loader {
+    width: 80px !important;
+    height: 80px !important;
+    opacity: 0.1;
+    z-index: 1000;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 
   .login_col_form {
